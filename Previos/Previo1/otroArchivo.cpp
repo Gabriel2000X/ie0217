@@ -10,7 +10,7 @@ será la función principal del programa */
 int main() {  
 
     /* Se utiliza std::cout para imprimir 
-    el Hola Mundo, estudiantes desde otro archivo!, en la consola, 
+    el Hola Mundo, desde otro archivo! en la consola, 
     el operador<< tiene la función de enviar datos al std::cout*/
     std::cout << "Hola Mundo, desde otro archivo!";
 
