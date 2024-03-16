@@ -1,4 +1,4 @@
-// Primer programa en C++
+// Ejemplo de uso de operador Terciario ?:
 
 /* se incluye iostream, que sirve para
 poder imprimir texto como salida, como
