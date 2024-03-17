@@ -16,7 +16,7 @@ int main() {
     /* Se define la variable var */
     int var = 5;
 
-    /* Se declara la variable int* que corresponde a un puntero entero*/
+    /* Se declara la variable int* pointVar que corresponde a un puntero entero*/
     int* pointVar;
 
     /* Se le asigna el valor de la dirección en memoria de var a pointvar */
