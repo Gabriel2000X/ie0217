@@ -1,4 +1,4 @@
-// ejemplo de utilización de enumeraciones.
+// ejemplo de utilización de enumeraciones y defines
 
 /* se incluye iostream, en este caso se usa para
 imprimir texto de salida. */
