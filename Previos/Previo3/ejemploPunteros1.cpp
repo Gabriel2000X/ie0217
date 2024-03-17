@@ -1,4 +1,4 @@
-// ejemplo de utilización de enumeraciones y defines
+// ejemplo de utilización de punteros
 
 /* se incluye iostream, en este caso se usa para
 imprimir texto de salida. */
