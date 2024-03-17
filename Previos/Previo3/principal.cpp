@@ -61,9 +61,7 @@ int main() {
     /* Se imprime el valor de arbol que está dentro de enumcito. debe corresponder con 42 */
     cout << "arbol " << arbol << endl;
    
-   /* Se utiliza cout para imprimir el resultado de la suma así como el valor de 
-   cada variable que participa en la suma. */
-
+   
     /* se retorna un valor entero de cero finalizando
     la función main */
     return 0;
