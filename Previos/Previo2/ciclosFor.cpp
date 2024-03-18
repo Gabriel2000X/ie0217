@@ -1,5 +1,6 @@
 // Ejemplo de ciclos for
-/* */
+/* Se incluye un ejemplo de for que aumenta el numero en cada iteración 
+y otro que recorre los valores de un arreglo*/
 
 /* se incluye iostream, en este caso se usa para
 imprimir texto de salida. */
