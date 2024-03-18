@@ -1,4 +1,4 @@
-// Ejemplo 2 de estructuras
+// Ejemplo de casting
 
 /* se incluye iostream, en este caso se usa para
 imprimir texto de salida. */
