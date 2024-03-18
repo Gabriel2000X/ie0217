@@ -35,7 +35,7 @@ int main() {
         cout << "Introduzca n = " << i << ": ";
         cin >> num;
 
-        /* si el número es menor que cero se usa jump para saltar al promedio */
+        /* si el número es menor que cero se usa goto para saltar al jump */
         if(num < 0.0 ) {
             goto jump;
         }
