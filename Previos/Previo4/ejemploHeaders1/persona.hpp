@@ -1,6 +1,6 @@
 //Archivo.hpp de declaración de clases, funciones y atributos
 
-/* Si no está definido CONTACTO_HPP
+/* Si no está definido PERSONA_HPP
 este se define */
 #ifndef PERSONA_H 
 #define PERSONA_H
