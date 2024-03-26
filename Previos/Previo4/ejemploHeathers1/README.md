@@ -1,6 +1,4 @@
-# Para compilar y ejecutar este ejemplo se debe hacer lo siguiente_
-
-
+# Para compilar y ejecutar este ejemplo se debe hacer lo siguiente:
 
 
 ```
