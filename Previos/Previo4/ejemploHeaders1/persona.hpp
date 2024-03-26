@@ -26,4 +26,4 @@ public:
     void setEdad (int edad);
 };
 
-#endif // PERSONA_H
+#endif // PERSONA_HPP
