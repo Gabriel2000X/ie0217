@@ -1,4 +1,4 @@
-// Archivo donde se define el funcionamiento de la función calculateAverage
+// Archivo donde se define el funcionamiento de las funciones del ejemplo.
 
 /* se incluye funciones.hpp, donde se tiene la declaración de las
 funciones. */
