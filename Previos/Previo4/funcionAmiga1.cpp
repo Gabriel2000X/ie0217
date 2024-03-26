@@ -16,7 +16,7 @@ class Distance {
     private:
         int meter;
 
-        // friend function
+        
         friend int addFive (Distance);
     /* Se definen los atributos y métodos públicos
     como el constructor que le asigna cero a meter.  */
