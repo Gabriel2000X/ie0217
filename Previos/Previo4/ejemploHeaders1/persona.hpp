@@ -2,8 +2,8 @@
 
 /* Si no está definido PERSONA_HPP
 este se define */
-#ifndef PERSONA_H 
-#define PERSONA_H
+#ifndef PERSONA_HPP
+#define PERSONA_HPP
 
 
 #include <string>
