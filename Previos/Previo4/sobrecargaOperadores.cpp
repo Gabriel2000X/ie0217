@@ -1,4 +1,4 @@
-//Ejemplo de uso de sobrecarga de operadores
+//Ejemplo de uso de sobrecarga de operadores para sumar fracciones
 
 /* se incluye iostream, en este caso se usa para
 imprimir texto de salida. */
