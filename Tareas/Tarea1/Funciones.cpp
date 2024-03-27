@@ -128,3 +128,81 @@ juego iniciarJuego( string array[], int cantidadPalabras, int dificultad ) {
     
     return atributos;
 }
+
+
+void adivinarPalabra(juego atributos) {
+
+    /*Se inicializan las diferentes variables necesarias, así como 
+    también se prepara el puntero para acceder a los elementos de 
+    atributos.*/
+
+    juego *puntero;
+
+    string letra;
+
+    puntero = &atributos;
+
+    bool encontrada = false;
+    
+    
+    
+    /*Se le pide una letra al usuario, si introduce más
+    de una letra entonces se entra en un bucle while del que no 
+    se sale hasta ingresar una sola letra.*/
+    cout<< "Ingrese una letra: \n";
+    cin >> letra;
+    
+    while (letra.length() != 1) {
+        
+        cout << "Por favor ingrese solo una letra: ";
+        cin >> letra;
+    }
+
+    /*Se recorren las letras de palabra que es la palabra elegida*/
+    for (int i = 0; i < puntero->palabra.length(); ++i ) {
+
+        /*Si se encuentra una letra igual a la letra que introdujo el usuario
+        entonces se reemplaza esa letra en palabraAdivinar y encontrada se declara
+        como true*/
+        if (puntero->palabra[i] == letra[0]) {
+        
+            puntero->palabraAdivinar[i] = letra[0];
+            
+            encontrada = true;
+        }
+
+        
+    }
+
+   /*Si encontrada es true se imprime el mensaje para cuando se acierta*/
+    if (encontrada == true) {
+
+        cout<< "\nAcertó!, la letra " << letra << " está en la palabra.\n";
+        cout<< "El estado de la palabra es el siguiente\n";
+        cout << puntero->palabraAdivinar;
+    }
+    /*Si encontrada es false se imprime el mensaje para cuando no se acierta*/
+    else  {
+
+        cout<< "\nNo acertó, la letra " << letra << " no está en la palabra.\n";
+        cout<< "El estado de la palabra es el siguiente\n";
+        cout << puntero->palabraAdivinar;
+    }
+}
+
+
+
+
+
+/*void revelarLetra(EstadoJuego& juego, const std::string& letra) {
+    if (letra.length() != 1) {
+        std::cout << "Por favor, introduce solo una letra." << std::endl;
+        return;
+    }
+
+    for (std::size_t i = 0; i < juego.palabraSeleccionada.length(); ++i) {
+        if (juego.palabraSeleccionada[i] == letra[0]) {
+            juego.palabraAdivinada[i] = letra[0];
+        }
+    }
+} */
