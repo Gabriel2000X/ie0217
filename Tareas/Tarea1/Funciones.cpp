@@ -10,3 +10,121 @@ antes de elementos como cout y endl */
 using namespace std;
 
 
+/* Esta función despliega información sobre las dificultades a elegir
+y permite al usuario elegir una, luego retorna la dificultad elegida */
+int selectorDificultad() {
+
+    int dificultad;
+
+    cout<< "\n";
+    cout<< "1.Fácil (7 intentos permitidos)\n";
+    cout<< "2.Intermedio (5 intentos permitidos)\n";
+    cout<< "3.Difícil (3 intentos permitidos)\n";
+    cout<< "Ingrese el número correspondiente a su opción: ";
+    cin >>  dificultad;
+    cout<< "\nDificultad seleccionada, saliendo al menú\n";
+    return dificultad;
+}
+
+
+/* Esta función se encarga de añadir nuevas palabras al array creado */
+ 
+void agregarPalabra(string array[], int &cantidadPalabras) {
+    
+    /* le pide al usuario una nueva palabra */
+    string nuevaPalabra;
+    cout << "\nIngrese la palabra que desea agregar al diccionario:\n";
+    cin >>  nuevaPalabra;
+
+     /* suma una entrada al array y
+    además almacena la palabra introducida en esta entrada.*/
+    array[cantidadPalabras++] = nuevaPalabra;
+
+}
+
+
+void mostrarDiccionario( const string array[], int cantidadPalabras) {
+    /*se itera sobre las palabras del array, mientras se tenga una i menor
+    que cantidadPalabras se aumenta i.  */
+    cout<< "El contenido del diccionario es el siguiente: \n";
+    for (int i = 0; i< cantidadPalabras; ++i) {
+        
+        /*se imprimen las palabras sobre las cuales se iteral.*/
+        cout << "Palabra: " <<array[i] << "\n";
+
+
+    }
+
+}
+
+juego iniciarJuego( string array[], int cantidadPalabras, int dificultad ) {
+
+    juego atributos;
+    string *puntero;
+
+    /* Proceso para hacer que se seleccione una palabra random del diccionario*/
+
+   
+    /*Se utliza random_device para asegurar que verdaderamente se generen números al azar*/
+    random_device azar;
+    
+    /* Se define un generador de números al azar de tipo mt19937*/
+    mt19937 generador(azar());
+
+    /* Se especifica el rango que se quiere para los números enteros aleatorios, 
+    va de cero a el máximo valor de indice que puede tener una palabra del 
+    diccionario */
+    uniform_int_distribution<int> rango(0, cantidadPalabras - 1);
+
+    /* Se crea un número random con el rango especificado, usando el generador
+    creado anteriormente*/
+    int indiceRandom = rango(generador);
+
+    /* Se asigna el puntero a la dirección de memoria
+    del primer elemento del array*/
+    puntero = array;
+
+    /* Se le asigna seleccion al contenido del espacio en memoria
+    dentro de puntero + indiceRandom, esta notación hace que el numero
+    coincida con el contenido del índice.*/
+    string seleccion = *(puntero + indiceRandom);
+    
+    /* Se asigna seleccion al atributo palabra*/
+    atributos.palabra = seleccion;
+
+
+    /* Inicialización de la palabra elegida como guiones bajos*/
+
+    /*Se asigna un string del largo de atributos.palabra a atributos.palabraAdivinar,
+    este se compone solo de guiones bajos.*/
+    atributos.palabraAdivinar = string(atributos.palabra.length(), '_');
+
+    /* Inicialización de intentos máximos permitidos y de intentos actuales*/
+
+    /* Se utilizan if y else para determinar el número de intentos que le será
+    asignado a intentosMax*/
+    if (dificultad == 1) {
+
+        int intentosPermitidos = 7;
+        atributos.intentosMax = intentosPermitidos;
+    }
+
+    else if (dificultad == 2) {
+
+        int intentosPermitidos = 5;
+        atributos.intentosMax = intentosPermitidos;
+    }
+    
+    else { 
+
+        int intentosPermitidos = 3; 
+        atributos.intentosMax = intentosPermitidos;
+    
+    }
+
+    /*Se inicializa intentosActuales en cero*/
+
+    atributos.intentosActuales = 0;
+    
+    return atributos;
+}
