@@ -50,7 +50,7 @@ int main() {
     un inicio*/
     string diccionario[100] =  {"hola","mundo", "carne"};
 
-
+    juego estructura;
 
     /*  se imprime el menú y se pide al usuario que digite la opción que quiera 
     utilizar, además se ejecuta por lo menos una vez ya que se tiene un do-while. */
@@ -78,8 +78,8 @@ int main() {
             break;
         case INICIAR:
             cout<< "\nIniciando juego\n";
-            iniciarJuego(diccionario, numPalabras, dificultad );
-            
+           estructura = iniciarJuego(diccionario, numPalabras, dificultad );
+           adivinarPalabra(estructura); 
             break;
 
         case AGREGAR:
