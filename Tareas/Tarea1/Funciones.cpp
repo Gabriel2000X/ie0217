@@ -191,18 +191,3 @@ void adivinarPalabra(juego atributos) {
 }
 
 
-
-
-
-/*void revelarLetra(EstadoJuego& juego, const std::string& letra) {
-    if (letra.length() != 1) {
-        std::cout << "Por favor, introduce solo una letra." << std::endl;
-        return;
-    }
-
-    for (std::size_t i = 0; i < juego.palabraSeleccionada.length(); ++i) {
-        if (juego.palabraSeleccionada[i] == letra[0]) {
-            juego.palabraAdivinada[i] = letra[0];
-        }
-    }
-} */
