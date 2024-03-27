@@ -35,7 +35,9 @@ int main() {
     
     int opcion;
     
-   
+    /* Se define numPalabras como 3, porque en un inicio se tienen 3 palabras en 
+    diccionario, y para poder agregar palabras se necesita empezar desde 3 */
+    int numPalabras = 3;
     
     /* dificultad se define con un valor de 2 para que la dificultad por defecto 
     sea intermedio, de esta manera si no se  abre el selector de dificultad, 
@@ -43,7 +45,11 @@ int main() {
     int dificultad = 2;
 
 
-    
+    /* El diccionario se define con un valor de 100 para que le quepan 100 elementos como límite 
+    y se añaden tres palabras predeterminadas para que se puda jugar sin añadir palabras en
+    un inicio*/
+    string diccionario[100] =  {"hola","mundo", "carne"};
+
 
 
     /*  se imprime el menú y se pide al usuario que digite la opción que quiera 
@@ -67,24 +73,24 @@ int main() {
         {
         case DIFICULTAD:
             cout<< "\nSelector de dificultad\n";
-            
+            dificultad = selectorDificultad();
 
             break;
         case INICIAR:
             cout<< "\nIniciando juego\n";
-            
+            iniciarJuego(diccionario, numPalabras, dificultad );
             
             break;
 
         case AGREGAR:
-            
+            agregarPalabra(diccionario, numPalabras);
             
             break;
         
         case DICCIONARIO:
             
             cout << " \nAbriendo diccionario\n";
-            
+            mostrarDiccionario(diccionario, numPalabras);
             break;
 
         case SALIR:
