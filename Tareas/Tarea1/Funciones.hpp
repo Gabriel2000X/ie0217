@@ -25,4 +25,5 @@ void mostrarDiccionario( const string array[], int cantidadPalabras);
 
 juego iniciarJuego( string array[], int cantidadPalabras, int dificultad );
 
+void adivinarPalabra(juego atributos);
 #endif
