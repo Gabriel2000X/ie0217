@@ -23,7 +23,20 @@ conts para que no sea modificable y no se necesita usar la referencia de
 cantidadPalabras porque tampoco se modificará*/
 void mostrarDiccionario( const string array[], int cantidadPalabras);
 
+
+/*Se declara la función que inicializa el juego, para esto elige la palabra
+al azar dentro del arreglo, inicializa la palabra a adivinar e inicializa
+los intentos actuales y máximos, esta función construye el elemento de la 
+clase y lo devuelve*/
 juego iniciarJuego( string array[], int cantidadPalabras, int dificultad );
 
-void adivinarPalabra(juego atributos);
+/*Se declara la función que pide una letra al usuario, la compara con las 
+letras de la palabra elegida y actualiza la palabra a adivinar, además
+actualiza el contador de intentos, se accede a atributos con ampersand
+para acceder por referencia y poder realizar cambios sobre este. */
+void adivinarPalabra(juego &atributos);
+
+/*Se declara la función que verifica si el juego ha terminado en cada turno,
+se accede a atributos por referencia para poder hacer cambios sobre este.*/
+void verificarJuego(juego &atributos);
 #endif
