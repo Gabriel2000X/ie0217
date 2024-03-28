@@ -130,7 +130,9 @@ juego iniciarJuego( string array[], int cantidadPalabras, int dificultad ) {
 }
 
 
-void adivinarPalabra(juego atributos) {
+
+
+void adivinarPalabra(juego &atributos) {
 
     /*Se inicializan las diferentes variables necesarias, así como 
     también se prepara el puntero para acceder a los elementos de 
@@ -149,7 +151,7 @@ void adivinarPalabra(juego atributos) {
     /*Se le pide una letra al usuario, si introduce más
     de una letra entonces se entra en un bucle while del que no 
     se sale hasta ingresar una sola letra.*/
-    cout<< "Ingrese una letra: \n";
+    cout<< "\nIngrese una letra: \n";
     cin >> letra;
     
     while (letra.length() != 1) {
@@ -174,20 +176,81 @@ void adivinarPalabra(juego atributos) {
         
     }
 
-   /*Si encontrada es true se imprime el mensaje para cuando se acierta*/
+   /*Si encontrada es true se imprime el mensaje para cuando se acierta y 
+   el estado de la palabra, */
     if (encontrada == true) {
 
         cout<< "\nAcertó!, la letra " << letra << " está en la palabra.\n";
         cout<< "El estado de la palabra es el siguiente\n";
         cout << puntero->palabraAdivinar;
+        /*además se suma un intento al actual y se imprime la cantidad de intentos*/
+        puntero->intentosActuales++;
+        cout << "\nLos intentos utilizados son: " << puntero ->intentosActuales << "\n" ;
     }
-    /*Si encontrada es false se imprime el mensaje para cuando no se acierta*/
+    /*Si encontrada es false se imprime el mensaje para cuando no se acierta y el estado
+    de la palabra*/
     else  {
 
         cout<< "\nNo acertó, la letra " << letra << " no está en la palabra.\n";
         cout<< "El estado de la palabra es el siguiente\n";
         cout << puntero->palabraAdivinar;
+        /*además se suma un intento al actual y se imprime la cantidad de intentos*/
+        puntero->intentosActuales++;
+        cout << "\nLos intentos utilizados son: " << puntero ->intentosActuales << "\n" ;
     }
 }
 
 
+void verificarJuego(juego &atributos){
+
+    /*Se inicializan las diferentes variables necesarias, así como 
+    también se prepara el puntero para acceder a los elementos de 
+    atributos.*/
+    juego *puntero;
+    puntero = &atributos;
+
+    string ultimaPalabra;
+
+    /* Siempre que los intentos actuales sean menores a los máximos y la palabra a adivinar sea diferente de la palabra
+    elegida, entonces se ejecuta la función adivinarPalabra*/
+    while (puntero->intentosActuales < puntero->intentosMax &&  puntero->palabraAdivinar != puntero->palabra ) {
+
+        adivinarPalabra(atributos);
+        
+    }
+
+    /* Si no se cumplen las condiciones para el ciclo se abordan los demás casos*/
+
+    /* Si los intentos actuales son iguales a los máximos y la palabra a adivinar sigue siendo diferente de la palabra 
+    elegida entonces da la oportunidad de introducir la palabra completa*/
+    if (puntero->intentosActuales = puntero->intentosMax &&  puntero->palabraAdivinar != puntero->palabra ) {
+        
+        cout<< "\n no logró completar la palabra en los intentos dados\n";
+        cout<< "\n última oportunidad, introduzca la palabra completa: \n";
+        cin >> ultimaPalabra;
+
+        if (ultimaPalabra == puntero->palabra) {
+
+            cout<< "\n ¡Felicidades! adivinó la palabra\n";
+        }
+
+        else  {
+
+            cout<< "\n no adivinó la palabra, juego terminado\n";
+
+        }
+    }
+
+    /*En caso de que los intentos sean menores a los máximos pero las palabras sean iguales, entonces se gana el juego*/
+   else if (puntero->intentosActuales <  puntero->intentosMax &&  puntero->palabraAdivinar == puntero->palabra ) {
+        
+        cout<< "\n ¡Felicidades! adivinó la palabra\n";
+
+    }
+    /*En caso de que los intentos sean iguales a los máximos y la palabra sea igual se gana el juego.*/
+    else if (puntero->intentosActuales ==  puntero->intentosMax &&  puntero->palabraAdivinar == puntero->palabra ) {
+        
+        cout<< "\n ¡Felicidades! adivinó la palabra\n";
+
+    }
+}
