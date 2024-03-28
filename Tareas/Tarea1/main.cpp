@@ -79,7 +79,7 @@ int main() {
         case INICIAR:
             cout<< "\nIniciando juego\n";
            estructura = iniciarJuego(diccionario, numPalabras, dificultad );
-           adivinarPalabra(estructura); 
+           verificarJuego(estructura); 
             break;
 
         case AGREGAR:
