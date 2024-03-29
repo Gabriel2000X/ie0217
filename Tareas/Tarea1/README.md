@@ -174,5 +174,63 @@ orientada a objetos y en c++ si está presente.
       clases y variables que se almacenan en los demás archivos para realizar las acciones u operaciones necesarias   
       para que el programa se comporte de la manera que se necesita.
 
-      
+   16. Dependiendo de su tipo las variables en c++ se guardan en lugares diferentes, las variables locales se guardan    
+   en un espacio llamado pila de ejecución y se desruyen cuando se termina de usar la función o el contenedor dentro   
+   del que están declaras, en cambio las variables globales se guardan en una parte de la memoria estática, por lo que    
+   están presentes durante todo el programa. 
+
+   17. La diferencia radica en que si se pasan parámetros por valor a una función, se está pasando una copia del valor   
+   del parámetro a la función, por ejemplo si se tiene int num = 5 y se le pasa num a la función, se le pasa una copia   
+   del 5, pasar parámetros por puntero pasa la dirección en memoria del parámetro a la función y mediante el puntero se   
+   puede acceder a este argumento y cambiarlo, por último, pasar argumentos por referencia pasa una referencia del argumento   
+   original a la función por lo que no se necesita usar un puntero para modificar el argumento, además cualquier cambio    
+   realizado sobre el argumento también cambiará fuera de la función.   
+
+   18. Cuando se utiliza un puntero para apuntar a un arreglo en C++, inicialmente se apunta a la dirección de memoria del   
+   primer elemento del arreglo, para acceder a todos los datos de ese arreglo mediante el puntero y no solo a la primera   
+   entrada se puede utilizar un ciclo for en el que i empiece en cero y aumente hasta llegar al valor de la longitud del 
+   arreglo menos 1 y debido a que puntero aumenta a la dirección de la entrada cero, puntero +1 apunta a la dirección de   
+   la entrada 1 y así sucesivamente, se puede poner puntero + i para acceder a cada dirección de memoria de los elementos   
+   del ciclo for mientras aumentan las iteraciones.   
+
+   19. Los punteros dobles son empleados para apuntar a un puntero que esté apuntando a una variable, consisten en un puntero   
+   que apunta a otro puntero, por lo que un puntero doble es una variable que guarda la dirección en memoria de otro puntero   
+   que a su vez apunta a una variable de tipo entero, flotante u otro tipo que no sea puntero. Un ejemplo de una situación en   
+   la que es beneficioso trabajar con punteros dobles es cuando se trabaja con matrices grandes, los punteros dobles sirven   
+   para acceder de una manera sencilla al los elementos de la matriz, además pueden ser útiles a la hora de pasarle estas   
+   matrices como argumentos a funciones ya que de esta manera se pueden usar los punteros para cambiar elementos individuales   
+   de la matriz dentro de la función y que se refleje fuera de esta.   
+
+   20. Esta directiva se utiliza para evitar la inclusión múltiple de archivos de encabezado en archivos fuente, por ejempo si 
+   se utiliza:
+      #ifndef FUNCIONES_HPP 
+      #define FUNCIONES_HPP
+
+      declaraciones
+
+      #endif
+
+   Se crea la etiqueta FUNCIONES_HPP al principio del archivo .hpp donde se esté usando siempre y cuando no se haya creado antes,    
+   esto quiere decir que se crea si el archivo no se ha incluido antes en el archivo fuente .cpp que se esté utilizando, además   
+   todas las declaraciones que se quieran realizar se deben hacer antes de utilizar #endif, esto para que todo el contenido del   
+   archivo .hpp se incluya solo una vez.
+
+   21. El puntero this es un puntero que solo se puede accesar dentro de los métodos de una clase o una estructura, se usa para    
+   apuntar a la dirección de memoria del atributo de la estructura o clase que se está utilizando, por ejemplo si dentro de un   
+   método de una clase se quiere accesar a la dirección de un atributo llamado numero entonces se debe usar this -> numero.   
+
+   22. Un arreglo es una estructura de datos estática, lo que quiere decir que se declara el tamaño máximo del arreglo desde el    
+   principio y este no puede modificarse, mientras que el tamaño de la lista no debe declararse, estas pueden aumentar su tamaño    
+   o disminuirlo según se necesite. Además las listas tienen capacidades de ser recorridas de manera circular ya que se manejan   
+   por punteros, se puede enlazar la última entrada de una lista con la primera entrada de esta y recorrerla de manera circular,   
+   en cambio los arreglos no tienen esta capacidad, por lo que si se recorre un arreglo por ejemplo con un ciclo for y se llega   
+   a una i mayor que la cantidad de entradas se pueden encontrar problemas ya que se accede a lugares en memoria que no están   
+   asociados con los elementos del arreglo.   
+   
+   23. Un memory leak o fuga de memoria sucede cuando no se libera correctamente la memoria que se asignó en un programa y esta   
+   memoria sigue ocupada aunque ya no se esté utilizando, al acumularse memoria en uso el rendimiento del programa y el equipo baje   
+   y no sea el esperado debido al uso excesivo de memoria.      
+
+
+
 ```
