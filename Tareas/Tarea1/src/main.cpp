@@ -1,4 +1,13 @@
-//Tarea 1
+/**
+ * @file  main.cpp
+ * @brief Este archivo contiene los procedimientos necesarios para utlizar las
+ * funciones y estructuras de modo que el proyecto funcione como se quiere.
+ *
+ * @author Gabriel González Rivera B93432
+ * @date 29/3/2024
+ * 
+ * Licencia: MIT
+ */
 
 # include "Funciones.hpp"
 
@@ -7,14 +16,23 @@
 imprimir texto de salida. */
 #include <iostream> 
 
+/*string permite trabajar con strings*/
 #include <string>
+
+/*Se incluye limits para evitar que el usuario introduzca
+letras cuando se necesitan valores numéricos*/
+#include <limits> 
 
 /* Se utiliza namespace para no tener la necesida de escribir std::
 antes de elementos como cout y endl */
 using namespace std;
 
-// Se crea la enumeración para darle un número correspondiente a las opciones
-// del menú
+
+/**
+ * @brief esta enumeración asigna números para construir el menú en un switch-case
+ * la enumeración corresponde con los números de las opciones del menú.
+ * 
+ */
 enum opciones { 
     DIFICULTAD = 1,
     INICIAR,
@@ -54,20 +72,36 @@ int main() {
 
     /*  se imprime el menú y se pide al usuario que digite la opción que quiera 
     utilizar, además se ejecuta por lo menos una vez ya que se tiene un do-while. */
+
+
     do {
 
-        cout<< "\nMenú\n";
+        cout << "\nMenú\n";
         cout<< "1. Elegir la dificultad del juego (número de intentos)\n";
         cout<< "2. Iniciar juego\n";
         cout<< "3. Agregar palabras posibles\n";
         cout<< "4. Ver diccionario de palabras\n";
         cout<< "5. Salir del programa\n";
         cout<< "Ingrese su opcion: ";
-        cin >>  opcion;
+    
 
-        // Se utiliza un switch para ejecutar las diferentes funciones que se tienen 
-        // en el menú según en número que el usuario introduzca en el menú, en este 
-        // switch se invocan las funciones creadas para cada opción.
+        /*Se utliza un cliclo while en el que se introduce directamente la 
+        entrada en la condición, si se introduce algo no válido como una letra
+        se genera un false, pero el ! lo convierte en true, haciendo que el 
+        ciclo se ejecute, con cin.clear se reestablece cin a su estado vacío
+        y la línea de cin.ignore se encarga de ignorar todos los caracteres en 
+        el buffer de entrada hasta que se llega a una nueva línea. */
+
+        while (!(cin >> opcion)) {
+            cout << "\nError: Ingrese un número válido.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+
+        
+        /* Se utiliza un switch para ejecutar las diferentes funciones que se tienen 
+         en el menú según en número que el usuario introduzca en el menú, en este 
+         switch se invocan las funciones creadas para cada opción. */
 
         switch (opcion)
         {

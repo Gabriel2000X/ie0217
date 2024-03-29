@@ -1,3 +1,14 @@
+/**
+ * @file  Funciones.hpp
+ * @brief Este archivo contiene las declaraciones de las funciones necesarias 
+ * para el funcionamiento del proyecto.
+ *
+ * @author Gabriel González Rivera B93432
+ * @date 29/3/2024
+ * 
+ * Licencia: MIT
+ */
+
 /*Si no está definido FUNCIONES_HPP
 este se define */
 
@@ -27,7 +38,7 @@ void mostrarDiccionario( const string array[], int cantidadPalabras);
 /*Se declara la función que inicializa el juego, para esto elige la palabra
 al azar dentro del arreglo, inicializa la palabra a adivinar e inicializa
 los intentos actuales y máximos, esta función construye el elemento de la 
-clase y lo devuelve*/
+estructura y lo devuelve*/
 juego iniciarJuego( string array[], int cantidadPalabras, int dificultad );
 
 /*Se declara la función que pide una letra al usuario, la compara con las 
