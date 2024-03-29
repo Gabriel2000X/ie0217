@@ -47,9 +47,10 @@ orientada a objetos y en c++ si está presente.
    Se usa de la siguiente manera: git clone ruta/de/ejemplo/repositorio    
 
    git branch: tiene múltiples usos, se puede utilizar para obtener una   
-   lista de las ramas o branches y para borrar ramas.   
+   lista de las ramas o branches, para borrar ramas y crear ramas.   
    Para obtener una lista de las ramas se usa: git branch   
    Para borrar ramas se usa: git branch -d nombreDelBranch   
+   Para crear ramas se usa_ git branch nombreDelBranch
 
    git merge: se utiliza para unir la rama o branch sobre la que se está   
    trabajando con una que se especifique en el comando.   
@@ -87,8 +88,91 @@ orientada a objetos y en c++ si está presente.
    ejecuta el programa línea por línea, mientras que los lenguajes compilados 
    se traduce el código completamente a lenguaje de máquina que es un lenguaje 
    que puede ser entendido por la computadora antes de ser ejecutado, además un 
-   lenguaje compilado se debe compilar de manera manual, mientra que un lenguaje 
-   interpretado no necesita esto.
+   lenguaje compilado se debe compilar de manera manual, mientras que un lenguaje 
+   interpretado no necesita esto. 
 
-   
+   Ejemplos de uso de lenguaje compilado: es más óptimo utilizar lenguajes compilados   
+   en sistemas o dispositivos embedidos como los microcontroladores y en la creación    
+   de sistemas operativos, esto porque los lenguajes compilados generalmente permiten   
+   un control mayor o manual sobre la memoria que se utiliza, lo que permite dedicar   
+   los recursos óptimos para el funcionamiento del sistema.   
+
+   Ejemplos de uso de lenguaje interpretado: es más óptimo utilizar lenguajes interpretados   
+   en el desarrollo de aplicaciones web y en automatización de tareas debido a que estos
+   lenguajes tienen la capacidad de ejecutar el programa o código escrito más rápidamente.
+
+   8. A la hora de la compilación de un código en un lenguaje compilado, el compilador crea   
+   archivos con código maquina, la función principal del linker o enlazador es vincular estos     
+   archivos objeto creados por el compilador, es escencial para el proceso de compilación porque   
+   resuelve las referencias a funciones, librerías o a otros archivos presentes en el código   
+   y genera el ejecutable del programa.   
+
+   9. 9.1. Se crea una rama aparte de la principal para realizar los cambios   
+      9.2. Se realizan cambios y se utiliza git add para incluir estos cambios   
+      en el espacio de preparación.   
+      9.3. Se utiliza git commit para confirmar los cambios que se subieron al   
+      espacio de preparación.   
+      9.4. Se utiliza git push para subir los cambios del repositorio local al   
+      repositorio remoto, como se está usando una rama diferente de main entonces   
+      se usa git push origin NombreDeLaRama.   
+      9.5. Se crea una pull request para que los cambios realizados sean revisados   
+      y añadidos a la rama principal.   
+      9.6. Si los cambios son aprovados se utiliza la opción merge en github para   
+      combinar la rama que tiene los cambios con la rama principal y así hacer   
+      los cambios oficiales.   
+
+   10. Declarar una variable significa crear una variable y asignarle un nombre,   
+   por ejemplo al hacer int num; se declara una variable entera de nombre num,   
+   para inicializar la variable se le da un valor, por lo que si la variable ya   
+   está creada, para inicializarla se utiliza num = 14;.
+
+   11. La sobrecarga de funciones ocurre cuando se tienen dos o más funciones que    
+   tienen el mismo nombre pero un diferente número o tipo de argumentos que reciben,   
+   esto brinda flexibilidad al uso de funciones ya que se puede tener un solo nombre    
+   de función que realice distintas tareas según la cantidad o tipo de argumentos que       
+   recibe, lo cual puede hacer el código más entendible.
+
+   12. Un puntero es un tipo de variable que almacena la dirección de memoria de otra   
+   variable, por lo que apunta hacia la dirección de memoria de esa otra variable,   
+   se utiliza pasandole el valor de la referencia en memoria de una variable a la    
+   variable puntero, se se tiene una variable entera llamada num, y se crea una   
+   variable puntero int *puntero, se puede usar puntero = &num para guardar la   
+   información del espacio en memoria de num en puntero, los punteros se pueden 
+   usar por ejemplo para asignar memoria de manera dinámica a variables, si por   
+   se quiere asignar memoria de forma dinámica a un array con cadenas de texto en su 
+   interior entonces se puede usar un puntero para guardar la ubicación en memoria de
+   ese string, y utilizar *puntero = new array[tamañoDelArray], el new se encarga de 
+   que se asigne la memoria dinámicamente al array.
+
+   13. en git una rama es un espacio paralelo al espacio principal en el que se pueden   
+   realizar cambios en los archivos del proyecto y estos cambios solo se reflejan en   
+   ese espacio, no se reflejan en el espacio principal ni en ninguna otra rama,   
+   se utilizan creando la rama con git branch nombreDeLaRama, cambiando a la rama con   
+   git checkout nombreDeLaRama y utilizando los comandos git add, git commit y git push origin   
+   de los que se esribió anteriormente para realizar cambios y subirlos a github de manera   
+   que luego se pueda utilizar una pull request para oficializar esos cambios.   
+
+   14. La principal diferencia entre un bucle do-while y un bucle while es que el bucle do-while    
+   realiza lo que esté dentro de el por lo menos una vez aunque la condición no se cumpla, luego   
+   si la condición se cumple sigue reproduciiendo el bucle, pero el bucle wihle solo realiza lo que   
+   esté dentro de este si se cumple la condición del bucle.   
+
+   15. Es útil dividir los proyectos en archivos .hpp, .cpp y main.cpp debido a que dividiendo los   
+   archivos de esta manera, el código se puede visualizar de una manera más ordenada y además se    
+   puede incluir código dentro de un proyecto sin saturar el archivo principal.   
+
+      15.1 Propósito de archivos .hpp: estos archivos almacenan las declaraciones de funciones, estructuras,      
+      clases y variables para que sean fáciles de incluir, compartir y utilizar en diferentes archivos del código   
+      fuente del proyecto que se esté realizando.   
+      
+      15.2 Propósito de archivos .cpp: estos archivos almacenan las definiciones de las funciones, estructuras,    
+      clases y variables que se definen en los archivos .hpp, dentro de los archivos .cpp se incluyen los archivos   
+      .hpp correspondientes, los archivos .cpp guardan las declaraciones para no tener que realizarlas en el espacio   
+      principal del programa.   
+
+      15.3 Propósito de archivos main.cpp: estos archivos contienen el código que utiliza las funciones, estructuras,   
+      clases y variables que se almacenan en los demás archivos para realizar las acciones u operaciones necesarias   
+      para que el programa se comporte de la manera que se necesita.
+
+      
 ```
