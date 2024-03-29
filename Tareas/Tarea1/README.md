@@ -234,9 +234,28 @@ orientada a objetos y en c++ si está presente.
 
 ```
 
-```
-
-El link a la página web que aloja la documentación del doxygen es el siguiente: https://66069cf2cac645da3972e6c9--keen-fox-5c4fef.netlify.app/index.html
-
+# Link a la página que aloja la documentación de doxygen:
 
 ```
+
+El link a la página web que aloja la documentación del doxygen es el siguiente: https://66069cf2cac645da3972e6c9--keen-fox-5c4fef.netlify.app/index.html   
+
+
+```
+
+# Información sobre markdown
+
+```
+El formato markdown es útil para manipular textos cuyo destino es una página o sitio web, pero que no se programa en html   
+por lo que hace más fácil la manipulación de texto.
+
+algunos ejemplos de su sintaxis son:
+
+*texto en cursiva*
+**texto en negrita** 
+***texto en cursiva y negrita***
+# encabezado
+
+```
+
+ 
