@@ -56,22 +56,37 @@ orientada a objetos y en c++ si está presente.
    trabajando con una que se especifique en el comando.   
    Se utiliza de la siguiente manera: git merge nombreDelBranch   
 
+   fuentes:
+      https://www.hostinger.es/tutoriales/comandos-de-git
+      https://gist.github.com/dasdo/9ff71c5c0efa037441b6
+
    3. Según el sitio oficial de git, git es un sistema de control de versiones   
    de fuente abierta y está diseñado para manejar proyectos de manera rápida    
    y eficiente. Al ser un sofware de control de versiones ayuda a manejar   
    diferentes versiones de proyectos o archivos dentro de estos.   
+
+   fuente:
+      https://git-scm.com/
 
    4. Un conflicto de fusión es un conflicto que ocurre cuando se quiere hacer   
    un merge entre entre dos ramas o branches y se presentan diferencias en las   
    mismas lìneas entre el archivo presente en una rama y el archivo presente en   
    otra rama, se puede resolver cambiando uno de los archivos manualmente   
    o utilizando git checkout para deshacer los cambios hechos en uno de los 
-   archivos   
+   archivos.
+
+   fuentes:
+
+      https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#_basic_merge_conflicts
+      https://www.simplilearn.com/tutorials/git-tutorial/merge-conflicts-in-git#:~:text=Step%201%3A%20The%20easiest%20way,of%20the%20git%20commit%20command.
 
    5. Un archivo git ignore es un archivo de texto que contiene extensiones de   
    archivos, este se usa para que git ignore los archivos con las extensiones   
    contenidas en este archivo y así estos archivos no sean subidos a github,   
    solo se quedan en el repositorio local.   
+
+   fuentes:
+      https://www.freecodecamp.org/espanol/news/gitignore-que-es-gitignore-y-como-anadirlo-a-tu-repositorio/
 
    6.  Una pull request es una solicitud para que los cambios realizados en una  
    rama externa a main y que ya se subieron al repositorio de github se añadan   
@@ -106,6 +121,12 @@ orientada a objetos y en c++ si está presente.
    archivos objeto creados por el compilador, es escencial para el proceso de compilación porque   
    resuelve las referencias a funciones, librerías o a otros archivos presentes en el código   
    y genera el ejecutable del programa.   
+
+   fuentes: 
+
+   https://www.uhu.es/04004/material/Transparencias3.pdf
+
+   https://redkiwiapp.com/es/english-guide/synonyms/linker-compiler
 
    9. 9.1. Se crea una rama aparte de la principal para realizar los cambios   
       9.2. Se realizan cambios y se utiliza git add para incluir estos cambios   
@@ -179,6 +200,11 @@ orientada a objetos y en c++ si está presente.
    del que están declaras, en cambio las variables globales se guardan en una parte de la memoria estática, por lo que    
    están presentes durante todo el programa. 
 
+   fuente: 
+   
+      https://fastercapital.com/es/contenido/Global-vs--Local--Var-S-Impacto-en-la-visibilidad-variable-y-la-vida-util.html
+
+
    17. La diferencia radica en que si se pasan parámetros por valor a una función, se está pasando una copia del valor   
    del parámetro a la función, por ejemplo si se tiene int num = 5 y se le pasa num a la función, se le pasa una copia   
    del 5, pasar parámetros por puntero pasa la dirección en memoria del parámetro a la función y mediante el puntero se   
@@ -218,6 +244,10 @@ orientada a objetos y en c++ si está presente.
    21. El puntero this es un puntero que solo se puede accesar dentro de los métodos de una clase o una estructura, se usa para    
    apuntar a la dirección de memoria del atributo de la estructura o clase que se está utilizando, por ejemplo si dentro de un   
    método de una clase se quiere accesar a la dirección de un atributo llamado numero entonces se debe usar this -> numero.   
+
+   Fuente:
+   
+       https://learn.microsoft.com/es-es/cpp/cpp/this-pointer?view=msvc-170
 
    22. Un arreglo es una estructura de datos estática, lo que quiere decir que se declara el tamaño máximo del arreglo desde el    
    principio y este no puede modificarse, mientras que el tamaño de la lista no debe declararse, estas pueden aumentar su tamaño    
