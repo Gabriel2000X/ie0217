@@ -29,7 +29,7 @@ cout<<"Ingrese el GPA de los estudiantes." << endl;
 el arreglo y accesando al puntero con de-referencia*/
 for (int i = 0; i < num; ++i) {
 
-cout<<"Student" << i + 1 << i +1 << ": ";
+cout<<"Student " << i + 1  << ": ";
 cin >> *(ptr + i);
 
 }
@@ -39,7 +39,7 @@ cout << "\nDisplaying GPA of students." << endl;
 /*Con otro for se imprimen los valores registrados anteriormente*/
 for (int i = 0; i < num; ++i) {
 
-cout << "Student" << i + 1 << ":" << *(ptr + i) << endl;
+cout << "Student " << i + 1 << ": " << *(ptr + i) << endl;
 
 }
 
