@@ -12,11 +12,13 @@ int main() {
     int* ptr = (int*) malloc(sizeof(int));
     
    
-    /**/ 
-
+    /*Se asigna un 5 por de-referencia dentro de 
+    la dirección de memoria.*/ 
     *ptr = 5;
     cout << *ptr;
     return 0;
+    /*Luego de imprimir el contenido de la dirección de memoria que aloja
+    a ptr se libera la memoria utilizada por ptr*/
     free (ptr);
 }
     
