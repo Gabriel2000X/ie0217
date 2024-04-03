@@ -33,7 +33,7 @@ int main() {
     << endl;
 
     /*Con un for se le asignan valores a las entradas del
-    array con el que se trabaja*/
+    bloque de memoria que se puede tratar como array con el que se trabaja*/
     for (int i = 0; i < 5; i++) {
     
         ptr[i] = i * 2 + 1;
