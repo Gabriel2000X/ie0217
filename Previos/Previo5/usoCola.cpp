@@ -130,7 +130,10 @@ class Queue {
 };
 
 
-int main() { Queue q;
+int main() { 
+    
+    /*Se declara la cola q*/
+    Queue q;
     /* Se intenta sacar un elemento de la cola pero 
     no es posible ya que está vacía.*/
     q.deQueue();
