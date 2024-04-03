@@ -3,7 +3,7 @@
 Las siguientes instrucciones son generales, sirven para compilar los códigos presentes y  
 utilizar los ejecutables generados.  
 ```
-1. Para compilar cualquiera de los códigos presentes en Previo3 se utiliza el siguiente orden:  
+1. Para compilar cualquiera de los códigos presentes en Previo4 se utiliza el siguiente orden:  
    g++ -o ejecutable.exe ./programa.cpp  
    se debe cambiar la palabra "ejecutable" por el nombre que se desea dar al ejecutable y se debe  
    cambiar la palabra "programa" por el nombre que tiene el archivo que se desea compilar  
