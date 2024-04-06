@@ -4,10 +4,10 @@ using namespace std;
 
 
 /* */
-continente::continente(string nombreCont, int avionNum):
+Continentes::Continentes(string nombreCont, int avionNum):
     nombreContinente(nombreCont), avion(avionNum) {}
 
-    bool continente::obtenerAvion() const{
+    bool Continentes::obtenerAvion() const{
 
         return avion == 1;
     }

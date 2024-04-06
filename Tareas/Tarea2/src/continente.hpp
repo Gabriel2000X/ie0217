@@ -9,12 +9,12 @@ using namespace std;
 
 
 /* Se declara la clase continente*/
-class continente{
+class Continentes{
 
     public:
 
         /* Se declara el constructor de la clase con los argumentos que recibirá*/    
-        continente(string nombreCont, int avionNum);
+        Continentes(string nombreCont, int avionNum);
         string nombreContinente;
         int avion;
     
