@@ -1,6 +1,6 @@
 
-#ifndef PLANETA_HPP
-#define PLANETA_HPP 
+#ifndef CONTINENTE_HPP
+#define CONTINENTE_HPP 
 
 
 
@@ -26,4 +26,4 @@ class continente{
 
 
 
-# endif //PLANETA_HPP
+# endif //CONTINENTE_HPP
