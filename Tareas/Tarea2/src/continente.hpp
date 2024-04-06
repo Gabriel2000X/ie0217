@@ -14,13 +14,10 @@ class Continentes{
     public:
 
         /* Se declara el constructor de la clase con los argumentos que recibirá*/    
-        Continentes(string nombreCont, int avionNum);
+        Continentes(string nombreCont, bool avionNum);
         string nombreContinente;
         int avion;
-    
 
-        /* Se declaran los métodos de la clase, estos serán públicos*/
-        bool obtenerAvion() const;   //Este método devolverá un valor booleano dependiendo de si el avión pasa o no por el continente.
     
 };
 

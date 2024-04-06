@@ -3,13 +3,11 @@
 using namespace std;
 
 
-/* */
-Continentes::Continentes(string nombreCont, int avionNum):
+/*Se declaran los argumentos del contructor de la clase Continetes y en que 
+atributo de la clase se guardarán */
+Continentes::Continentes(string nombreCont, bool avionNum):
     nombreContinente(nombreCont), avion(avionNum) {}
 
-    bool Continentes::obtenerAvion() const{
-
-        return avion == 1;
-    }
+    
 
         
