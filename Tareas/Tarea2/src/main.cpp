@@ -7,7 +7,7 @@
  * 
  * Licencia: MIT
  */
-
+# include "paises.hpp"
 # include "continente.hpp"
 # include "planeta.hpp"
 
@@ -71,6 +71,8 @@ int main() {
 
      Planeta miPlaneta(puntero, 5);
 
+    PaisPrimerMundo Holanda(true, 100000, 3, true, true);
+
     do {
 
         cout << "\nMenú\n";
@@ -105,7 +107,7 @@ int main() {
             cout<< "\nImprimiendo información de los países\n";
             miPlaneta.imprimirContinentes();
             miPlaneta.imprimirAvion();
-
+            cout <<  Holanda.getTrabajadores();
             break;
         case COMPARAR:
             cout<< "\nComparando países\n";
