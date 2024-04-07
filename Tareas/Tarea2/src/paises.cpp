@@ -9,7 +9,7 @@ using namespace std;
 
     
         Pais::Pais(bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente): 
-        aeropuerto(tieneAeropuerto), habitantes(poblacionPais), id(id), NombrePais(nombre), continentePais(continente) {}
+        aeropuerto(tieneAeropuerto), habitantes(poblacionPais), id(id), nombrePais(nombre), continentePais(continente) {}
         
             float Pais::PIB() {
 
@@ -45,14 +45,47 @@ using namespace std;
 
            
         PaisPrimerMundo::PaisPrimerMundo(bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente,  bool tiene5G, bool centroInvest):  
-        Pais(tieneAeropuerto, poblacionPais, id, nombre, continente) , bandaAncha(tiene5G), Investigacion(centroInvest){}
+        Pais(tieneAeropuerto, poblacionPais, id, nombre, continente) , bandaAncha(tiene5G), investigacion(centroInvest){}
             
+            /* Se define un método para poder asignarle un valor a bandaAncha*/
+            void PaisPrimerMundo::setBandaAncha(bool valor) {
+
+                valor = bandaAncha;
+
+            }
+            
+            /* Se define un método para poder asignarle un valor a investigación*/
+            void PaisPrimerMundo::setCentroInvest(bool valor) {
+
+                valor = investigacion;
+
+            }
+            
+            /* Se define un método para poder obtener el valor de trabajadores ya que este
+            es un atributo privado*/
             int PaisPrimerMundo::getTrabajadores(){
                 int empleados = PaisPrimerMundo::trabajadores();
                 return empleados;
             }
 
+            /* Se define un método para poder obtener el valor de bandaAncha ya que este
+            es un atributo privado*/
+            bool PaisPrimerMundo::getBandaAncha(){
+                
+                return bandaAncha;
+                
+            }
+            
+            /* Se define un método para poder obtener investigacion ya que este es un 
+            atributo privado.*/
+            bool PaisPrimerMundo::getCentroInvest(){
+                
+                return investigacion;
+                
+            }
 
+            /*Se define un método para generar un número random de trabajadores entre cero y el 
+            número de pobladores del país.*/
             int PaisPrimerMundo::trabajadores(){
 
                 /*Se utliza random_device para asegurar que verdaderamente se generen números al azar*/

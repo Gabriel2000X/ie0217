@@ -22,6 +22,8 @@ imprimir texto de salida. */
 letras cuando se necesitan valores numéricos*/
 #include <limits> 
 
+#include <vector>
+
 /* Se utiliza namespace para no tener la necesida de escribir std::
 antes de elementos como cout y endl */
 using namespace std;
@@ -59,20 +61,51 @@ int main() {
         Continentes("Europa", true),
         Continentes("Asia", true),
         Continentes("Oceanía", false),
-        Continentes("Africa", false)
+        Continentes("África", false)
     };
 
-   
+   /*Se crea un puntero Continentes que apunta a arreglo para poder 
+   acceder a sus datos desde planeta.*/
     Continentes* puntero = arregloCont;
-    /*  se imprime el menú y se pide al usuario que digite la opción que quiera 
-    utilizar, además se ejecuta por lo menos una vez ya que se tiene un do-while. */
+    
+    
 
     /*Se crea un objeto tipo planeta*/
 
-     Planeta miPlaneta(puntero, 5);
+    Planeta miPlaneta(puntero, 5);
 
-    PaisPrimerMundo Holanda(true, 100000, 3, true, true);
 
+    /*Se crea un vector donde se guardarán los países creados*/
+
+    /*Se crea un vector de tipo PaisPrimerMundo*/
+    std::vector<PaisPrimerMundo> vecPrimerMundo;
+    std::vector<PaisEnDesarrollo> vecEnDesarrollo;
+    
+    /*Se añaden algunos países de cada continente a cada vector*/
+    /*Paises de primer mundo*/
+    /* primer mundo bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente, bool tiene5G, bool centroInvest*/
+    vecPrimerMundo.push_back(PaisPrimerMundo(true, 300000, 2, "Estados Unidos", "América", true, true ));
+    vecPrimerMundo.push_back(PaisPrimerMundo(true, 100000, 3, "Japón", "Asia", true, false ));
+    vecPrimerMundo.push_back(PaisPrimerMundo(true, 145600, 5, "Italia", "Europa", false, false ));
+    vecPrimerMundo.push_back(PaisPrimerMundo(false, 356876, 7, "Australia", "Oceanía", true, true ));
+    vecPrimerMundo.push_back(PaisPrimerMundo(false, 103456, 11, "Egipto", "África", false, true ));
+    
+    /*Paises en desarrollo*/
+    /*bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente*/
+    vecEnDesarrollo.push_back(PaisEnDesarrollo(true, 50000, 4 , "Costa Rica",  "América"));
+    vecEnDesarrollo.push_back(PaisEnDesarrollo(false, 54556, 6 , "Tailandia",  "Asia"));
+    vecEnDesarrollo.push_back(PaisEnDesarrollo(true, 65433, 8 , "Serbia",  "Europa"));
+    vecEnDesarrollo.push_back(PaisEnDesarrollo(true, 76543, 9 , "Burundi",  "África"));
+    vecEnDesarrollo.push_back(PaisEnDesarrollo(true, 50000, 4 , "Kiribati",  "Oceanía"));
+    
+    
+    
+    
+
+    
+
+    /* Se imprime el menú y se pide al usuario que digite la opción que quiera 
+    utilizar, además se ejecuta por lo menos una vez ya que se tiene un do-while. */
     do {
 
         cout << "\nMenú\n";
@@ -107,7 +140,13 @@ int main() {
             cout<< "\nImprimiendo información de los países\n";
             miPlaneta.imprimirContinentes();
             miPlaneta.imprimirAvion();
-            cout <<  Holanda.getTrabajadores();
+
+            for (PaisPrimerMundo& paisDesarrollado : vecPrimerMundo) {
+            cout << "Nombre del país: " << paisDesarrollado.nombrePais << endl;
+            }
+
+
+
             break;
         case COMPARAR:
             cout<< "\nComparando países\n";

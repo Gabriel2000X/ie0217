@@ -15,7 +15,7 @@ class Pais{
         int habitantes;
         float PIB();
         void setId(int valor);
-        string NombrePais;
+        string nombrePais;
         string continentePais;
     protected:
 
@@ -53,12 +53,15 @@ class PaisPrimerMundo: public Pais{
 
         PaisPrimerMundo(bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente, bool tiene5G, bool centroInvest);
         int getTrabajadores();
-
+        bool getBandaAncha();
+        bool getCentroInvest();
+        void setBandaAncha(bool valor);
+        void setCentroInvest(bool valor);
 
     private:
 
         bool bandaAncha;
-        bool Investigacion;
+        bool investigacion;
         int trabajadores();
 
     
