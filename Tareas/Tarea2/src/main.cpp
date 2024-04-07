@@ -8,7 +8,8 @@
  * Licencia: MIT
  */
 
-
+# include "continente.hpp"
+# include "planeta.hpp"
 
 /* se incluye iostream, en este caso se usa para
 imprimir texto de salida. */
@@ -51,13 +52,24 @@ int main() {
     int opcion;
     
  
-
+    /*Se declara un arreglo tipo continentes que contendrá la información de cada continente*/
+    
+    Continentes arregloCont[5] = {
+        Continentes("América", true),
+        Continentes("Europa", true),
+        Continentes("Asia", true),
+        Continentes("Oceanía", false),
+        Continentes("Africa", false)
+    };
 
    
-
+    Continentes* puntero = arregloCont;
     /*  se imprime el menú y se pide al usuario que digite la opción que quiera 
     utilizar, además se ejecuta por lo menos una vez ya que se tiene un do-while. */
 
+    /*Se crea un objeto tipo planeta*/
+
+     Planeta miPlaneta(puntero, 5);
 
     do {
 
@@ -91,7 +103,8 @@ int main() {
         {
         case IMPRIMIR:
             cout<< "\nImprimiendo información de los países\n";
-           
+            miPlaneta.imprimirContinentes();
+            miPlaneta.imprimirAvion();
 
             break;
         case COMPARAR:
