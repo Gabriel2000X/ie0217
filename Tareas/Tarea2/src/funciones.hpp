@@ -11,4 +11,7 @@ using namespace std;
 PaisPrimerMundo crearPaisPrim(vector<int>& vectorInt);
 PaisEnDesarrollo crearPaisEnDes(vector<int>& vectorInt);
 void EliminarPais(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrollo>& vectorTercerMundista);
+bool comparar(Pais primerPais, Pais segundoPais);
+Pais converir(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrollo>& vectorTercerMundista);
+
 # endif //FUNCIONES_HPP

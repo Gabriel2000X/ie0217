@@ -4,6 +4,8 @@
 
 
 # include <string>
+
+
 using namespace std;
 
 
@@ -14,16 +16,22 @@ class Pais{
         bool aeropuerto;
         int habitantes;
         float PIB();
-        void setId(int valor);
+        int getId();
         string nombrePais;
         string continentePais;
+
+    
     protected:
 
         int id;
+
+    private:
+
         
-    
 
-
+        bool operator==(Pais &otroPais);
+        friend bool comparar(Pais primerPais, Pais segundoPais);
+        
 };
 
 
@@ -55,8 +63,8 @@ class PaisPrimerMundo: public Pais{
         int getTrabajadores();
         bool getBandaAncha();
         bool getCentroInvest();
-        void setBandaAncha(bool valor);
-        void setCentroInvest(bool valor);
+        
+        
 
     private:
 

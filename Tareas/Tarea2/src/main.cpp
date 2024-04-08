@@ -73,6 +73,13 @@ int main() {
     /*Se crea un objeto tipo planeta*/
 
     Planeta miPlaneta(puntero, 5);
+    
+    /*Se inicializan dos instancias de Pais de manera genérica
+    para luego llenarlas con los datos relevantes en la opcion 2 del
+    menú*/
+    Pais primerPais(true, 2,  1, "Generico", "Generico");
+    Pais segundoPais(true, 2,  1, "Generico", "Generico");
+    bool comparacion;
 
 
     /*Se crea un vector donde se guardarán los países creados*/
@@ -171,7 +178,21 @@ int main() {
 
             break;
         case COMPARAR:
+            
+            primerPais = converir(vecPrimerMundo, vecEnDesarrollo);
+            segundoPais = converir(vecPrimerMundo, vecEnDesarrollo);
+            comparacion =comparar( primerPais,segundoPais);
+            
+            if (comparacion){
+
+                cout<< "Ambos países tienen aeropuerto";
+            }
+            else {
+                
+                cout<< "Alguno de los dos países no tiene aeropuerto";
+            }
             cout<< "\nComparando países\n";
+            
            
             break;
 

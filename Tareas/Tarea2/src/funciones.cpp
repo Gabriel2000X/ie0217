@@ -402,3 +402,48 @@ void EliminarPais(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesar
 
 
 }
+
+Pais converir(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrollo>& vectorTercerMundista){
+
+    string nombrePais;
+    cout << "\nIngrese el nombre del país que quiere comparar: ";
+    cin >> nombrePais;
+    
+    /* Se tiene un ciclo for que recorre uno de los vectores recibidos como
+    argumento con respecto a su tamaño usando .size*/
+     for (size_t i = 0; i < vectorPrimerMundo.size(); ++i) {
+
+        /* Si el nombre del pais que se digita coincide con el 
+        nombre de un país del vector se asigna el país 
+        almacenado en esa entrada a paisEncontrado*/
+        if (nombrePais == vectorPrimerMundo[i].nombrePais) {
+            PaisPrimerMundo paisEncontrado = vectorPrimerMundo[i];
+            Pais paisConvertido = static_cast<Pais>(paisEncontrado);
+            return paisConvertido;
+        }
+     }
+    
+    /*Se tiene la misma lógica anterior pero para el vector de países 
+    no desarrollados*/
+        for (size_t i = 0; i < vectorTercerMundista.size(); ++i) {
+
+        if (nombrePais == vectorTercerMundista[i].nombrePais) {
+            PaisEnDesarrollo paisEncontrado = vectorTercerMundista[i];
+            Pais paisConvertido = static_cast<Pais>(paisEncontrado);
+            return paisConvertido;
+        }
+     }
+
+        cout << "No se encontró país que busca.\n";
+        cout << "se generará un país genérico, por lo que la comparación no será confiable.\n";
+        Pais paisGenerico(false, 0, 0, "Generico", "Generico");
+
+        return paisGenerico;
+    } 
+
+bool comparar(Pais primerPais, Pais segundoPais){
+
+
+    bool valor = primerPais == segundoPais;
+    return valor;
+    } 

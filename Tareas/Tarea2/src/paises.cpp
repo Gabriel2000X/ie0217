@@ -32,34 +32,26 @@ using namespace std;
             }
 
             /* Se crea un método para poder asignarle un valor a id*/
-            void Pais::setId(int valor) {
+            int Pais::getId() {
 
-            id = valor;
-
+                return id;
 
             }
+
+            bool Pais::operator == (Pais &otroPais){
+            // Comparar el ID de este país con el ID del otro país
+                return this->aeropuerto == otroPais.aeropuerto;
+            
+            }
+            
     
-    
+           
         PaisEnDesarrollo::PaisEnDesarrollo(bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente): 
         Pais(tieneAeropuerto, poblacionPais, id, nombre, continente) {}
 
            
         PaisPrimerMundo::PaisPrimerMundo(bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente,  bool tiene5G, bool centroInvest):  
         Pais(tieneAeropuerto, poblacionPais, id, nombre, continente) , bandaAncha(tiene5G), investigacion(centroInvest){}
-            
-            /* Se define un método para poder asignarle un valor a bandaAncha*/
-            void PaisPrimerMundo::setBandaAncha(bool valor) {
-
-                valor = bandaAncha;
-
-            }
-            
-            /* Se define un método para poder asignarle un valor a investigación*/
-            void PaisPrimerMundo::setCentroInvest(bool valor) {
-
-                valor = investigacion;
-
-            }
             
             /* Se define un método para poder obtener el valor de trabajadores ya que este
             es un atributo privado*/
