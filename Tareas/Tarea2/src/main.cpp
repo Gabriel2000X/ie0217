@@ -165,6 +165,9 @@ int main() {
             cout << "Nombre del país: " << paisDesarrollado.nombrePais << endl;
             }
         
+            for (PaisEnDesarrollo& paisEnDes : vecEnDesarrollo) {
+            cout << "Nombre del país: " << paisEnDes.nombrePais << endl;
+            }
 
             break;
         case COMPARAR:
@@ -174,13 +177,37 @@ int main() {
 
         case AGREGAR:
 
-           vecPrimerMundo.push_back(crearPaisPrim(vecPrimos));
+        int constante;
+            
+        cout << "¿Que tipo de país está creando?\n";
+        cout << "1.Un país desarrollado.\n";
+        cout << "2.Un país subdesarrollado.\n";
+        cout << "\nIngrese el valor deseado\n";
+        while (!(cin >> constante)) {
+            cout << "\nError: Ingrese un valor numérico.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+
+            if (constante == 1) {
+                
+                vecPrimerMundo.push_back(crearPaisPrim(vecPrimos));
+            }
+
+            else {
+
+                 vecEnDesarrollo.push_back(crearPaisEnDes(vecPrimos));
+            }
+
+           
             cout<< "\nAgregando país\n";
             
             break;
         
         case ELIMINAR:
             
+            EliminarPais(vecPrimerMundo, vecEnDesarrollo);
+            cout << " \nSi el país no existe no se eliminará\n";
             cout << " \nEliminando país\n";
             
             break;

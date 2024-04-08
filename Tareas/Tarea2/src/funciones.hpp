@@ -10,5 +10,5 @@ using namespace std;
 
 PaisPrimerMundo crearPaisPrim(vector<int>& vectorInt);
 PaisEnDesarrollo crearPaisEnDes(vector<int>& vectorInt);
-
+void EliminarPais(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrollo>& vectorTercerMundista);
 # endif //FUNCIONES_HPP

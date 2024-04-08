@@ -368,3 +368,37 @@ PaisEnDesarrollo crearPaisEnDes(vector<int>& vectorInt) {
 }
 
 
+void EliminarPais(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrollo>& vectorTercerMundista){
+
+    string nombrePais;
+    cout << "\nIngrese el nombre del país que quiere eliminar: ";
+    cin >> nombrePais;
+    
+    /* Se tiene un ciclo for que recorre uno de los vectores recibidos como
+    argumento con respecto a su tamaño usando .size*/
+     for (size_t i = 0; i < vectorPrimerMundo.size(); ++i) {
+
+        /* Si el nombre del pais que se digita coincide con el 
+        nombre de un país del vector se borra la entrada del vector
+        que contiene ese país usando .begin para ir a la primera
+        entrada y se le suma i para llegar a la posición actual y 
+        eliminarla.*/
+        if (nombrePais == vectorPrimerMundo[i].nombrePais) {
+            vectorPrimerMundo.erase(vectorPrimerMundo.begin() + i);
+            --i; /*Se retrocede el índice para compensar el borrado*/
+        }
+     }
+    
+    /*Se tiene la misma lógica anterior pero para el vector de países 
+    no desarrollados*/
+        for (size_t i = 0; i < vectorTercerMundista.size(); ++i) {
+            if (nombrePais == vectorPrimerMundo[i].nombrePais) {
+                vectorPrimerMundo.erase(vectorPrimerMundo.begin() + i);
+                --i; 
+            }
+        }  
+
+
+
+
+}
