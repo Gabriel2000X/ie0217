@@ -9,6 +9,6 @@
 using namespace std;
 
 PaisPrimerMundo crearPaisPrim(vector<int>& vectorInt);
-
+PaisEnDesarrollo crearPaisEnDes(vector<int>& vectorInt);
 
 # endif //FUNCIONES_HPP
