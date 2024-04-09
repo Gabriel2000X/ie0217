@@ -5,7 +5,8 @@ using namespace std;
 
 /* Se define el constructor de la clase Planeta y se declara que los argumentos se guardarán dentro de los 
 atributos creados*/
-Planeta::Planeta(Continentes* puntero, int arrayLongitud): punteroCont(puntero), arregloLongitud(arrayLongitud) {}
+Planeta::Planeta(Continentes* puntero, int arrayLongitud, vector<PaisPrimerMundo>& vectPrimerMundo, vector<PaisEnDesarrollo>& vectDesarrollo): 
+punteroCont(puntero), arregloLongitud(arrayLongitud), vectorPrimero(vectPrimerMundo), vectorEnDesarrollo(vectDesarrollo) {}
 
    
     
@@ -67,3 +68,28 @@ Planeta::Planeta(Continentes* puntero, int arrayLongitud): punteroCont(puntero),
     }
     
 
+vector<PaisPrimerMundo> Planeta::obtenerPaisesPrimerMundo() {
+        
+        return vectorPrimero;
+    
+}
+
+
+vector<PaisEnDesarrollo> Planeta::obtenerPaisesEnDesarrollo() {
+        
+        return vectorEnDesarrollo;
+    
+}
+
+
+void  Planeta::actualizarPaisesPrimerMundo(vector<PaisPrimerMundo>& vect){
+
+    vectorPrimero = vect;
+
+}
+
+void  Planeta:: actualizarPaisesEnDesarrollo(vector<PaisEnDesarrollo>& vectSub){
+
+    vectorEnDesarrollo = vectSub;
+
+}

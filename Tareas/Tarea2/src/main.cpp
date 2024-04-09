@@ -70,9 +70,7 @@ int main() {
     
     
 
-    /*Se crea un objeto tipo planeta*/
-
-    Planeta miPlaneta(puntero, 5);
+    
     
     /*Se inicializan dos instancias de Pais de manera genérica
     para luego llenarlas con los datos relevantes en la opcion 2 del
@@ -88,6 +86,8 @@ int main() {
     vector<PaisPrimerMundo> vecPrimerMundo;
     vector<PaisEnDesarrollo> vecEnDesarrollo;
     
+   
+
     /*Se añaden algunos países de cada continente a cada vector*/
     /*Paises de primer mundo*/
     /* primer mundo bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente, bool tiene5G, bool centroInvest*/
@@ -130,7 +130,10 @@ int main() {
                                 142, 143, 144, 145, 146, 147, 148, 150};
        
     
+     
+     /*Se crea un objeto tipo planeta*/
 
+    Planeta miPlaneta(puntero, 5, vecPrimerMundo, vecEnDesarrollo);
     /* Se imprime el menú y se pide al usuario que digite la opción que quiera 
     utilizar, además se ejecuta por lo menos una vez ya que se tiene un do-while. */
     do {
@@ -143,7 +146,7 @@ int main() {
         cout<< "5. Salir del programa\n";
         cout<< "Ingrese su opcion: ";
     
-
+        
         /*Se utliza un cliclo while en el que se introduce directamente la 
         entrada en la condición, si se introduce algo no válido como una letra
         se genera un false, pero el ! lo convierte en true, haciendo que el 
@@ -164,23 +167,14 @@ int main() {
         switch (opcion)
         {
         case IMPRIMIR:
-            cout<< "\nImprimiendo información de los países\n";
-            miPlaneta.imprimirContinentes();
-            miPlaneta.imprimirAvion();
-
-            for (PaisPrimerMundo& paisDesarrollado : vecPrimerMundo) {
-            cout << "Nombre del país: " << paisDesarrollado.nombrePais << endl;
-            }
-        
-            for (PaisEnDesarrollo& paisEnDes : vecEnDesarrollo) {
-            cout << "Nombre del país: " << paisEnDes.nombrePais << endl;
-            }
-
+    
+            imprimirInformacion(miPlaneta);
+            
             break;
         case COMPARAR:
             
-            primerPais = converir(vecPrimerMundo, vecEnDesarrollo);
-            segundoPais = converir(vecPrimerMundo, vecEnDesarrollo);
+            primerPais = convertir(vecPrimerMundo, vecEnDesarrollo);
+            segundoPais = convertir(vecPrimerMundo, vecEnDesarrollo);
             comparacion =comparar( primerPais,segundoPais);
             
             if (comparacion){
@@ -220,7 +214,8 @@ int main() {
                  vecEnDesarrollo.push_back(crearPaisEnDes(vecPrimos));
             }
 
-           
+            miPlaneta.actualizarPaisesPrimerMundo( vecPrimerMundo);
+            miPlaneta.actualizarPaisesEnDesarrollo(vecEnDesarrollo);
             cout<< "\nAgregando país\n";
             
             break;
@@ -249,6 +244,7 @@ int main() {
         } while (opcion != SALIR);
 
         
+    
 
     return 0;
 

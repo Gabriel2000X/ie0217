@@ -2,6 +2,7 @@
 #define FUNCIONES_HPP 
 
 # include "paises.hpp"
+# include "planeta.hpp"
 #include <iostream> 
 # include <string>
 # include <limits>
@@ -12,6 +13,6 @@ PaisPrimerMundo crearPaisPrim(vector<int>& vectorInt);
 PaisEnDesarrollo crearPaisEnDes(vector<int>& vectorInt);
 void EliminarPais(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrollo>& vectorTercerMundista);
 bool comparar(Pais primerPais, Pais segundoPais);
-Pais converir(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrollo>& vectorTercerMundista);
-
+Pais convertir(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrollo>& vectorTercerMundista);
+void imprimirInformacion(Planeta argPlaneta);
 # endif //FUNCIONES_HPP

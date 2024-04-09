@@ -8,7 +8,8 @@ PaisPrimerMundo crearPaisPrim(vector<int>& vectorInt){
     /*Se pide el nombre del país al usuario*/
     string nombre;
     cout << "Ingrese el nombre del país: ";
-    cin >> nombre;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin,nombre);
 
     cout << "\n";
     
@@ -227,7 +228,8 @@ PaisEnDesarrollo crearPaisEnDes(vector<int>& vectorInt) {
     /*Se pide el nombre del país al usuario*/
     string nombre;
     cout << "Ingrese el nombre del país: ";
-    cin >> nombre;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin,nombre);
 
     cout << "\n";
 
@@ -403,7 +405,7 @@ void EliminarPais(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesar
 
 }
 
-Pais converir(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrollo>& vectorTercerMundista){
+Pais convertir(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrollo>& vectorTercerMundista){
 
     string nombrePais;
     cout << "\nIngrese el nombre del país que quiere comparar: ";
@@ -447,3 +449,136 @@ bool comparar(Pais primerPais, Pais segundoPais){
     bool valor = primerPais == segundoPais;
     return valor;
     } 
+
+
+
+
+void imprimirInformacion(Planeta argPlaneta) {
+
+
+    int desarrolladosAmerica = 0;
+    int desarrolladosAsia = 0;
+    int desarrolladosEuropa = 0;
+    int enDesarrolloAmerica = 0 ;
+    int enDesarrolloAsia = 0;
+    int enDesarrolloEuropa = 0;
+
+    vector<PaisPrimerMundo> vectDesarrollado = argPlaneta.obtenerPaisesPrimerMundo();
+    for (size_t i = 0; i < vectDesarrollado.size(); ++i) {
+
+
+        if ( vectDesarrollado[i].continentePais == "América" ) {
+            desarrolladosAmerica++;
+        } 
+        else if (vectDesarrollado[i].continentePais == "Europa") {
+            desarrolladosEuropa++;
+        }
+        else if (vectDesarrollado[i].continentePais == "Asia") {
+            desarrolladosAsia++;
+        }  
+    
+    }
+
+    vector<PaisEnDesarrollo> vectSubDesarrollado = argPlaneta.obtenerPaisesEnDesarrollo();
+    for (size_t i = 0; i < vectSubDesarrollado.size(); ++i) {
+
+        if ( vectSubDesarrollado[i].continentePais == "América" ) {
+            enDesarrolloAmerica++;
+        } 
+        else if (vectSubDesarrollado[i].continentePais == "Europa") {
+            enDesarrolloEuropa++;
+        }
+        else if (vectSubDesarrollado[i].continentePais == "Asia") {
+            enDesarrolloAsia++;
+        }  
+    
+    }
+
+    cout<< "\nImprimiendo información de los países\n";
+    argPlaneta.imprimirContinentes();
+    argPlaneta.imprimirAvion();
+
+    cout<< "\nInformación sobre los Países\n";
+    cout<< "América posee " << desarrolladosAmerica << " países del primer mundo y " << enDesarrolloAmerica << " países en desarrollo.\n";
+    cout<< "Europa posee " << desarrolladosEuropa << " países del primer mundo y " << enDesarrolloEuropa << " países en desarrollo.\n";
+    cout<< "Asia posee " << desarrolladosAsia << " países del primer mundo y " << enDesarrolloAsia << " países en desarrollo.\n";
+
+    
+    string aeropuerto;
+    string banda5G;
+    string centro;
+
+    cout<< "\nInformación sobre los Países del primer mundo\n";
+    
+    for (size_t i = 0; i < vectDesarrollado.size(); ++i) {
+
+        if (vectDesarrollado[i].aeropuerto == true){
+
+            string aeropuerto = ", Tiene aeropuerto";
+        }
+        else {
+
+            string aeropuerto = " , No tiene aeropuerto";
+
+        }
+
+
+        if (vectDesarrollado[i].getBandaAncha() == true){
+
+            string banda5G = " y Tiene 5G";
+        }
+        else {
+
+            string banda5G = " y No tiene 5G";
+
+        }
+
+        if (vectDesarrollado[i].getCentroInvest() == true){
+
+            string centro = ", Tiene un centro de investigación";
+        }
+        else {
+
+            string centro = " , No tiene un centro de investigación";
+
+        }
+
+
+
+        cout << "El país " << vectDesarrollado[i].nombrePais << " Pertenece al continente " << vectDesarrollado[i].continentePais  <<
+        ", Posee una población de " << vectDesarrollado[i].habitantes << aeropuerto << centro << ", su id es: " << vectDesarrollado[i].getId()   
+        << banda5G << "\n"; 
+          
+    
+    }
+
+
+    cout<< "\nInformación sobre los Países en desarrollo\n";
+    
+    for (size_t i = 0; i < vectSubDesarrollado.size(); ++i) {
+
+        if (vectSubDesarrollado[i].aeropuerto == true){
+
+            string aeropuerto = ", Tiene aeropuerto";
+        }
+        else {
+
+            string aeropuerto = " , No tiene aeropuerto";
+
+        }
+
+
+
+
+
+
+        cout << "El país " << vectSubDesarrollado[i].nombrePais << " Pertenece al continente " << vectSubDesarrollado[i].continentePais  <<
+        ", Posee una población de " << vectSubDesarrollado[i].habitantes << aeropuerto << " y su id es: " << vectSubDesarrollado[i].getId() << "\n"; 
+          
+    
+    }
+
+
+
+
+}  
