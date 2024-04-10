@@ -2,12 +2,19 @@
 
 using namespace std;
 
-/* primer mundo bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente, bool tiene5G, bool centroInvest*/
+/* Se crea una función que genera todos los atributos que se necesitan para
+crear un elemento de la clase PaisPrimerMundo, esta recibe un vector como argumento, esto
+para asignar el id de los países desarrollados */
 PaisPrimerMundo crearPaisPrim(vector<int>& vectorInt){
 
     /*Se pide el nombre del país al usuario*/
     string nombre;
     cout << "Ingrese el nombre del país: ";
+    /*Se utiliza cin.ignore para asegurar que el buffer 
+    de entrada esté limpio antes de leer la entrada de texto,
+    y se usa getline para que se almacene la entrada de cin 
+    en nombre, esto se hace para prevenir que los países con 
+    nombres de dos palabras causen errores.*/
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin,nombre);
 
@@ -23,7 +30,8 @@ PaisPrimerMundo crearPaisPrim(vector<int>& vectorInt){
     cout << "\nIngrese el número correspondiente: ";
     
     
-    /*Se crean las variables que almacenan los valores correspondientes*/
+    /*Se crean las variables que almacenan los valores correspondientes
+    para la selección de aeropuerto*/
     int aero;
     bool aeropuerto;
 
@@ -101,7 +109,8 @@ PaisPrimerMundo crearPaisPrim(vector<int>& vectorInt){
     cout << "\nIngrese el número correspondiente: ";
     
     
-    /*Se crean las variables que almacenan los valores correspondientes*/
+    /*Se crean las variables que almacenan los valores correspondientes
+    para la asignación del continente*/
     int numero;
     string continente;
 
@@ -116,7 +125,7 @@ PaisPrimerMundo crearPaisPrim(vector<int>& vectorInt){
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
-    /*Se declaran los casos para los números y los continentes*/
+    /*Se declaran los casos para los números y la asignación de los continentes*/
     if (numero == 1){
         continente = "América";
         
@@ -223,9 +232,13 @@ PaisPrimerMundo crearPaisPrim(vector<int>& vectorInt){
 
 }
 
+/*Similarmente se crea una función para generar un objeto de tipo 
+PaisEnDesarrollo*/
 PaisEnDesarrollo crearPaisEnDes(vector<int>& vectorInt) { 
 
-    /*Se pide el nombre del país al usuario*/
+    /*Se pide el nombre del país al usuario y similarmente
+    se utiliza cin.ignotr y getline para evitar errores
+    con países cuyo nombre tenga dos palabras.*/
     string nombre;
     cout << "Ingrese el nombre del país: ";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -363,18 +376,24 @@ PaisEnDesarrollo crearPaisEnDes(vector<int>& vectorInt) {
         continente == "América";
     }
     
-    
+    /*Se retorna el objeto PaisEnDesarrollo*/
     return PaisEnDesarrollo(aeropuerto, poblacion, id , nombre,  continente);
     
 
 }
 
-
+/*Como los países creados se almacenan en vectores de diferente tipo según el tipo de país
+entonces se define una función que busca y elimina un país del vector que lo contenga*/
 void EliminarPais(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrollo>& vectorTercerMundista){
 
+    /* Se le pide al usuario el nombre del país que quiere eliminar 
+    de manera similar a las anteriores, esto evita errores
+    para países con nombres con más de una palabra. */
     string nombrePais;
-    cout << "\nIngrese el nombre del país que quiere eliminar: ";
-    cin >> nombrePais;
+    cout << "Ingrese el nombre del país: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin,nombrePais);
+
     
     /* Se tiene un ciclo for que recorre uno de los vectores recibidos como
     argumento con respecto a su tamaño usando .size*/
@@ -394,8 +413,8 @@ void EliminarPais(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesar
     /*Se tiene la misma lógica anterior pero para el vector de países 
     no desarrollados*/
         for (size_t i = 0; i < vectorTercerMundista.size(); ++i) {
-            if (nombrePais == vectorPrimerMundo[i].nombrePais) {
-                vectorPrimerMundo.erase(vectorPrimerMundo.begin() + i);
+            if (nombrePais == vectorTercerMundista[i].nombrePais) {
+                vectorTercerMundista.erase(vectorTercerMundista.begin() + i);
                 --i; 
             }
         }  
@@ -405,6 +424,8 @@ void EliminarPais(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesar
 
 }
 
+/*Se crea una función que convierte los objetos PaisPrimerMundo y PaisEnDesarrollo en
+objetos tipo Pais.*/
 Pais convertir(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrollo>& vectorTercerMundista){
 
     string nombrePais;
@@ -420,7 +441,11 @@ Pais convertir(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrol
         almacenado en esa entrada a paisEncontrado*/
         if (nombrePais == vectorPrimerMundo[i].nombrePais) {
             PaisPrimerMundo paisEncontrado = vectorPrimerMundo[i];
+
+            /*Se convierte PaisEncontrado en un objeto tipo País.*/
             Pais paisConvertido = static_cast<Pais>(paisEncontrado);
+            
+            /*Se retorna el objeto tipo País.*/
             return paisConvertido;
         }
      }
@@ -443,6 +468,8 @@ Pais convertir(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrol
         return paisGenerico;
     } 
 
+/*Se define una función que llama al operador 
+sobrecargado == para comparar dos países*/
 bool comparar(Pais primerPais, Pais segundoPais){
 
 
@@ -452,10 +479,12 @@ bool comparar(Pais primerPais, Pais segundoPais){
 
 
 
-
+/*Se define una función para imprimir la información de todos los 
+países existentes en el programa. .*/
 void imprimirInformacion(Planeta argPlaneta) {
 
-
+    /*Se definen variables enteras para guardar el número de países 
+    que de cada continente tanto desarrollados como en desarrollo*/
     int desarrolladosAmerica = 0;
     int desarrolladosAsia = 0;
     int desarrolladosEuropa = 0;
@@ -463,6 +492,11 @@ void imprimirInformacion(Planeta argPlaneta) {
     int enDesarrolloAsia = 0;
     int enDesarrolloEuropa = 0;
 
+    /*Se cuentan los países desarrollados de cada continente utilizando el 
+    método obtenerPaisesPrimerMundo de la clase Planeta, que regresa 
+    el vector que contiene los valores de los países desarrollados, 
+    esto se hace con un ciclo for que recorre todo el vector y se le 
+    suma un 1 a la variable respectiva si se detecta que el continente coincide.*/
     vector<PaisPrimerMundo> vectDesarrollado = argPlaneta.obtenerPaisesPrimerMundo();
     for (size_t i = 0; i < vectDesarrollado.size(); ++i) {
 
@@ -479,6 +513,11 @@ void imprimirInformacion(Planeta argPlaneta) {
     
     }
 
+    /*Se cuentan los países en desarrollo de cada continente utilizando el 
+    método obtenerPaisesEnDesarrollo de la clase Planeta, que regresa 
+    el vector que contiene los valores de los países en desarrollo, esto se 
+    hace con un ciclo for que recorre todo el vector y se le suma un 1 a la
+    variable respectiva si se detecta que el continente coincide.*/
     vector<PaisEnDesarrollo> vectSubDesarrollado = argPlaneta.obtenerPaisesEnDesarrollo();
     for (size_t i = 0; i < vectSubDesarrollado.size(); ++i) {
 
@@ -494,22 +533,32 @@ void imprimirInformacion(Planeta argPlaneta) {
     
     }
 
+    /*Se imprime la información de los continentes utilizando los métodos
+    imprimirContinentes e imprimirAvion.*/
     cout<< "\nImprimiendo información de los países\n";
     argPlaneta.imprimirContinentes();
     argPlaneta.imprimirAvion();
 
+    /*Se imprime la cantidad de países en desarrollo de cada continente por el que pasa el avión*/
     cout<< "\nInformación sobre los Países\n";
     cout<< "América posee " << desarrolladosAmerica << " países del primer mundo y " << enDesarrolloAmerica << " países en desarrollo.\n";
     cout<< "Europa posee " << desarrolladosEuropa << " países del primer mundo y " << enDesarrolloEuropa << " países en desarrollo.\n";
     cout<< "Asia posee " << desarrolladosAsia << " países del primer mundo y " << enDesarrolloAsia << " países en desarrollo.\n";
 
-    
+    /* Se crean variables string para almacenar lo que se debe imprimir si 
+    se cumple o no el valor booleano que se almacena en sus respectivos atributos
+    de los objetos PaisPrimerMundo.*/
     string aeropuerto;
     string banda5G;
     string centro;
 
     cout<< "\nInformación sobre los Países del primer mundo\n";
     
+    /*Se declaran los mensajes que se guardan en aeropuerto dependiendo
+    de si el valor aeropuerto es verdadero o falso, se revisan 
+    todas las entradas del vectorDesarrollado que es el 
+    vector que guarda los países de primer mundo, con un 
+    ciclo for*/
     for (size_t i = 0; i < vectDesarrollado.size(); ++i) {
 
         if (vectDesarrollado[i].aeropuerto == true){
@@ -522,7 +571,10 @@ void imprimirInformacion(Planeta argPlaneta) {
 
         }
 
-
+        /*Se sigue una lógica parecida para el valor booleano 
+        que guarda la condición del 5g, esto se hace utilizando
+        el método getBandaAncha que devuelve el valor del 5G 
+        en la clase PaisPrimerMundo*/
         if (vectDesarrollado[i].getBandaAncha() == true){
 
             string banda5G = " y Tiene 5G";
@@ -533,6 +585,11 @@ void imprimirInformacion(Planeta argPlaneta) {
 
         }
 
+        /*Se sigue la misma lógica con el valor booleano 
+        que guarda la condición del centro de investigación, se
+        accesa con .getCentroInvest que es un método de 
+        la clase PaisPrimerMundo que devuelve el valor
+        booleano que guarda esta información.*/
         if (vectDesarrollado[i].getCentroInvest() == true){
 
             string centro = ", Tiene un centro de investigación";
@@ -544,7 +601,7 @@ void imprimirInformacion(Planeta argPlaneta) {
         }
 
 
-
+        /*Se imprime la información completa de los países desarrollados.*/
         cout << "El país " << vectDesarrollado[i].nombrePais << " Pertenece al continente " << vectDesarrollado[i].continentePais  <<
         ", Posee una población de " << vectDesarrollado[i].habitantes << aeropuerto << centro << ", su id es: " << vectDesarrollado[i].getId()   
         << banda5G << "\n"; 
@@ -552,7 +609,10 @@ void imprimirInformacion(Planeta argPlaneta) {
     
     }
 
-
+    /*Se sigue la misma lógica de asignación de strings 
+    para el elemento aeropuerto pero esta vez para 
+    el vectSubDesarrollado que guarda la información de los
+    países en desarrollo.*/
     cout<< "\nInformación sobre los Países en desarrollo\n";
     
     for (size_t i = 0; i < vectSubDesarrollado.size(); ++i) {
@@ -571,7 +631,7 @@ void imprimirInformacion(Planeta argPlaneta) {
 
 
 
-
+        /*Se imprime la información de los países en desarrollo.*/
         cout << "El país " << vectSubDesarrollado[i].nombrePais << " Pertenece al continente " << vectSubDesarrollado[i].continentePais  <<
         ", Posee una población de " << vectSubDesarrollado[i].habitantes << aeropuerto << " y su id es: " << vectSubDesarrollado[i].getId() << "\n"; 
           
