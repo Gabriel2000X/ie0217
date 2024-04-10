@@ -141,8 +141,13 @@ algunos ejemplos de su sintaxis son:
 # encabezado
 
 ```
+# Información sobre markdown
 
- 
+
+ ```
+Se utiliza CamelCase con la primera palabra en minúscula y las demás en mayúscula.
+
+```
 
 
 
