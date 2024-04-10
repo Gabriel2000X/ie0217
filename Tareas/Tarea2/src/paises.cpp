@@ -7,10 +7,11 @@ using namespace std;
 
 
 
-    
+        /*  Se define el constructor de la clase Pais*/
         Pais::Pais(bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente): 
         aeropuerto(tieneAeropuerto), habitantes(poblacionPais), id(id), nombrePais(nombre), continentePais(continente) {}
-        
+
+            /*Se define un método para calcular el PIB de manera random */
             float Pais::PIB() {
 
             /*Se utliza random_device para asegurar que verdaderamente se generen números al azar*/
@@ -31,25 +32,28 @@ using namespace std;
 
             }
 
-            /* Se crea un método para poder asignarle un valor a id*/
+            /* Se define un método para poder obtener el valor del id*/
             int Pais::getId() {
 
                 return id;
 
             }
 
+            /*Se define un método para usar la sobrecarga del operador
+            == para comparar el atributo booleano de aeropuerto de dos
+            países */
             bool Pais::operator == (Pais &otroPais){
-            // Comparar el ID de este país con el ID del otro país
                 return this->aeropuerto == otroPais.aeropuerto;
             
             }
             
     
-           
+
+        /*Se define el constructor de la clase PaisEnDesarrollo*/   
         PaisEnDesarrollo::PaisEnDesarrollo(bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente): 
         Pais(tieneAeropuerto, poblacionPais, id, nombre, continente) {}
 
-           
+        /*Se define el constructor de la clase PaisPrimerMundo*/
         PaisPrimerMundo::PaisPrimerMundo(bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente,  bool tiene5G, bool centroInvest):  
         Pais(tieneAeropuerto, poblacionPais, id, nombre, continente) , bandaAncha(tiene5G), investigacion(centroInvest){}
             

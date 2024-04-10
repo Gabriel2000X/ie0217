@@ -8,7 +8,7 @@
 
 using namespace std;
 
-
+/*Se declara la clase país junto con sus métodos y atributos públicos, privados y protegidos*/
 class Pais{
 
     public: 
@@ -35,9 +35,11 @@ class Pais{
 };
 
 
-
+/*Se declara la clase PaisEnDesarrollo que hereda de forma pública de Pais,
+se define el constructor como único método público*/
 class PaisEnDesarrollo: public Pais{
 
+    
     public:
     
         PaisEnDesarrollo(bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente);
@@ -54,7 +56,8 @@ class PaisEnDesarrollo: public Pais{
 
 };
 
-
+/*Se define la clase PaisPrimerMundo que hereda de manera pública de la clase Pais, se declaran sus métodos y atributos 
+públicos y privados.*/
 class PaisPrimerMundo: public Pais{
 
     public:

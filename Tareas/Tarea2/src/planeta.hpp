@@ -17,7 +17,9 @@ class Planeta{
 
         /* Se declara el constructor de la clase con los argumentos que recibirá, 
         puntero es un puntero a un arreglo de objetos de tipo Continentes, 
-        arrayLongitud es un entero que corresponde a la longitud del arreglo*/    
+        arrayLongitud es un entero que corresponde a la longitud del arreglo, además se declaran dos vectores como
+        argumentos de la clase, la intención es brindar los vectores que contienen los objetos tipo Pais 
+        para poder brindarle a la clase todos los datos de las demás instancias de objetos de otras clases.*/    
         Planeta(Continentes* puntero, int arrayLongitud, vector<PaisPrimerMundo>& vectPrimerMundo, vector<PaisEnDesarrollo>& vectDesarrollo);
         
         /* Se definen métodos públicos para imprimir la información de 

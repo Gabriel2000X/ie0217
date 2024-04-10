@@ -461,6 +461,8 @@ Pais convertir(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrol
         }
      }
 
+        /*Si el país no se encuentra se retorna un paisGenerico porque no se pudo 
+        hacer la conversión*/
         cout << "No se encontró país que busca.\n";
         cout << "se generará un país genérico, por lo que la comparación no será confiable.\n";
         Pais paisGenerico(false, 0, 0, "Generico", "Generico");
@@ -480,7 +482,7 @@ bool comparar(Pais primerPais, Pais segundoPais){
 
 
 /*Se define una función para imprimir la información de todos los 
-países existentes en el programa. .*/
+países existentes en el programamediante un objeto Planeta.*/
 void imprimirInformacion(Planeta argPlaneta) {
 
     /*Se definen variables enteras para guardar el número de países 
@@ -603,7 +605,7 @@ void imprimirInformacion(Planeta argPlaneta) {
 
         /*Se imprime la información completa de los países desarrollados.*/
         cout << "El país " << vectDesarrollado[i].nombrePais << " Pertenece al continente " << vectDesarrollado[i].continentePais  <<
-        ", Posee una población de " << vectDesarrollado[i].habitantes << aeropuerto << centro << ", su id es: " << vectDesarrollado[i].getId()   
+        ", Posee una población de " << vectDesarrollado[i].habitantes << ", Posee un PIB de: " << vectDesarrollado[i].PIB()  << aeropuerto << centro << ", su id es: " << vectDesarrollado[i].getId()   
         << banda5G << "\n"; 
           
     
@@ -633,7 +635,7 @@ void imprimirInformacion(Planeta argPlaneta) {
 
         /*Se imprime la información de los países en desarrollo.*/
         cout << "El país " << vectSubDesarrollado[i].nombrePais << " Pertenece al continente " << vectSubDesarrollado[i].continentePais  <<
-        ", Posee una población de " << vectSubDesarrollado[i].habitantes << aeropuerto << " y su id es: " << vectSubDesarrollado[i].getId() << "\n"; 
+        ", Posee una población de " << vectSubDesarrollado[i].habitantes << ", Posee un PIB de: " << vectSubDesarrollado[i].PIB()  << aeropuerto << " y su id es: " << vectSubDesarrollado[i].getId() << "\n"; 
           
     
     }

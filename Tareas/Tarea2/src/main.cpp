@@ -7,10 +7,13 @@
  * 
  * Licencia: MIT
  */
+
+/*Se incluyen los archivos .hpp*/
 # include "paises.hpp"
 # include "continente.hpp"
 # include "planeta.hpp"
 # include "funciones.hpp"
+
 /* se incluye iostream, en este caso se usa para
 imprimir texto de salida. */
 #include <iostream> 
@@ -22,6 +25,7 @@ imprimir texto de salida. */
 letras cuando se necesitan valores numéricos*/
 #include <limits> 
 
+/*Se incluye vector para poder utilizar objetos tipo vector*/
 #include <vector>
 
 /* Se utiliza namespace para no tener la necesida de escribir std::
@@ -80,9 +84,10 @@ int main() {
     bool comparacion;
 
 
-    /*Se crea un vector donde se guardarán los países creados*/
+    
 
-    /*Se crea un vector de tipo PaisPrimerMundo*/
+    /*Se crea un vector de tipo PaisPrimerMundo y un vector tipo 
+    PaisEnDesarrollo para guardar las instancias de estas clases*/
     vector<PaisPrimerMundo> vecPrimerMundo;
     vector<PaisEnDesarrollo> vecEnDesarrollo;
     
@@ -90,7 +95,6 @@ int main() {
 
     /*Se añaden algunos países de cada continente a cada vector*/
     /*Paises de primer mundo*/
-    /* primer mundo bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente, bool tiene5G, bool centroInvest*/
     vecPrimerMundo.push_back(PaisPrimerMundo(true, 300000, 2, "Estados Unidos", "América", true, true ));
     vecPrimerMundo.push_back(PaisPrimerMundo(true, 100000, 3, "Japón", "Asia", true, false ));
     vecPrimerMundo.push_back(PaisPrimerMundo(true, 145600, 5, "Italia", "Europa", false, false ));
@@ -98,7 +102,6 @@ int main() {
     vecPrimerMundo.push_back(PaisPrimerMundo(false, 103456, 11, "Egipto", "África", false, true ));
     
     /*Paises en desarrollo*/
-    /*bool tieneAeropuerto, int poblacionPais, int id, string nombre, string continente*/
     vecEnDesarrollo.push_back(PaisEnDesarrollo(true, 50000, 4 , "Costa Rica",  "América"));
     vecEnDesarrollo.push_back(PaisEnDesarrollo(false, 54556, 6 , "Tailandia",  "Asia"));
     vecEnDesarrollo.push_back(PaisEnDesarrollo(true, 65433, 8 , "Serbia",  "Europa"));
@@ -167,14 +170,21 @@ int main() {
         switch (opcion)
         {
         case IMPRIMIR:
-    
+            
+            /*Se utiliza la función imprimirInformacion para imprimir
+            toda la información de los continentes y países*/
             imprimirInformacion(miPlaneta);
             
             break;
         case COMPARAR:
             
+            /*Se convierten los países buscados por el usuario de su clase
+            a Pais*/
             primerPais = convertir(vecPrimerMundo, vecEnDesarrollo);
             segundoPais = convertir(vecPrimerMundo, vecEnDesarrollo);
+            /*Se compara el estado del atributo booleano aeropuerto
+            de los países con la función que invoca el método 
+            de sobrecarga de == de la clase Pais*/
             comparacion =comparar( primerPais,segundoPais);
             
             if (comparacion){
@@ -193,39 +203,52 @@ int main() {
         case AGREGAR:
 
         int constante;
-            
+
+        /*Se le pide al usuario el tipo de país que quiere agregar 
+        mediante un menú simple.*/    
         cout << "¿Que tipo de país está creando?\n";
         cout << "1.Un país desarrollado.\n";
         cout << "2.Un país subdesarrollado.\n";
         cout << "\nIngrese el valor deseado\n";
+        
+        /*Se utiliza este bloque para evitar que el usuario pueda 
+        introducir un valor no numérico y que el programa no siga
+        hasta que introduzca un valor válido.*/
         while (!(cin >> constante)) {
             cout << "\nError: Ingrese un valor numérico.\n";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
-
+            /*Si se digita uno se añade al vector de países desarrollados usando 
+            push_back*/
             if (constante == 1) {
                 
                 vecPrimerMundo.push_back(crearPaisPrim(vecPrimos));
             }
-
+            
+            /*Si se digita 2 u otro número se añade al vector de países no desarrollados
+            usando push_back*/
             else {
 
-                 vecEnDesarrollo.push_back(crearPaisEnDes(vecPrimos));
+                 vecEnDesarrollo.push_back(crearPaisEnDes(vecNoPrimos));
             }
-
+            /*Se actualizan los vectores para reflejar el país agregado*/
             miPlaneta.actualizarPaisesPrimerMundo( vecPrimerMundo);
             miPlaneta.actualizarPaisesEnDesarrollo(vecEnDesarrollo);
             cout<< "\nAgregando país\n";
             
             break;
         
+        /* Se elimina el país cuyo nombre digite el usuario */
         case ELIMINAR:
             
             EliminarPais(vecPrimerMundo, vecEnDesarrollo);
             cout << " \nSi el país no existe no se eliminará\n";
             cout << " \nEliminando país\n";
             
+            /*Se actualizan los vectores para reflejar el país eliminado*/
+            miPlaneta.actualizarPaisesPrimerMundo( vecPrimerMundo);
+            miPlaneta.actualizarPaisesEnDesarrollo(vecEnDesarrollo);
             break;
 
         case SALIR:

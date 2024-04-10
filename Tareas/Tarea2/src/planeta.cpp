@@ -67,21 +67,29 @@ punteroCont(puntero), arregloLongitud(arrayLongitud), vectorPrimero(vectPrimerMu
         cout  << "." << endl;
     }
     
-
+/*Se define un método que devuelve un vector, este método
+se usará para obtener el valor del vector de países del 
+primer mundo que fue declarado un atributo privado en 
+Planeta*/
 vector<PaisPrimerMundo> Planeta::obtenerPaisesPrimerMundo() {
         
         return vectorPrimero;
     
 }
 
-
+/*Se define un método que devuelve un vector, este método
+se usará para obtener el valor del vector de países del 
+en desarrollo que fue declarado un atributo privado en 
+Planeta*/
 vector<PaisEnDesarrollo> Planeta::obtenerPaisesEnDesarrollo() {
         
         return vectorEnDesarrollo;
     
 }
 
-
+/*Se definen dos métodos que se utilizan para actualizar los vectores
+que contienen los países, esto porque cuando se agregan o eliminan países
+se debe actualizar los vectores de argumento que recibe la función imprimirInformacion.*/
 void  Planeta::actualizarPaisesPrimerMundo(vector<PaisPrimerMundo>& vect){
 
     vectorPrimero = vect;

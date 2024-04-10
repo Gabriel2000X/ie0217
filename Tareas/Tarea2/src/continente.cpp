@@ -3,7 +3,7 @@
 using namespace std;
 
 
-/*Se define el constructor de Continentes, definiendo en que aatributo
+/*Se define el constructor de Continentes, definiendo en que atributo
 de la clase se guardarán sus argumentos */
 Continentes::Continentes(string nombreCont, bool avion):
     nombreContinente(nombreCont), avion(avion) {}
