@@ -1,4 +1,13 @@
 
+/**
+ * @file  planeta.hpp
+ * @brief Se realizan las declaraciones de la clase Planeta, sus métdos y atributos.
+ *
+ * @author Gabriel González Rivera B93432
+ * @date 9/4/2024
+ * 
+ * Licencia: MIT
+ */
 #ifndef PLANETA_HPP
 #define PLANETA_HPP 
 
@@ -11,6 +20,12 @@ using namespace std;
 
 
 /* Se declara la clase Planeta*/
+
+/**
+ * @brief Es una clase llamada Planeta que se usará para imprimir 
+ * la información de todos los países y continentes. 
+ * 
+ */
 class Planeta{
 
     public:

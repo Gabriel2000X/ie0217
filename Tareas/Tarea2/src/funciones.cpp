@@ -1,3 +1,15 @@
+/**
+ * @file  funciones.hpp
+ * @brief Se realizan las definiciones de las funciones utilizadas
+ * en el programa
+ *
+ * @author Gabriel González Rivera B93432
+ * @date 9/4/2024
+ * 
+ * Licencia: MIT
+ */
+
+
 # include "funciones.hpp"
 
 using namespace std;
@@ -5,6 +17,14 @@ using namespace std;
 /* Se crea una función que genera todos los atributos que se necesitan para
 crear un elemento de la clase PaisPrimerMundo, esta recibe un vector como argumento, esto
 para asignar el id de los países desarrollados */
+
+/**
+* @brief función que construye un objeto tipo PaisPrimerMundo con datos proporcionados por el usuario.
+* 
+* @param vectorInt es un vector entero, se debe utilizar un vector de numeros enteros primos.
+* 
+* @return Se retorna un objeto de tipo PaisPrimerMundo.
+*/
 PaisPrimerMundo crearPaisPrim(vector<int>& vectorInt){
 
     /*Se pide el nombre del país al usuario*/
@@ -234,6 +254,14 @@ PaisPrimerMundo crearPaisPrim(vector<int>& vectorInt){
 
 /*Similarmente se crea una función para generar un objeto de tipo 
 PaisEnDesarrollo*/
+
+/**
+* @brief función que construye un objeto tipo PaisEnDesarrollo con datos proporcionados por el usuario.
+* 
+* @param vectorInt es un vector entero, se debe utilizar un vector de numeros enteros no primos.
+* 
+* @return se retorna un objeto de la clase PaisEnDesarrollo.
+*/
 PaisEnDesarrollo crearPaisEnDes(vector<int>& vectorInt) { 
 
     /*Se pide el nombre del país al usuario y similarmente
@@ -384,6 +412,13 @@ PaisEnDesarrollo crearPaisEnDes(vector<int>& vectorInt) {
 
 /*Como los países creados se almacenan en vectores de diferente tipo según el tipo de país
 entonces se define una función que busca y elimina un país del vector que lo contenga*/
+
+/**
+* @brief función que elimina un país del vector de países en el que se encuentre
+* 
+* 
+*
+*/
 void EliminarPais(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrollo>& vectorTercerMundista){
 
     /* Se le pide al usuario el nombre del país que quiere eliminar 
@@ -426,6 +461,22 @@ void EliminarPais(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesar
 
 /*Se crea una función que convierte los objetos PaisPrimerMundo y PaisEnDesarrollo en
 objetos tipo Pais.*/
+
+/**
+* @brief función que convierte objetos de subclases de Pais a objetos de la clase País
+* utilizando static_cast en los elementos de los vectores que contienen los países de las  
+* diferentes clases. 
+*
+* @param vectorPrimerMundo es un vector tipo PaisPrimerMundo, se debe introducir el vector que contiene los objetos de 
+* esta clase.
+*
+* @param vectorTercerMundista es un vector tipo PaisEnDesarrollo, se debe introducir el vector que contiene los objetos de
+* esta clase.
+*
+* @return retorna un objeto de tipo Pais
+*/
+
+
 Pais convertir(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrollo>& vectorTercerMundista){
 
     string nombrePais;
@@ -442,7 +493,8 @@ Pais convertir(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrol
         if (nombrePais == vectorPrimerMundo[i].nombrePais) {
             PaisPrimerMundo paisEncontrado = vectorPrimerMundo[i];
 
-            /*Se convierte PaisEncontrado en un objeto tipo País.*/
+            /*Se convierte PaisEncontrado en un objeto tipo País
+            utilizando static_cast.*/
             Pais paisConvertido = static_cast<Pais>(paisEncontrado);
             
             /*Se retorna el objeto tipo País.*/
@@ -472,6 +524,16 @@ Pais convertir(vector<PaisPrimerMundo>& vectorPrimerMundo, vector<PaisEnDesarrol
 
 /*Se define una función que llama al operador 
 sobrecargado == para comparar dos países*/
+
+/**
+* @brief función que invoca la sobrecarga de == para comparar dos países
+* 
+* @param primerPais objeto tipo Pais, primer país de la comparación.
+* @param segundoPais objeto tipo Pais, segundo país de la comparación.
+*
+* @return retorna un valor booleano que tiene depende de la comparación, si 
+* los paíces son del mismo tipo retorna true y si no entonces retorna false
+*/
 bool comparar(Pais primerPais, Pais segundoPais){
 
 
@@ -483,6 +545,13 @@ bool comparar(Pais primerPais, Pais segundoPais){
 
 /*Se define una función para imprimir la información de todos los 
 países existentes en el programamediante un objeto Planeta.*/
+
+/**
+* @brief función que imprime toda la información de los países y continentes.
+* 
+* @param primerPais objeto tipo Planeta que engloba la información del programa
+*
+*/
 void imprimirInformacion(Planeta argPlaneta) {
 
     /*Se definen variables enteras para guardar el número de países 

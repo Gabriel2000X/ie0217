@@ -1,9 +1,11 @@
 /**
  * @file  main.cpp
- * @brief 
+ * @brief En este archivo se definen las variables necesarias
+ * para el funcionamiento principal del programa y se trabaja 
+ * con el menú para implementar las clases, funciones y métodos.
  *
  * @author Gabriel González Rivera B93432
- * @date 
+ * @date 9/4/2024
  * 
  * Licencia: MIT
  */

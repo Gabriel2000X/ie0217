@@ -1,3 +1,14 @@
+/**
+ * @file  paises.hpp
+ * @brief Se realizan las declaraciones de las diferentes clases relacionadas
+ * con países, sus métdos y atributos.
+ *
+ * @author Gabriel González Rivera B93432
+ * @date 9/4/2024
+ * 
+ * Licencia: MIT
+ */
+
 #ifndef FUNCIONES_HPP
 #define FUNCIONES_HPP 
 
