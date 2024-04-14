@@ -39,16 +39,15 @@ private:
     unordered_map<string, contacto*> tabla;
 
 public:
-    /*Se definen el constructor y el destructor, el constructor inicializa 
-    primerNodo como un nullptr, por lo que inicialmente primerNodo apunta a la nada*/
-    agendaCel() : primerNodo(nullptr) {}
+    /*Se definen el constructor */ 
+    agendaCel();
 
     /*El destructor se usará para liberar memoria*/
-    ~agendaCel() {}
+    ~agendaCel();
 
     
-    void agregarContacto(const string& nombre, const string& numero) {}
-    void imprimirContactos() {}
+    void agregarContacto();
+    void imprimirContactos(); 
 };
 
 
