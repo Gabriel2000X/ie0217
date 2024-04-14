@@ -1,5 +1,7 @@
 #include <iostream>
+#include "clasesYEstruct.hpp"
 using namespace std;
+
 
 /*Se utiliza una enumeración para 
 los casos del switch case*/
@@ -18,7 +20,7 @@ enum opciones  {
 int main(){ 
 
     
-    
+    agendaCel miAgenda;
     int opcion;
 
     /*Se usa un do while para que siempre se ejecute una vez el ciclo*/
@@ -37,7 +39,11 @@ int main(){
         {
         case AGREGAR_CONTACTO:
             
+
+            miAgenda.agregarContacto();
             cout << "Agregando contacto\n" << endl;
+
+
 
             break;
         
@@ -56,7 +62,7 @@ int main(){
         case MOSTRAR_CONTACTOS:
 
             cout << "Mostrando contactos: \n" << endl;
-            
+            miAgenda.imprimirContactos(); 
 
             break;
 
