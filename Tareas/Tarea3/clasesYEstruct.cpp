@@ -74,14 +74,73 @@
         tabla[clave] = nuevoContacto;
     }
 
-    /* se define el método imprimirContactos de manera provisional
-    porque no se imprimen en orden alfabético*/
-    void agendaCel::imprimirContactos() {
+    
+    
+    
+    /* se define el método imprimirContactos */
+   void agendaCel::imprimirContactos() {
+   
+    /*Se declara una variable booleana llamada intercambio, con ella se 
+    verificará si se realizan inercambios de posición*/
+    bool intercambio = false;
+
+    /*Se utiliza un do while para ejectura el ciclo al menos  una vez*/
+    do {
         
-        
-        contacto* actual = primerNodo;
-        while (actual != nullptr) {
-            cout << "Nombre: " << actual->nombre << ", Teléfono: " << actual->numero << endl;
-            actual = actual->siguiente;
+        /*Se vuelve a declarar intercambio como false, ya que puede ser
+        que se le asignara true en el ciclo*/
+        intercambio = false;
+
+        /*Se inicializan dos contacto punteros, uno para guardar la posición actual
+        de la lista y se inicializa con la dirección de primerNodo, y el puntero 
+        nodoSiguiente define apuntando al vacío.*/
+        contacto* nodoActual = primerNodo;
+        contacto* nodoSiguiente = nullptr;
+
+        /*Este ciclo interno se realiza mientras nodoActual no sea un nullptr, por lo que
+        se repite mientras nodoActual no apunte a la nada y mientras el miembro
+        llamado siguiente del nodoActual sea diferente del nodoSiguiente para 
+        que el ciclo se detenga cuando se tienen los valores acomodados*/
+        while (nodoActual != nullptr && nodoActual->siguiente != nodoSiguiente) {
+            
+    
+            /*Se pueden comparar cadenas string en c++ con los operadores mayor y menor,
+            y en este caso se compara la cadena nombre de nodoActual con la cadena nombre
+            del miembro siguiente de nodoActual letra por letra, con que la primera letra
+            esté después en el abecedario se asume que es mayor y se hace el cambio.*/
+            if (nodoActual->nombre > nodoActual->siguiente->nombre) {
+                
+                /*Tanto el número como el nombre almacenados en nodoActual se intercambian con
+                los almacenados en la siguiente dirección de memoria que corresponde al siguiente
+                objeto de la lista.*/
+                swap(nodoActual->nombre, nodoActual->siguiente->nombre);
+                swap(nodoActual->numero, nodoActual->siguiente->numero);
+
+                
+                intercambio = true;
+            }
+
+            /*Se avanza a la siguiente posición en memoria asignando la dirección en el 
+            miembro siguiente de nodoActual a nodoActual*/
+            nodoActual = nodoActual->siguiente;
         }
+
+        /*Se actualiza el puntero del siguiente nodo, para no repetir
+        ordenamiento de nodos ya ordenados.*/
+        nodoSiguiente = nodoActual;
+
+
+    } while (intercambio); /*Se repite si intercambio es true*/
+
+    /*Se imprimen los contactos ordenados recorriendo la lista
+    ordenada y se siguen imprimiendo utilizando actual mientras
+    actual no apunte a la nada*/
+    cout << "Contactos ordenados alfabéticamente:" << endl;
+    contacto* actual = primerNodo;
+    
+    while (actual != nullptr) {
+        cout << "Nombre: " << actual->nombre << ", Teléfono: " << actual->numero << endl;
+        actual = actual->siguiente;
     }
+
+ }
