@@ -112,7 +112,8 @@
                 
                 /*Tanto el número como el nombre almacenados en nodoActual se intercambian con
                 los almacenados en la siguiente dirección de memoria que corresponde al siguiente
-                objeto de la lista.*/
+                objeto de la lista, esto se realza mediante swap, que viene incluida en 
+                unordered_map*/
                 swap(nodoActual->nombre, nodoActual->siguiente->nombre);
                 swap(nodoActual->numero, nodoActual->siguiente->numero);
 
@@ -137,10 +138,33 @@
     actual no apunte a la nada*/
     cout << "Contactos ordenados alfabéticamente:" << endl;
     contacto* actual = primerNodo;
-    
+
     while (actual != nullptr) {
         cout << "Nombre: " << actual->nombre << ", Teléfono: " << actual->numero << endl;
         actual = actual->siguiente;
     }
 
  }
+
+
+void agendaCel::actualizarTabla() {
+    /*La tabla creada anteriormente se limpia, dejándola vacía*/
+    tabla.clear();
+
+    /*Se define nodoActual como un contacto puntero que apunta a primerNodo*/
+    contacto* nodoActual = primerNodo;
+    
+    /*El ciclo se ejecuta mientras nodoActual no apunte a la nada*/
+    while (nodoActual != nullptr) {
+        
+        
+        /*Se genera de nuevo la clave para la tabla*/
+        string clave = nodoActual->nombre + nodoActual->numero;
+
+        /* Se asgina la clave generada a una entrada en la tabla que
+        tendrá la información de nodoActual y se suigue con el siguiente
+        nodo*/
+        tabla[clave] = nodoActual;
+        nodoActual = nodoActual->siguiente;
+    }
+}

@@ -41,6 +41,7 @@ int main(){
             
 
             miAgenda.agregarContacto();
+            miAgenda.actualizarTabla();
             cout << "Agregando contacto\n" << endl;
 
 
