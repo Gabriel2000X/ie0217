@@ -1,3 +1,15 @@
+/**
+ * @file  clasesYEstruct.hpp
+ * @brief Se declara la clase agendaCel así como sus métodos y
+ * atributos, además se define la estructura contacto.
+ *
+ * @author Gabriel González Rivera B93432
+ * @date 15/4/2024
+ * 
+ * Licencia: MIT
+ */
+
+
 #include <string>
 #include <iostream>
 
@@ -16,6 +28,22 @@ using namespace std;
 /*Se define la estructura contacto, es importante mencionar
 que se tiene un atributo contacto puntero para enlazar la 
 lista una vez que se construya.*/
+
+/*Se declara la clase PaisEnDesarrollo que hereda de forma pública de Pais,
+se define el constructor como único método público*/
+
+/**
+ * @brief Es la estructura que contiene los datos del nombre
+ * y el número de cada contacto.
+ * 
+ * @param nombre es un string que guarda el nombre del contacto.
+ * @param numero es un string que guarda el número del contacto.
+ * @param siguiente es un contacto puntero que guarda la dirección de memoria
+ * del siguiente objeto tipo contacto.
+ * 
+ * 
+ * 
+ */
 struct contacto{ 
 
 
@@ -28,6 +56,12 @@ struct contacto{
 
 /*Se declara la clase agendaCel con la que se manejará la integración
 de los datos de los contactos tanto a la lista como a la tabla*/
+
+/**
+ * @brief agendaCel es la clase principal del programa que maneja 
+ * los contactos en base a una hash table y a una lista enlazada.
+ * 
+ */
 class agendaCel {
 
 /*Se declaran los atributos privados de la clase como un puntero de tipo 

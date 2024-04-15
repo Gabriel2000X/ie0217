@@ -1,13 +1,36 @@
+/**
+ * @file  clasesYEstruct.cpp
+ * @brief Se definen los métodos de la clase agendaCel
+ *
+ * @author Gabriel González Rivera B93432
+ * @date 15/4/2024
+ * 
+ * Licencia: MIT
+ */
+
+
+
 #include "clasesYEstruct.hpp"
 
 
 
 
     /*El constructor inicializa primerNodo como un nullptr*/
+
+    /**
+    * @brief Es el constructor de la clase agendaCel que inicializa
+    * primerNodo como un nullptr
+    * 
+    */
     agendaCel::agendaCel() : primerNodo(nullptr) {}
 
 
     /*El destructor libera la memoria asignada a los contactos*/
+    /**
+    * @brief Es el destructor de la clase agendaCel que se utiliza para
+    * liberar la memoria que se asigna con malloc utilizando free
+    * 
+    */
     agendaCel::~agendaCel() {
 
         /*Se inicializa un puntero contacto llamado actual con la
@@ -33,8 +56,16 @@
             actual = siguienteEntrada; 
         }
     }
-
+    
     /*Esta función introduce los contactos a la lista y a la tabla*/
+
+    /**
+    * @brief Un método público que se encarga de agregar los contactos a la tabla
+    * y a la lista enlazada mediante contacto punteros y le pide al usuario los datos
+    * del nombre y numero del contacto para construir el contacto y la clave de la 
+    * tabla que irá asociada a ese contacto.
+    * 
+    */
     void  agendaCel::agregarContacto() {
         
         /*Se crean 2 variables string que tendrán los datos del contacto*/
@@ -78,6 +109,12 @@
     
     
     /* se define el método imprimirContactos */
+    /**
+    * @brief un método público que se encarga de ordenar los 
+    * contactos en la lista por orden alfábetico según su nombre 
+    * e imprimirlos
+    * 
+    */
    void agendaCel::imprimirContactos() {
    
     /*Se declara una variable booleana llamada intercambio, con ella se 
@@ -146,126 +183,142 @@
 
  }
 
+    /**
+    * @brief un método público que se utiliza para actualizar las entradas
+    * de la tabla, se usa después de eliminar o agregar un contacto debido 
+    * a que al agregar o quitar un contacto los datos de la lista y de la 
+    * tabla dejan de ser iguales.
+    * 
+    */
+    void agendaCel::actualizarTabla() {
+        /*La tabla creada anteriormente se limpia, dejándola vacía*/
+        tabla.clear();
 
-void agendaCel::actualizarTabla() {
-    /*La tabla creada anteriormente se limpia, dejándola vacía*/
-    tabla.clear();
-
-    /*Se define nodoActual como un contacto puntero que apunta a primerNodo*/
-    contacto* nodoActual = primerNodo;
+        /*Se define nodoActual como un contacto puntero que apunta a primerNodo*/
+        contacto* nodoActual = primerNodo;
     
-    /*El ciclo se ejecuta mientras nodoActual no apunte a la nada*/
-    while (nodoActual != nullptr) {
+        /*El ciclo se ejecuta mientras nodoActual no apunte a la nada*/
+        while (nodoActual != nullptr) {
         
         
-        /*Se genera de nuevo la clave para la tabla*/
-        string clave = nodoActual->nombre + nodoActual->numero;
-
-        /* Se asgina la clave generada a una entrada en la tabla que
-        tendrá la información de nodoActual y se suigue con el siguiente
-        nodo*/
-        tabla[clave] = nodoActual;
-        nodoActual = nodoActual->siguiente;
-    }
-}
-
-
-/*Para eliminar un contacto se utiliza la siguiente función*/
-void agendaCel::eliminarContacto() {
-    
-    /*Se declaran las variables que no son punteros, se declara eliminarCloud como
-    falso por defecto para que no se elimine de la memoria si el usuario mete un valor
-    diferente de s */
-    bool eliminarCloud = false;
-    string nombreEliminar;
-    string nube;
-    /*Se le pide al usuario el nombre del contacto que quiere eliminar*/
-    cout << "Introduzca el nombre del contacto que quiere eliminar: ";
-    cin >> nombreEliminar;
-
-   /*Se le pide al usuario que introduzca s para borrar los datos de la nube*/
-    cout << "\nIntroduzca la letra s para borrar los datos de la nube";
-    cout << "\nIntroduzca otra letra para no borrar los dato de la nube";
-    cout << "\nIntroduzca la opción que desee: ";
-    cin >> nube;
-
-    /*Si el usuario introduce una s entonces eliminarCloud es true */
-    if (nube == "s"){
-        eliminarCloud = true;
-    }
-   
-
-
-    /*Se definen dos contacto punteros uno llamado nodoActual que 
-    se inicializa con la dirección de primerNodo, luego se declara
-    nodoAnterior que se inicializa como un nullptr */
-    contacto* nodoActual = primerNodo;
-    contacto* nodoAnterior = nullptr;
-
-    /*si nodo actual no apunta a la nada y el miembro nombre de nodoActual
-    contiene un nombre diferente del nombre a eliminar entonces*/
-    while (nodoActual != nullptr && nodoActual->nombre != nombreEliminar) {
-        
-        /*Se asigna la dirección de nodoActual a nodoAnterior
-        y se asigna la dirección del siguiente nodo al nodoActual*/
-        nodoAnterior = nodoActual;
-        nodoActual = nodoActual->siguiente;
-    }
-
-    /*Si nodoActual no apunta a la nada y se llega a esta parte del código es 
-    porque se encontró el nombre en la lista*/
-    if (nodoActual != nullptr) {
-        
-        /*Si se tiene una dirección en el nodoAnterior entonces
-        se enlaza con el nodo siguiente utilizando el operador flecha.*/
-        if (nodoAnterior != nullptr) {
-            nodoAnterior->siguiente = nodoActual->siguiente;
-        } else {
-            /*Si el nodo a eliminar es el primero entonces
-            se le asigna a primerNodo la dirección del siguiente*/
-            primerNodo = nodoActual->siguiente;
-        }
-
-        /*Si eliminarCloud es true entonces la clave del nodo actual
-        se genera y se borra el elemento de la tabla asociado con la clave*/
-        if (eliminarCloud) {
+            /*Se genera de nuevo la clave para la tabla*/
             string clave = nodoActual->nombre + nodoActual->numero;
-            tabla.erase(clave);
-            
-        }
 
-        /*Se libera la memoria del elemento*/
-        free(nodoActual);
-    }
-}
-
-
-void agendaCel::imprimirCloud() {
-    cout << "Datos cloud:" << endl;
-
-    /*Se itera sobre los elementos de la tabla utilizando pair
-    que declara que cada entrada de la tabla tiene 2 valores
-    el primero es la clave que es un string y el segundo es 
-    un contacto puntero*/
-    for (const pair<string, contacto*>& entrada : tabla) {
-        
-        /*Se le asigna el valor de entrada.first que vendría siendo la clave
-        asociada a cada elemento, a la variable claveElemento y además se 
-        asigna entrada.second a nodoActual, entrada.second corresponde
-        a la dirección a los datos asociados a la clave actual.*/
-        string claveElemento = entrada.first;
-        contacto* nodoActual = entrada.second;
-
-        /*Se imprime clave elemento*/
-        cout << "Clave: " << claveElemento << endl;
-
-        /*Si nodoActual no es un nullptr entonces se imprime la información del contacto
-        asociado que se saca del puntero entrada.second que se asignó a nodoActual y se asigna
-        la dirección del siguiente nodo a nodoActual*/
-        if (nodoActual != nullptr) {
-            cout << "Los datos del elemento asociado son los siguientes:" << endl;
-            cout << "    Nombre: " << nodoActual->nombre << ", Teléfono: " << nodoActual->numero << endl;
+            /* Se asgina la clave generada a una entrada en la tabla que
+            tendrá la información de nodoActual y se suigue con el siguiente
+            nodo*/
+            tabla[clave] = nodoActual;
             nodoActual = nodoActual->siguiente;
         }
     }
+
+
+/*Para eliminar un contacto se utiliza la siguiente función*/
+
+    /**
+    * @brief un método público que se encarga de eliminar un contacto buscando su nombre en la 
+    * lista enlazada, si el usuario digita la letra s también se elimina de la tabla.
+    * 
+    */
+    void agendaCel::eliminarContacto() {
+    
+        /*Se declaran las variables que no son punteros, se declara eliminarCloud como
+        falso por defecto para que no se elimine de la memoria si el usuario mete un valor
+        diferente de s */
+        bool eliminarCloud = false;
+        string nombreEliminar;
+        string nube;
+        /*Se le pide al usuario el nombre del contacto que quiere eliminar*/
+        cout << "Introduzca el nombre del contacto que quiere eliminar: ";
+        cin >> nombreEliminar;
+
+        /*Se le pide al usuario que introduzca s para borrar los datos de la nube*/
+        cout << "\nIntroduzca la letra s para borrar los datos de la nube";
+        cout << "\nIntroduzca otra letra para no borrar los dato de la nube";
+        cout << "\nIntroduzca la opción que desee: ";
+        cin >> nube;
+
+        /*Si el usuario introduce una s entonces eliminarCloud es true */
+        if (nube == "s"){
+            eliminarCloud = true;
+        }
+   
+
+
+        /*Se definen dos contacto punteros uno llamado nodoActual que 
+        se inicializa con la dirección de primerNodo, luego se declara
+        nodoAnterior que se inicializa como un nullptr */
+        contacto* nodoActual = primerNodo;
+        contacto* nodoAnterior = nullptr;
+
+        /*si nodo actual no apunta a la nada y el miembro nombre de nodoActual
+        contiene un nombre diferente del nombre a eliminar entonces*/
+        while (nodoActual != nullptr && nodoActual->nombre != nombreEliminar) {
+        
+            /*Se asigna la dirección de nodoActual a nodoAnterior
+            y se asigna la dirección del siguiente nodo al nodoActual*/
+            nodoAnterior = nodoActual;
+            nodoActual = nodoActual->siguiente;
+        }
+
+        /*Si nodoActual no apunta a la nada y se llega a esta parte del código es 
+        porque se encontró el nombre en la lista*/
+        if (nodoActual != nullptr) {
+        
+            /*Si se tiene una dirección en el nodoAnterior entonces
+            se enlaza con el nodo siguiente utilizando el operador flecha.*/
+            if (nodoAnterior != nullptr) {
+                nodoAnterior->siguiente = nodoActual->siguiente;
+            } else {
+                /*Si el nodo a eliminar es el primero entonces
+                se le asigna a primerNodo la dirección del siguiente*/
+                primerNodo = nodoActual->siguiente;
+            }
+
+            /*Si eliminarCloud es true entonces la clave del nodo actual
+            se genera y se borra el elemento de la tabla asociado con la clave*/
+            if (eliminarCloud) {
+                string clave = nodoActual->nombre + nodoActual->numero;
+                tabla.erase(clave);
+            
+        }
+
+            /*Se libera la memoria del elemento*/
+            free(nodoActual);
+    }
 }
+
+    /**
+    * @brief un método público que se encarga de imprimir la clave de la tabla 
+    * junto con el respectivo contacto al que apunta en la lista enlazada.
+    * 
+    */
+    void agendaCel::imprimirCloud() {
+        cout << "Datos cloud:" << endl;
+
+        /*Se itera sobre los elementos de la tabla utilizando pair
+        que declara que cada entrada de la tabla tiene 2 valores
+        el primero es la clave que es un string y el segundo es 
+        un contacto puntero*/
+        for (const pair<string, contacto*>& entrada : tabla) {
+        
+            /*Se le asigna el valor de entrada.first que vendría siendo la clave
+            asociada a cada elemento, a la variable claveElemento y además se 
+            asigna entrada.second a nodoActual, entrada.second corresponde
+            a la dirección a los datos asociados a la clave actual.*/
+            string claveElemento = entrada.first;
+            contacto* nodoActual = entrada.second;
+
+            /*Se imprime clave elemento*/
+            cout << "Clave: " << claveElemento << endl;
+
+            /*Si nodoActual no es un nullptr entonces se imprime la información del contacto
+            asociado que se saca del puntero entrada.second que se asignó a nodoActual y se asigna
+            la dirección del siguiente nodo a nodoActual*/
+            if (nodoActual != nullptr) {
+                cout << "Los datos del elemento asociado son los siguientes:" << endl;
+                cout << "    Nombre: " << nodoActual->nombre << ", Teléfono: " << nodoActual->numero << endl;
+                nodoActual = nodoActual->siguiente;
+            }
+        }
+    }

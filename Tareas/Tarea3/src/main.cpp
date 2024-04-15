@@ -1,3 +1,17 @@
+/**
+ * @file  main.cpp
+ * @brief Se utilizan los métodos de la clase agendaCel con el 
+ * objeto declarado, se declara la enumeración, el switch case y el do
+ * while para generar el ciclo básico del programa.
+ *
+ * @author Gabriel González Rivera B93432
+ * @date 15/4/2024
+ * 
+ * Licencia: MIT
+ */
+
+
+
 #include <iostream>
 #include "clasesYEstruct.hpp"
 using namespace std;
@@ -34,7 +48,8 @@ int main(){
         cout << "5. Salir" << endl;
         cin >> opcion;
 
-
+        /*Se declara un switch case para que las opciones se ejecuten dependiendo
+        de lo que el usuario digite.*/
         switch (opcion)
         {
         case AGREGAR_CONTACTO:
