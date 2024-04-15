@@ -238,3 +238,34 @@ void agendaCel::eliminarContacto() {
         free(nodoActual);
     }
 }
+
+
+void agendaCel::imprimirCloud() {
+    cout << "Datos cloud:" << endl;
+
+    /*Se itera sobre los elementos de la tabla utilizando pair
+    que declara que cada entrada de la tabla tiene 2 valores
+    el primero es la clave que es un string y el segundo es 
+    un contacto puntero*/
+    for (const pair<string, contacto*>& entrada : tabla) {
+        
+        /*Se le asigna el valor de entrada.first que vendría siendo la clave
+        asociada a cada elemento, a la variable claveElemento y además se 
+        asigna entrada.second a nodoActual, entrada.second corresponde
+        a la dirección a los datos asociados a la clave actual.*/
+        string claveElemento = entrada.first;
+        contacto* nodoActual = entrada.second;
+
+        /*Se imprime clave elemento*/
+        cout << "Clave: " << claveElemento << endl;
+
+        /*Si nodoActual no es un nullptr entonces se imprime la información del contacto
+        asociado que se saca del puntero entrada.second que se asignó a nodoActual y se asigna
+        la dirección del siguiente nodo a nodoActual*/
+        if (nodoActual != nullptr) {
+            cout << "Los datos del elemento asociado son los siguientes:" << endl;
+            cout << "    Nombre: " << nodoActual->nombre << ", Teléfono: " << nodoActual->numero << endl;
+            nodoActual = nodoActual->siguiente;
+        }
+    }
+}

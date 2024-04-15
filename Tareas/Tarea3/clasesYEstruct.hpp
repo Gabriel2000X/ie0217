@@ -50,6 +50,7 @@ public:
     void imprimirContactos(); 
     void actualizarTabla();
     void eliminarContacto();
+    void imprimirCloud();
 };
 
 

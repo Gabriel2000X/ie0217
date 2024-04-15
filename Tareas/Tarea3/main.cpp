@@ -58,6 +58,7 @@ int main(){
         case IMPRIMIR_DATOS: 
 
             cout << "Imprimiendo datos: \n" << endl;
+            miAgenda.imprimirCloud();
 
             break;
         
@@ -84,7 +85,7 @@ int main(){
 
     while(opcion != 5);
 
-    /*Aquí se liberará la memoria de las diferentes secciones*/
+ 
 
     return(0);
 
