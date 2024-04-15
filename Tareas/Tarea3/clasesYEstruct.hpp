@@ -49,6 +49,7 @@ public:
     void agregarContacto();
     void imprimirContactos(); 
     void actualizarTabla();
+    void eliminarContacto();
 };
 
 

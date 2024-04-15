@@ -168,3 +168,73 @@ void agendaCel::actualizarTabla() {
         nodoActual = nodoActual->siguiente;
     }
 }
+
+
+/*Para eliminar un contacto se utiliza la siguiente función*/
+void agendaCel::eliminarContacto() {
+    
+    /*Se declaran las variables que no son punteros, se declara eliminarCloud como
+    falso por defecto para que no se elimine de la memoria si el usuario mete un valor
+    diferente de s */
+    bool eliminarCloud = false;
+    string nombreEliminar;
+    string nube;
+    /*Se le pide al usuario el nombre del contacto que quiere eliminar*/
+    cout << "Introduzca el nombre del contacto que quiere eliminar: ";
+    cin >> nombreEliminar;
+
+   /*Se le pide al usuario que introduzca s para borrar los datos de la nube*/
+    cout << "\nIntroduzca la letra s para borrar los datos de la nube";
+    cout << "\nIntroduzca otra letra para no borrar los dato de la nube";
+    cout << "\nIntroduzca la opción que desee: ";
+    cin >> nube;
+
+    /*Si el usuario introduce una s entonces eliminarCloud es true */
+    if (nube == "s"){
+        eliminarCloud = true;
+    }
+   
+
+
+    /*Se definen dos contacto punteros uno llamado nodoActual que 
+    se inicializa con la dirección de primerNodo, luego se declara
+    nodoAnterior que se inicializa como un nullptr */
+    contacto* nodoActual = primerNodo;
+    contacto* nodoAnterior = nullptr;
+
+    /*si nodo actual no apunta a la nada y el miembro nombre de nodoActual
+    contiene un nombre diferente del nombre a eliminar entonces*/
+    while (nodoActual != nullptr && nodoActual->nombre != nombreEliminar) {
+        
+        /*Se asigna la dirección de nodoActual a nodoAnterior
+        y se asigna la dirección del siguiente nodo al nodoActual*/
+        nodoAnterior = nodoActual;
+        nodoActual = nodoActual->siguiente;
+    }
+
+    /*Si nodoActual no apunta a la nada y se llega a esta parte del código es 
+    porque se encontró el nombre en la lista*/
+    if (nodoActual != nullptr) {
+        
+        /*Si se tiene una dirección en el nodoAnterior entonces
+        se enlaza con el nodo siguiente utilizando el operador flecha.*/
+        if (nodoAnterior != nullptr) {
+            nodoAnterior->siguiente = nodoActual->siguiente;
+        } else {
+            /*Si el nodo a eliminar es el primero entonces
+            se le asigna a primerNodo la dirección del siguiente*/
+            primerNodo = nodoActual->siguiente;
+        }
+
+        /*Si eliminarCloud es true entonces la clave del nodo actual
+        se genera y se borra el elemento de la tabla asociado con la clave*/
+        if (eliminarCloud) {
+            string clave = nodoActual->nombre + nodoActual->numero;
+            tabla.erase(clave);
+            
+        }
+
+        /*Se libera la memoria del elemento*/
+        free(nodoActual);
+    }
+}

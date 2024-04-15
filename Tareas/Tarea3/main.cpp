@@ -49,7 +49,8 @@ int main(){
             break;
         
         case ELIMINAR_CONTACTO:
-
+            miAgenda.eliminarContacto();
+            miAgenda.actualizarTabla();
             cout << "Eliminando contacto\n" << endl;
 
             break;
