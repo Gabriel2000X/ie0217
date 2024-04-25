@@ -29,10 +29,16 @@ template <class T> class Number {
 
 
 int main() {
-// create object with int type 
+
+/*Se crea un objeto Numero tipo entero llamado numberInt y 
+se le pasa un 7 como argumento al constructor*/
 Number<int> numberInt(7);
-// create object with double type 
+
+/*Se crea un objeto Numero tipo entero llamado numberDouble y 
+se le pasa un 7.7 como argumento al constructor*/ 
 Number<double> numberDouble (7.7);
+
+/*Se imprimen los numeros guardados en num con el método getNum de ambos*/
 cout << "int Number = " << numberInt.getNum() << endl;
 cout << "double Number = " << numberDouble.getNum() << endl;
 return 0;
