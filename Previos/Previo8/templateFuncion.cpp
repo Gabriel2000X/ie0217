@@ -22,12 +22,12 @@ double result2;
 /*se guarda la suma de dos enteros en result1, pasandole
 2 enteros al template y se imprime el resultadp*/ 
 result1= add<int>(2, 3);
-cout << result1 << endl;
+cout << "2 + 3 = "<< result1 << endl;
 
  /*Se guarda la suma de dos doubles en result2 pasandole
  2 dobules al template y se imprime el resultado*/
 result2 = add<double> (2.2, 3.3); 
-cout << result2 << endl;
+cout << "2.2 + 3.3 = "<< result2 << endl;
 
 /*Se demuestra que se le pueden pasar diferentes tipos de
 datos a un template y este opera de igual manera mientras
