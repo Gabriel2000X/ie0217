@@ -1,4 +1,5 @@
 #include <iostream>
+#include "clases.hpp"
 using namespace std;
 
 
@@ -20,9 +21,17 @@ enum opciones  {
 
 int main(){ 
 
-    
 
+    /*Se declaran las intancias de clases*/
+    ValidadorDeEntrada validador;
+    
+    /*Se declaran las variables necesarias*/
+    
+    /*Se utiliza int opcion para guardar el número escogido en el menú, en tipoDeDato se guarda el tipo de 
+    dato deseado que introduce el usuario y en datoValidado se guarda el valor devuelto por validarTipoDato*/
     int opcion;
+    std::string tipoDeDato;
+    std::string datoValidado;
 
     /*Se usa un do while para que siempre se ejecute una vez el ciclo*/
     do{ 
@@ -52,8 +61,30 @@ int main(){
             break;
         
         case TIPO_DATOS:
-            cout << "Ingrese el tipo de datos deseado\n" << endl;
 
+            /*Se le pide la usuario introducir el tipo de valor deseado
+            y se guarda en tipoDeDato*/
+            cout << "\n Ingrese el tipo de datos deseado\n" << endl;
+            cout << "Formatos permitidos: enteros, flotantes y complejos\n" << endl;
+            
+            cin >> tipoDeDato;
+
+            /*Se usa un bloque try para usar el método validarTipoDato 
+            y guardar su valor en datoValidado y poder detectar si 
+            se lanza una excepción*/
+            try{ 
+
+                datoValidado = validador.validarTipoDato(tipoDeDato);
+
+            }
+            
+            /*Se atrapa la excepción con un bloque catch y se usa e.what para obtener 
+            la descripción del error especificada en throw */
+            catch(const std::invalid_argument& e) {
+                std::cerr << "Error: " << e.what() << '\n';
+            }
+
+            cout << datoValidado << endl;
             break;
 
         case OPERACION_DESEADA: 
