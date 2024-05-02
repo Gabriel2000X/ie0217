@@ -31,8 +31,12 @@ int main(){
     dato deseado que introduce el usuario el por defecto es enteros y en datoValidado se guarda el valor 
     devuelto por validarTipoDato*/
     int opcion;
-    std::string tipoDeDato = "enteros";
-    std::string datoValidado;
+    std::string tipoDeDato;
+    std::string datoValidado = "int";
+    int filasUno;
+    int columnasUno;
+    int filasDos;
+    int columnasDos;
 
     /*Se usa un do while para que siempre se ejecute una vez el ciclo*/
     do{ 
@@ -54,8 +58,78 @@ int main(){
         case TAMANO_VALORES:
             
 
+            /*Se ingresa y verifica la validez del valor de las filas de la primera 
+            matriz*/
+            cout << "\n Ingrese la cantidad de filas de la primera matriz: ";
+            cin >> filasUno;
+
+            try{ 
+                validador.validarDimensiones(filasUno);       
+            }
+
+            catch (const char* msg){
+            cout << msg << endl;
+            break;
+            }
+
+            /*Se ingresa y verifica la validez del valor de las columnas de la primera 
+            matriz*/
+            cout << "\n Ingrese la cantidad de columnas de la primera matriz: ";
+            cin >> columnasUno;
+
+            try{ 
+                    validador.validarDimensiones(columnasUno);        
+            }
+                        
+            catch (const char* msg){
+            cout << msg << endl;
+            break;
+            }
+
+
+            /*Prueba*/
+            try{ 
+                    Matriz<int> matrizUno(filasUno, columnasUno);        
+            }
+                        
+            catch (const std::invalid_argument& e){
+            std::cerr << "Error: " << e.what() << '\n';
+            break;
+            }
+
+
+
+            /*Se ingresa y verifica la validez del valor de las filas de la segunda 
+            matriz*/
+            cout << "\n Ingrese la cantidad de filas de la segunda matriz: ";
+            cin >> filasDos;
+
+            try{ 
+                    validador.validarDimensiones(filasDos);        
+            }
+                        
+            catch (const char* msg){
+            cout << msg << endl;
+            break;
+            }
             
-            cout << "Ingrese los datos solicitados\n" << endl;
+            
+            /*Se ingresa y verifica la validez del valor de las columnas de la segunda 
+            matriz*/
+            cout << "\n Ingrese la cantidad de columnas de la segunda matriz: ";
+            cin >> columnasDos;
+
+            try{ 
+                    validador.validarDimensiones(columnasDos);        
+            }
+                        
+            catch (const char* msg){
+            cout << msg << endl;
+            break;
+            }
+            
+           
+            
 
 
 
@@ -65,8 +139,9 @@ int main(){
 
             /*Se le pide la usuario introducir el tipo de valor deseado
             y se guarda en tipoDeDato*/
-            cout << "\n Ingrese el tipo de datos deseado\n" << endl;
-            cout << "Formatos permitidos: enteros, flotantes y complejos\n" << endl;
+            cout << "\n Formatos permitidos: enteros, flotantes y complejos\n" << endl;
+            cout << "Ingrese el tipo de datos deseado: ";
+            
             
             cin >> tipoDeDato;
 

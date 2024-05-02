@@ -39,9 +39,16 @@ void ValidadorDeEntrada::validarDimensiones(int tamano){
 
         /*Se utiliza un throw para lanzar una excepción si el valor de tamano está fuera del rango
         permitido*/
-          throw std::out_of_range("El tamaño de la matriz no puede contener valores negativos o cero");  
+          throw ("\nEl tamaño de la matriz no puede contener valores negativos o cero\n");  
     } 
         
 
 
 }
+
+
+
+
+
+
+
