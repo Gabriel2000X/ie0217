@@ -28,9 +28,10 @@ int main(){
     /*Se declaran las variables necesarias*/
     
     /*Se utiliza int opcion para guardar el número escogido en el menú, en tipoDeDato se guarda el tipo de 
-    dato deseado que introduce el usuario y en datoValidado se guarda el valor devuelto por validarTipoDato*/
+    dato deseado que introduce el usuario el por defecto es enteros y en datoValidado se guarda el valor 
+    devuelto por validarTipoDato*/
     int opcion;
-    std::string tipoDeDato;
+    std::string tipoDeDato = "enteros";
     std::string datoValidado;
 
     /*Se usa un do while para que siempre se ejecute una vez el ciclo*/

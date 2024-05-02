@@ -10,7 +10,7 @@ public:
 
 
 std::string validarTipoDato(std::string input);
-
+void validarDimensiones(int tamano);
 
 
 

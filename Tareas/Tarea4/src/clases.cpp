@@ -29,3 +29,19 @@ std::string ValidadorDeEntrada::validarTipoDato(std::string input){
 
 
 }
+
+/*Se defien el método validarDimensiones, este debe un entero*/
+void ValidadorDeEntrada::validarDimensiones(int tamano){ 
+   
+    /*Se utiliza if para lanzar la excepción siempre que algún valor involucrado en el tamaño
+    de la matriz tenga un valor igual a cero o menor*/
+    if (tamano  <= 0 ) {
+
+        /*Se utiliza un throw para lanzar una excepción si el valor de tamano está fuera del rango
+        permitido*/
+          throw std::out_of_range("El tamaño de la matriz no puede contener valores negativos o cero");  
+    } 
+        
+
+
+}
