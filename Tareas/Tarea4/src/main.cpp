@@ -59,7 +59,9 @@ int main(){
             
 
             /*Se ingresa y verifica la validez del valor de las filas de la primera 
-            matriz*/
+            matriz mediante la utilización del método validarDimensiones de la clase ValidadorDeEntrada
+            en un bloque try, si se lanza una excepción entonces se maneja mediante el bloque catch
+            que recibe el texto generado por la excepción y lo imprime.*/
             cout << "\n Ingrese la cantidad de filas de la primera matriz: ";
             cin >> filasUno;
 
@@ -73,7 +75,9 @@ int main(){
             }
 
             /*Se ingresa y verifica la validez del valor de las columnas de la primera 
-            matriz*/
+            matriz mediante la utilización del método validarDimensiones de la clase ValidadorDeEntrada
+            en un bloque try, si se lanza una excepción entonces se maneja mediante el bloque catch
+            que recibe el texto generado por la excepción y lo imprime.*/
             cout << "\n Ingrese la cantidad de columnas de la primera matriz: ";
             cin >> columnasUno;
 
@@ -87,10 +91,27 @@ int main(){
             }
 
 
-            /*Prueba*/
+            /*Se declara una instancia de Matriz de acuerdo con el tipo introducido por el usuario
+            utilizando bloques if y else if, esto se hace dentro de un bloque try, esto porque se 
+            necesita que si setDimensiones dispara una excepción entonces esta se maneje por el 
+            bloque catch siguiente, siempre se activa setDimensiones porque está dentro del 
+            contructor, en realidad no debería disparar excepciones nunca debido a que el método
+            validarDimensiones verifica de antemano que no se introduzcan dimensiones inválidas*/
             try{ 
-                    Matriz<int> matrizUno(filasUno, columnasUno);        
-            }
+
+                if (datoValidado == "int"){
+                    Matriz<int> matrizUno(filasUno, columnasUno);    
+                }    
+
+                else if  (datoValidado == "float"){
+                    Matriz<float> matrizUno(filasUno, columnasUno);    
+                }    
+
+                else if  (datoValidado ==  "std::complex"){
+                    Matriz<std::complex<float>> matrizUno(filasUno, columnasUno);    
+                }  
+            }   
+           
                         
             catch (const std::invalid_argument& e){
             std::cerr << "Error: " << e.what() << '\n';
@@ -100,7 +121,9 @@ int main(){
 
 
             /*Se ingresa y verifica la validez del valor de las filas de la segunda 
-            matriz*/
+            matriz mediante la utilización del método validarDimensiones de la clase ValidadorDeEntrada
+            en un bloque try, si se lanza una excepción entonces se maneja mediante el bloque catch
+            que recibe el texto generado por la excepción y lo imprime.*/
             cout << "\n Ingrese la cantidad de filas de la segunda matriz: ";
             cin >> filasDos;
 
@@ -115,7 +138,9 @@ int main(){
             
             
             /*Se ingresa y verifica la validez del valor de las columnas de la segunda 
-            matriz*/
+            matriz mediante la utilización del método validarDimensiones de la clase ValidadorDeEntrada
+            en un bloque try, si se lanza una excepción entonces se maneja mediante el bloque catch
+            que recibe el texto generado por la excepción y lo imprime.*/
             cout << "\n Ingrese la cantidad de columnas de la segunda matriz: ";
             cin >> columnasDos;
 
@@ -128,9 +153,31 @@ int main(){
             break;
             }
             
-           
-            
+            /*Se declara una instancia de Matriz de acuerdo con el tipo introducido por el usuario
+            utilizando bloques if y else if, esto se hace dentro de un bloque try, esto porque se 
+            necesita que si setDimensiones dispara una excepción entonces esta se maneje por el 
+            bloque catch siguiente, siempre se activa setDimensiones porque está dentro del 
+            contructor, en realidad no debería disparar excepciones nunca debido a que el método
+            validarDimensiones verifica de antemano que no se introduzcan dimensiones inválidas*/
+            try{ 
 
+                if (datoValidado == "int"){
+                    Matriz<int> matrizDos(filasDos, columnasDos);    
+                }    
+
+                else if  (datoValidado == "float"){
+                    Matriz<float> matrizDos(filasDos, columnasDos);    
+                }    
+
+                else if  (datoValidado ==  "std::complex"){
+                    Matriz<std::complex<float>> matrizDos(filasDos, columnasDos);    
+                }  
+            }   
+           
+             catch (const std::invalid_argument& e){
+                std::cerr << "Error: " << e.what() << '\n';
+                break;
+            }
 
 
             break;
