@@ -100,15 +100,16 @@ int main(){
             try{ 
 
                 if (datoValidado == "int"){
-                    Matriz<int> matrizUno(filasUno, columnasUno);    
+                    Matriz<int> matrizUno(filasUno, columnasUno, datoValidado);    
+                    
                 }    
 
                 else if  (datoValidado == "float"){
-                    Matriz<float> matrizUno(filasUno, columnasUno);    
+                    Matriz<float> matrizUno(filasUno, columnasUno, datoValidado);    
                 }    
 
                 else if  (datoValidado ==  "std::complex"){
-                    Matriz<std::complex<float>> matrizUno(filasUno, columnasUno);    
+                    Matriz<std::complex<float>> matrizUno(filasUno, columnasUno, datoValidado);    
                 }  
             }   
            
@@ -162,15 +163,15 @@ int main(){
             try{ 
 
                 if (datoValidado == "int"){
-                    Matriz<int> matrizDos(filasDos, columnasDos);    
+                    Matriz<int> matrizDos(filasDos, columnasDos, datoValidado);    
                 }    
 
                 else if  (datoValidado == "float"){
-                    Matriz<float> matrizDos(filasDos, columnasDos);    
+                    Matriz<float> matrizDos(filasDos, columnasDos, datoValidado);    
                 }    
 
                 else if  (datoValidado ==  "std::complex"){
-                    Matriz<std::complex<float>> matrizDos(filasDos, columnasDos);    
+                    Matriz<std::complex<float>> matrizDos(filasDos, columnasDos, datoValidado);    
                 }  
             }   
            
