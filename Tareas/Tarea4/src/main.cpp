@@ -29,6 +29,12 @@ Matriz<int> matrizDosInt;
 Matriz<float> matrizDosFloat;
 Matriz<std::complex<float>> matrizDosComplex;
 
+
+/**/
+
+OperacionesBasicas<int> operadorEntero;
+OperacionesBasicas<float> operadorFlotante;
+OperacionesBasicas<std::complex<float>> operadorComplejo;
 int main(){ 
 
 
@@ -47,7 +53,7 @@ int main(){
     int columnasUno;
     int filasDos;
     int columnasDos;
-  
+    std::string Operador = "+";
     
    
     
@@ -286,7 +292,30 @@ int main(){
 
             cout << "Ejecutando la operación deseada \n" << endl;
             
+            if (datoValidado == "int"){ 
 
+                    try{
+                        
+                        matrizUnoInt + matrizDosInt;
+                    }
+                   catch(const std::invalid_argument& e) {
+                        std::cerr << "Error: " << e.what() << '\n';
+                    }
+                    
+            } 
+
+            else if (datoValidado == "std::complex"){ 
+
+                    try{
+                        
+                        operadorComplejo.sumar(matrizUnoComplex, matrizDosComplex);
+                    }
+                   catch(const std::invalid_argument& e) {
+                        std::cerr << "Error: " << e.what() << '\n';
+                    }
+                    
+            } 
+            
             break;
 
             
