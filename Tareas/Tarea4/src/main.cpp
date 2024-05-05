@@ -1,5 +1,6 @@
 #include <iostream>
 #include "clases.hpp"
+#include "funciones.hpp"
 using namespace std;
 
 
@@ -53,7 +54,7 @@ int main(){
     int columnasUno;
     int filasDos;
     int columnasDos;
-    std::string Operador = "+";
+    std::string operadorValidado = "+";
     
    
     
@@ -230,6 +231,7 @@ int main(){
             la descripción del error especificada en throw */
             catch(const std::invalid_argument& e) {
                 std::cerr << "Error: " << e.what() << '\n';
+                break;
             }
 
             cout << datoValidado << endl;
@@ -237,7 +239,24 @@ int main(){
 
         case OPERACION_DESEADA: 
 
-            cout << "Imprimiendo datos: \n" << endl;
+            /*Se utiliza la función operadorValidado para 
+            que el usuario pueda introducir el operador que 
+            prefiera*/
+
+            /* Se usa un bloque try y un bloque catch para poder
+            manejar las excepciones producidad si el usuario 
+            introduce un valor no válido*/
+            try
+            {
+                operadorValidado = elegirOperacion();
+            }
+            catch(const std::invalid_argument& e) {
+                std::cerr << "Error: " << e.what() << '\n';
+                cout << endl;
+                break;
+            }
+            
+            
             
 
             break;
