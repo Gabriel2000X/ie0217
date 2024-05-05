@@ -311,7 +311,17 @@ int main(){
 
             cout << "Ejecutando la operación deseada \n" << endl;
             
-            if (datoValidado == "int"){ 
+            /* Si el operadorValidado es + se ejecuta uno de los
+            siguientes bloques*/
+            if (operadorValidado == "+"){  
+
+                /*Se utilizan condicionales if y else if para ejecutar alguno 
+                de los bloques siguuientes que utilizan la sobrecarga del 
+                operador + para sumar matrices, si se dispara alguna excepción
+                del tipo invalid_argument es atrapada por el bloque catch,
+                este comportamiento se repite en los siguientes condicionales
+                pero para diferentes tipos de datos*/
+                if (datoValidado == "int"){ 
 
                     try{
                         
@@ -319,11 +329,28 @@ int main(){
                     }
                    catch(const std::invalid_argument& e) {
                         std::cerr << "Error: " << e.what() << '\n';
+                        break;
                     }
                     
-            } 
+                } 
+                
+                
 
-            else if (datoValidado == "std::complex"){ 
+                else if (datoValidado == "float"){ 
+
+                    try{
+                        
+                        matrizUnoFloat + matrizDosFloat;
+                    }
+                        
+                    catch(const std::invalid_argument& e) {
+                        std::cerr << "Error: " << e.what() << '\n';
+                        break;
+                    }
+                    
+                } 
+
+                else if (datoValidado == "std::complex"){ 
 
                     try{
                         
@@ -331,9 +358,13 @@ int main(){
                     }
                    catch(const std::invalid_argument& e) {
                         std::cerr << "Error: " << e.what() << '\n';
+                        break;
                     }
                     
-            } 
+                } 
+            
+            
+            }
             
             break;
 

@@ -236,8 +236,15 @@ public:
     /*Se declara la sobrecarga del operador +*/
     void operator+(Matriz<T>& segundaMatriz) {
         operaciones.sumar(*this, segundaMatriz);
-}
+    }
 
+     /*Se declara la sobrecarga del operador -*/
+    void operator-(Matriz<T>& segundaMatriz) {
+        operaciones.restar(*this, segundaMatriz);
+    }
+
+
+    
 };
 
 /*Se declara la clase validación de operaciones, como debe contener
@@ -286,98 +293,98 @@ class OperacionesBasicas{
         } 
 
 
-    /*Se declara el método sumar que suma dos matrices recibidas*/
-    void sumar(Matriz<T>& matrizA, Matriz<T>& matrizB) {
+        /*Se declara el método sumar que suma dos matrices recibidas*/
+        void sumar(Matriz<T>& matrizA, Matriz<T>& matrizB) {
     
-    /*Se incluye el método validarSumaResta para no realizar sumas
-    sin haber validado antes*/
-    validarSumaResta(matrizA, matrizB);
+            /*Se incluye el método validarSumaResta para no realizar sumas
+            sin haber validado antes*/
+            validarSumaResta(matrizA, matrizB);
 
-    /*Se declara una instancia de Matriz llamada resultado con el 
-    constructor básico de Matriz*/
-    Matriz<T> resultado;
+            /*Se declara una instancia de Matriz llamada resultado con el 
+            constructor básico de Matriz*/
+            Matriz<T> resultado;
 
-    /*Se le asigna de manera manual a resultado los atributos de la 
-    matriz a para que tenga dimensiones iguales*/
-    resultado.filasMatriz = matrizA.filasMatriz;
-    resultado.columnasMatriz = matrizA.columnasMatriz;
-    resultado.tipo = matrizA.tipo;
+            /*Se le asigna de manera manual a resultado los atributos de la 
+            matriz a para que tenga dimensiones iguales*/
+            resultado.filasMatriz = matrizA.filasMatriz;
+            resultado.columnasMatriz = matrizA.columnasMatriz;
+            resultado.tipo = matrizA.tipo;
 
-    /*Se itera con un ciclo for sobre las filas de matrizA, continua 
-    iterando mientras i sea menor que el tamaño de matrizGenerada*/
-    for (size_t i = 0; i < matrizA.matrizGenerada.size(); ++i) {
+            /*Se itera con un ciclo for sobre las filas de matrizA, continua 
+            iterando mientras i sea menor que el tamaño de matrizGenerada*/
+            for (size_t i = 0; i < matrizA.matrizGenerada.size(); ++i) {
         
-        /*Se crea una instancia del vector filaResultado*/
-        std::vector<T> filaResultado;
+                /*Se crea una instancia del vector filaResultado*/
+                std::vector<T> filaResultado;
 
-        /*se itera sobre cada entrada de los vectores de las matrices, 
-        iterando desde cero y aumentando mientras i sea menor que el tamaño
-        de matrizGenerada*/
-        for (size_t j = 0; j < matrizA.matrizGenerada[i].size(); ++j) {
+                /*se itera sobre cada entrada de los vectores de las matrices, 
+                iterando desde cero y aumentando mientras i sea menor que el tamaño
+                de matrizGenerada*/
+                for (size_t j = 0; j < matrizA.matrizGenerada[i].size(); ++j) {
             
-            /*Se suma cada entrada de las matrices y se añade a filaResultado mediante el uso de
-            push_back */
-            filaResultado.push_back(matrizA.matrizGenerada[i][j] + matrizB.matrizGenerada[i][j]);
+                    /*Se suma cada entrada de las matrices y se añade a filaResultado mediante el uso de
+                    push_back */
+                    filaResultado.push_back(matrizA.matrizGenerada[i][j] + matrizB.matrizGenerada[i][j]);
+                }
+                /*Se introduce todo el vector filaResultado en resultado*/
+                resultado.matrizGenerada.push_back(filaResultado);
+            }
+
+            /*Se imprime la matriz resultado utilizando un método similar a imprimirMatriz*/
+            for (const auto& filaResultado : resultado.matrizGenerada) {
+                for (const auto& entrada : filaResultado) {
+                    std::cout << entrada << " ";
+                }
+                std::cout << std::endl;
+            }
         }
-        /*Se introduce todo el vector filaResultado en resultado*/
-        resultado.matrizGenerada.push_back(filaResultado);
-    }
-
-    /*Se imprime la matriz resultado utilizando un método similar a imprimirMatriz*/
-    for (const auto& filaResultado : resultado.matrizGenerada) {
-        for (const auto& entrada : filaResultado) {
-            std::cout << entrada << " ";
-        }
-        std::cout << std::endl;
-    }
-}
 
 
-    /*Se declara el método restar que resta dos matrices recibidas*/
-    void restar(Matriz<T>& matrizA, Matriz<T>& matrizB) {
+        /*Se declara el método restar que resta dos matrices recibidas*/
+        void restar(Matriz<T>& matrizA, Matriz<T>& matrizB) {
     
-    /*Se incluye el método validarSumaResta para no realizar sumas
-    sin haber validado antes*/
-    validarSumaResta(matrizA, matrizB);
+            /*Se incluye el método validarSumaResta para no realizar sumas
+            sin haber validado antes*/
+            validarSumaResta(matrizA, matrizB);
 
-    /*Se declara una instancia de Matriz llamada resultado con el 
-    constructor básico de Matriz*/
-    Matriz<T> resultado;
+            /*Se declara una instancia de Matriz llamada resultado con el 
+            constructor básico de Matriz*/
+            Matriz<T> resultado;
 
-    /*Se le asigna de manera manual a resultado los atributos de la 
-    matriz a para que tenga dimensiones iguales*/
-    resultado.filasMatriz = matrizA.filasMatriz;
-    resultado.columnasMatriz = matrizA.columnasMatriz;
-    resultado.tipo = matrizA.tipo;
+            /*Se le asigna de manera manual a resultado los atributos de la 
+            matriz a para que tenga dimensiones iguales*/
+            resultado.filasMatriz = matrizA.filasMatriz;
+            resultado.columnasMatriz = matrizA.columnasMatriz;
+            resultado.tipo = matrizA.tipo;
 
-    /*Se itera con un ciclo for sobre las filas de matrizA, continua 
-    iterando mientras i sea menor que el tamaño de matrizGenerada*/
-    for (size_t i = 0; i < matrizA.matrizGenerada.size(); ++i) {
-        
-        /*Se crea una instancia del vector filaResultado*/
-        std::vector<T> filaResultado;
+            /*Se itera con un ciclo for sobre las filas de matrizA, continua 
+            iterando mientras i sea menor que el tamaño de matrizGenerada*/
+            for (size_t i = 0; i < matrizA.matrizGenerada.size(); ++i) {
+                
+                /*Se crea una instancia del vector filaResultado*/
+                std::vector<T> filaResultado;
 
-        /*se itera sobre cada entrada de los vectores de las matrices, 
-        iterando desde cero y aumentando mientras i sea menor que el tamaño
-        de matrizGenerada*/
-        for (size_t j = 0; j < matrizA.matrizGenerada[i].size(); ++j) {
+                /*se itera sobre cada entrada de los vectores de las matrices, 
+                iterando desde cero y aumentando mientras i sea menor que el tamaño
+                de matrizGenerada*/
+                for (size_t j = 0; j < matrizA.matrizGenerada[i].size(); ++j) {
             
-            /*Se suma cada entrada de las matrices y se añade a filaResultado mediante el uso de
-            push_back */
-            filaResultado.push_back(matrizA.matrizGenerada[i][j] - matrizB.matrizGenerada[i][j]);
-        }
-        /*Se introduce todo el vector filaResultado en resultado*/
-        resultado.matrizGenerada.push_back(filaResultado);
-    }
+                    /*Se suma cada entrada de las matrices y se añade a filaResultado mediante el uso de
+                    push_back */
+                    filaResultado.push_back(matrizA.matrizGenerada[i][j] - matrizB.matrizGenerada[i][j]);
+                }
+                /*Se introduce todo el vector filaResultado en resultado*/
+                resultado.matrizGenerada.push_back(filaResultado);
+            }
 
-    /*Se imprime la matriz resultado utilizando un método similar a imprimirMatriz*/
-    for (const auto& filaResultado : resultado.matrizGenerada) {
-        for (const auto& entrada : filaResultado) {
-            std::cout << entrada << " ";
+            /*Se imprime la matriz resultado utilizando un método similar a imprimirMatriz*/
+            for (const auto& filaResultado : resultado.matrizGenerada) {
+                for (const auto& entrada : filaResultado) {
+                    std::cout << entrada << " ";
+                }
+                std::cout << std::endl;
+            }
         }
-        std::cout << std::endl;
-    }
-}
 
 
 }; 
