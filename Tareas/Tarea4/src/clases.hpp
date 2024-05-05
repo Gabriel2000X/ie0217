@@ -29,13 +29,22 @@ int filasMatriz;
 int columnasMatriz;
 std::string tipo;
 
+
 public:
-    /*Se declara el constructor de la clase Matriz que recibe los valores de
+
+    /*Se declara un primer constructor vacío para poder declarar la clase antes de los 
+    bloques condicionales usados en el main, esto permitirá conservar los cambios hechos 
+    dentro de los condicionales y utilizar las matrices luego de llenarlas*/
+    Matriz(){}
+
+    /*Se declara un segundo constructor de la clase Matriz que recibe los valores de
     las filas y columnas de la matriz, además contiene los métodos setDimensiones y llenarMatriz*/
     Matriz(int filas, int columnas, std::string tipoString) : filasMatriz(filas), columnasMatriz(columnas), tipo(tipoString){ 
 
     setDimensiones(filasMatriz, columnasMatriz);
     llenarMatriz();
+    
+    
 
     }
 
@@ -192,4 +201,27 @@ public:
     }
 
     
+    void imprimirMatriz() const {
+        /*Se utiliza un bucle for para recorrer las filas de la matriz, 
+        lo que es equivalente a recorrer los vectores internos al vector
+        principal*/
+        for (const auto& filasMatriz : matrizGenerada) {
+            
+            /*Se utiliza otro ciclo for para recorrer
+            cada entrada de las filas de la matriz*/
+            for (const auto& entrada : filasMatriz) {
+                /*Se imprime la entrada actual y un espacio
+                para que las entradas salgan separadas*/
+                std::cout << entrada << " ";
+            }
+            /*Se imprime un salto de línea al finalizar
+            el for interno.*/
+            std::cout << std::endl; 
+        }
+    }
+
+
+
+
 };
+

@@ -18,6 +18,16 @@ enum opciones  {
 
 }; 
 
+/*Se declaran diferentes instancias de la clase Matriz según el tipo necesario usando 
+el constructor vacío de la clase Matriz, esto para que cuando se llenen de valores
+usando condicionales más adelante se puedan utilizar esos cambios fuera de los 
+condicionales.*/
+Matriz<int> matrizUnoInt;
+Matriz<float> matrizUnoFloat;
+Matriz<std::complex<float>> matrizUnoComplex;
+Matriz<int> matrizDosInt;
+Matriz<float> matrizDosFloat;
+Matriz<std::complex<float>> matrizDosComplex;
 
 int main(){ 
 
@@ -37,6 +47,10 @@ int main(){
     int columnasUno;
     int filasDos;
     int columnasDos;
+  
+    
+   
+    
 
     /*Se usa un do while para que siempre se ejecute una vez el ciclo*/
     do{ 
@@ -91,25 +105,29 @@ int main(){
             }
 
 
-            /*Se declara una instancia de Matriz de acuerdo con el tipo introducido por el usuario
+            /*Se utiliza una instancia de Matriz de acuerdo con el tipo introducido por el usuario
             utilizando bloques if y else if, esto se hace dentro de un bloque try, esto porque se 
             necesita que si setDimensiones dispara una excepción entonces esta se maneje por el 
             bloque catch siguiente, siempre se activa setDimensiones porque está dentro del 
             contructor, en realidad no debería disparar excepciones nunca debido a que el método
             validarDimensiones verifica de antemano que no se introduzcan dimensiones inválidas*/
+
+
+
             try{ 
 
                 if (datoValidado == "int"){
-                    Matriz<int> matrizUno(filasUno, columnasUno, datoValidado);    
+                    
+                    matrizUnoInt = Matriz<int>(filasUno, columnasUno, datoValidado);    
                     
                 }    
 
                 else if  (datoValidado == "float"){
-                    Matriz<float> matrizUno(filasUno, columnasUno, datoValidado);    
+                    matrizUnoFloat = Matriz<float>(filasUno, columnasUno, datoValidado);    
                 }    
 
                 else if  (datoValidado ==  "std::complex"){
-                    Matriz<std::complex<float>> matrizUno(filasUno, columnasUno, datoValidado);    
+                   matrizUnoComplex = Matriz<std::complex<float>>(filasUno, columnasUno, datoValidado);    
                 }  
             }   
            
@@ -154,7 +172,7 @@ int main(){
             break;
             }
             
-            /*Se declara una instancia de Matriz de acuerdo con el tipo introducido por el usuario
+            /*Se utiliza una instancia de Matriz de acuerdo con el tipo introducido por el usuario
             utilizando bloques if y else if, esto se hace dentro de un bloque try, esto porque se 
             necesita que si setDimensiones dispara una excepción entonces esta se maneje por el 
             bloque catch siguiente, siempre se activa setDimensiones porque está dentro del 
@@ -163,15 +181,15 @@ int main(){
             try{ 
 
                 if (datoValidado == "int"){
-                    Matriz<int> matrizDos(filasDos, columnasDos, datoValidado);    
+                    matrizDosInt = Matriz<int>(filasDos, columnasDos, datoValidado);    
                 }    
 
                 else if  (datoValidado == "float"){
-                    Matriz<float> matrizDos(filasDos, columnasDos, datoValidado);    
+                    matrizDosFloat = Matriz<float>(filasDos, columnasDos, datoValidado);    
                 }    
 
                 else if  (datoValidado ==  "std::complex"){
-                    Matriz<std::complex<float>> matrizDos(filasDos, columnasDos, datoValidado);    
+                    matrizDosComplex = Matriz<std::complex<float>>(filasDos, columnasDos, datoValidado);    
                 }  
             }   
            
@@ -227,7 +245,38 @@ int main(){
 
         case MOSTRAR_MATRICES:
 
-            cout << "Imprimiendo matrices \n" << endl;
+            cout << "Imprimiendo matrices " << endl;
+            /* se utilizan condicionales para imprimir las matrices 
+            del formato que se está utilizando únicamente, se imprimen
+            mediante el método imprimirMatriz de la clase Matriz.*/
+            if (datoValidado == "int"){ 
+
+                cout << "Primera matriz " << endl;
+                matrizUnoInt.imprimirMatriz();
+                cout << endl;
+                cout << "Segunda matriz " << endl;
+                matrizDosInt.imprimirMatriz();
+
+            } 
+            
+            else if (datoValidado == "float"){ 
+                cout << "Primera matriz " << endl;
+                matrizUnoFloat.imprimirMatriz();
+                cout << endl;
+                cout << "Segunda matriz " << endl;
+                matrizDosFloat.imprimirMatriz();
+            } 
+            
+            else if (datoValidado == "std::complex"){ 
+
+                cout << "Primera matriz " << endl;
+                matrizUnoComplex.imprimirMatriz();
+                
+                cout << endl;
+                cout << "Segunda matriz " << endl;
+                matrizDosComplex.imprimirMatriz();
+
+            } 
             
 
             break;
