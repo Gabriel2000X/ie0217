@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['validardimensiones_45',['validarDimensiones',['../classValidadorDeEntrada.html#ad72408fe0f97d2b1fb4f2d138b4a01d9',1,'ValidadorDeEntrada']]],
+  ['validarmultiplicacion_46',['validarMultiplicacion',['../classOperacionesBasicas.html#a0ce3cc82f52a1f65613da4a75fc5c1ed',1,'OperacionesBasicas']]],
+  ['validarsumaresta_47',['validarSumaResta',['../classOperacionesBasicas.html#a30bee0c897b9faef387947a487ad6c75',1,'OperacionesBasicas']]],
+  ['validartipodato_48',['validarTipoDato',['../classValidadorDeEntrada.html#af1486058548e45d3cda210c4ee786cd6',1,'ValidadorDeEntrada']]]
+];
