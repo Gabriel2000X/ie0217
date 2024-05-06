@@ -1,3 +1,16 @@
+/**
+ * @file  main.cpp
+ * @brief Se utilizan los métodos y funciones declarados 
+ * en los demás archivos para lograr generar un menú 
+ * funcional de acciones destinadas a matrices
+ *
+ * @author Gabriel González Rivera B93432
+ * @date 6/5/2024
+ * 
+ * Licencia: MIT
+ */
+
+
 #include <iostream>
 #include "clases.hpp"
 #include "funciones.hpp"
@@ -31,7 +44,7 @@ Matriz<float> matrizDosFloat;
 Matriz<std::complex<float>> matrizDosComplex;
 
 
-/**/
+/*Se declaran las instancias de OperacionesBasicas correspondientes*/
 
 OperacionesBasicas<int> operadorEntero;
 OperacionesBasicas<float> operadorFlotante;
@@ -64,9 +77,9 @@ int main(){
 
         cout << "Seleccione una opción." << endl;
         cout << "1. Ingresar el tamaño y los valores de ambas matrices." << endl;
-        cout << "2. Ingresar el tipo de datos a recibir." << endl;
+        cout << "2. Ingresar el tipo de datos a recibir (el predeterminado es enteros)." << endl;
         cout << "3. Ingresar la operación que se desea realizar." << endl;
-        cout << "4. Generar datos aleatorios para llenar las matrices." << endl;
+        cout << "4. Generar datos aleatorios para llenar las matrices (debe haber usado la opción 1 anteriormente)." << endl;
         cout << "5. Mostrar las matrices ingresadas." << endl;
         cout << "6. Ejecutar la operación ingresada." << endl;
         cout << "7. Finalizar programa." << endl;
@@ -289,6 +302,7 @@ int main(){
         case MOSTRAR_MATRICES:
 
             cout << "Imprimiendo matrices " << endl;
+            cout << "Nota: las matrices de numéros complejos imprimen sus entradas con el formato (parte real, parte imaginaria)" << endl;
             /* se utilizan condicionales para imprimir las matrices 
             del formato que se está utilizando únicamente, se imprimen
             mediante el método imprimirMatriz de la clase Matriz.*/

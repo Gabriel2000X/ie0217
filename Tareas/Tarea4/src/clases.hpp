@@ -1,3 +1,18 @@
+/**
+ * @file  clases.hpp
+ * @brief Se declaran las clases que no son templates y se declaran 
+ * y definen las clases template, esto para que el compilador pueda
+ * compilar el programa.
+ *
+ * @author Gabriel González Rivera B93432
+ * @date 6/5/2024
+ * 
+ * Licencia: MIT
+ */
+
+
+
+
 #ifndef CLASES_HPP
 #define CLASES_HPP
 
@@ -9,6 +24,15 @@
 #include <vector>
 #include <algorithm>
 #include <random>
+
+
+/**
+* 
+* @brief Una clase que se encarga de validar las entradas como 
+* por ejemplo el tipo de dato que se introduce al programa en las 
+* entradas de las matrices y valida que los datos de las dimensiones
+* de las matrices sean enteros y positivos.
+*/
 class ValidadorDeEntrada { 
 
 public:
@@ -33,6 +57,13 @@ class OperacionesBasicas;
 /*Se declara la clase matriz como un template*/
 template <typename T>
 
+/**
+ * @brief Matriz es una clase que gestiona todo lo que tiene que ver directamente con 
+ * instancias de matriz, contiene métodos como setDimensiones, llenarMatriz, imprimirMatriz,
+ * llenarMatrizAleatoriamente y las sobrecargas de los distintos operadores, es una clase
+ * tipo template lo que quiere decir que puede tomar varios formatos.
+ *
+ */
 class Matriz { 
 
 
@@ -51,10 +82,28 @@ public:
     /*Se declara un primer constructor vacío para poder declarar la clase antes de los 
     bloques condicionales usados en el main, esto permitirá conservar los cambios hechos 
     dentro de los condicionales y utilizar las matrices luego de llenarlas*/
+
+    /**
+    * @brief Se tiene el primer constructor de Matriz, es un constructor vacío por genérico,
+    * esto permite declarar instancias de la clase matriz sin inicializar los métodos que están
+    * presentes en el segundo constructor hasta que sea necesario
+    *
+    */
     Matriz(){}
 
     /*Se declara un segundo constructor de la clase Matriz que recibe los valores de
     las filas y columnas de la matriz, además contiene los métodos setDimensiones y llenarMatriz*/
+
+    /**
+    * @brief se tiene el segundo constructor de Matriz, este inicializa la matriz, pide las dimensiones al usuario y
+    * pide los valores que llenan cada entrada al usuario, esto mediante los métodos contenidos en este
+    * 
+    * @param filas es un parámetro entero que se refiere a la cantidad de filas que tendrá la matriz a crear
+    * @param columnas es un parámetro entero que se refiere a la cantidad de columnas que tendrá la matriz a crear
+    * @param tipoString es un parámetro tipo string que especifica que tipo tendrán los datos de la matriz
+    * 
+    *
+    */
     Matriz(int filas, int columnas, std::string tipoString) : filasMatriz(filas), columnasMatriz(columnas), tipo(tipoString){ 
 
     setDimensiones(filasMatriz, columnasMatriz);
@@ -64,8 +113,28 @@ public:
 
     }
 
+    /**
+    * @brief El destructor de la clase matriz que libera recursos cuando la clase ya no es útil,
+    * como no se utiliza memoria dinámica no debe especificarse la liberación de recursos y se 
+    * puede usar un destructor genérico.
+    * 
+    *
+    */
+    ~Matriz() {}
+
     /*Se define el método setDimensiones que crea una matriz con las dimensiones dadas,
     recibe como argumentos las filas y las columnas */
+
+    /**
+    * @brief SetDimensiones es un método de la clase Matriz que verifica si las dimensiones que recibe
+    * son correctas y si lo son moldea la matriz de acuerdo con ellas para que tenga las dimensiones 
+    * deseadas
+    * 
+    * @param filasMatriz es un parámetro entero que se refiere a la cantidad de filas que tendrá la matriz a crear
+    * @param columnasMatriz es un parámetro entero que se refiere a la cantidad de columnas que tendrá la matriz a crear
+    * 
+    *
+    */
     void setDimensiones(int filasMatriz, int columnasMatriz){ 
 
     /*Se lanza una excepción si filasMatriz o columnasMatriz es igual o menor que
@@ -84,6 +153,16 @@ public:
 
 
     /*Se define el método para llenar las matrices una vez que fueron creadas*/
+
+    /**
+    * @brief llenarMatriz es un método de la clase Matriz que se encarga de preguntar al usuario
+    * por cada entrada de la matriz que se está construyendo, le pide al usuario un valor para
+    * cada una de sus entradas y asigna el valor a la entrada correspondiente, dependiendo de si 
+    * es una matriz compleja o no utiliza diferentes métodos para llenarla, también verifica que 
+    * el usuario introduzca valores con el formato deseado, de lo contrario lanza una excepción.
+    *
+    *
+    */
     void llenarMatriz(){ 
 
         /*Si la variable string tipo tiene un valor int o float se sigue con el siguiente 
@@ -217,6 +296,11 @@ public:
     }
 
     
+    /**
+    * @brief imprimirMatriz es un método de la clase Matriz que se encarga de 
+    * recorrer las filas de la matriz e imprimirlas mediante ciclos for y
+    * cout 
+    */
     void imprimirMatriz() const {
         /*Se utiliza un bucle for para recorrer las filas de la matriz, 
         lo que es equivalente a recorrer los vectores internos al vector
@@ -236,23 +320,55 @@ public:
         }
     }
 
-    /*Se declara la sobrecarga del operador +*/
+
+    /*Se declara la sobrecarga del operador + */
+    /**
+    * @brief operator+ es un método que sobrecarga el operador + para que cuando se 
+    * use entre dos objetos de tipo matriz se utilice el método sumar para sumar matrices.
+    * 
+    * @param segundaMatriz es un parámetro de tipo matriz el cual se usa para sumarla a una
+    * matriz ya existente
+    */
     void operator+(Matriz<T>& segundaMatriz) {
         operaciones.sumar(*this, segundaMatriz);
     }
 
-    /*Se declara la sobrecarga del operador -*/
+    /*Se declara la sobrecarga del operador - */
+
+    /**
+    * @brief operator- es un método que sobrecarga el operador - para que cuando se 
+    * use entre dos objetos de tipo matriz se utilice el método restar para restar matrices.
+    * 
+    * @param segundaMatriz es un parámetro de tipo matriz el cual se usa para restarsela a una
+    * matriz ya existente
+    */
     void operator-(Matriz<T>& segundaMatriz) {
         operaciones.restar(*this, segundaMatriz);
     }
 
-    /*Se declara la sobrecarga del operador -*/
+    /*Se declara la sobrecarga del operador * */
+
+    /**
+    * @brief operator* es un método que sobrecarga el operador * para que cuando se 
+    * use entre dos objetos de tipo matriz se utilice el método multiplicar para nultiplicar
+    *  matrices.
+    * 
+    * @param segundaMatriz es un parámetro de tipo matriz el cual se usa para multiplicarsela a una
+    * matriz ya existente
+    */
     void operator*(Matriz<T>& segundaMatriz) {
         operaciones.multiplicar(*this, segundaMatriz);
     }
     
 
-
+    /**
+    * @brief llenarMatrizAleatoriamente es un método de la clase Matriz el cual se 
+    * encarga de llenar una matriz preexistente con datos generados al azar, esto se logra
+    * utilizando un generador de números aleatorios, declaraciones de límites para los números
+    * aleatorios y verificando el tipo de la matriz debido a que para la matriz compleja se sigue
+    * otro procedimiento diferente al que se sigue con la matriz de tipo entero y flotante.
+    * 
+    */
     void llenarMatrizAleatoriamente() {
         /*Con random_device se genera la semilla random para números aleatorios
         y con mt19937 se define generador, dandole la random como argumento para
@@ -333,15 +449,39 @@ en este archivo.*/
 
 template <typename T>
 
+/**
+* @brief La clase OperacionesBasicas maneja la validación de las operaciones de suma 
+* resta y de la multiplicación, además implementa la lógica detrás de la suma, resta 
+* y multiplicación de matrices, es una clase template por lo que puede tomar varios tipos.
+* 
+*/
 class OperacionesBasicas{ 
 
     public:
 
         /*Se declara el constructor de la clase sin
         argumentos*/
+
+        /**
+        * @brief El constructor de la clase OperacionesBasicas el cual no recibe argumentos.
+        * 
+        */
         OperacionesBasicas(){}
 
         /*Se declara validarSumaResta*/
+
+        /**
+        * @brief el método validarSumaResta tiene la lógica para confirmar si se puede
+        * realizar la suma de ambas matrices que recibe, esto viendo si las dimensiones
+        * son iguales entre ambas matrices, lanza una excepción si las dimensiones no son
+        * iguales
+        * 
+        * @param matrizA es un parámetro de tipo Matriz de validarSumaResta que se utiliza para compararlo con
+        * la otra matriz recibida para validar sus dimensiones
+        * @param matrizB es un parámetro de tipo Matriz de validarSumaResta que se utiliza para compararlo con
+        * la otra matriz recibida para validar sus dimensiones
+        * 
+        */
         void validarSumaResta(Matriz<T>&matrizA, Matriz<T>&matrizB){ 
             
             /*Se verifica si las filas y columnas de las matrices recibidas son iguales,
@@ -356,6 +496,15 @@ class OperacionesBasicas{
         } 
 
         /*Se define validarMultiplicación*/
+        /**
+        * @brief el método validarMultiplicacion se encarga de comparar  el número de columnas de la primera matriz que
+        * recibe con el número de filas de la segunda matriz recibida, lanza una excepción si son diferentes.
+        * 
+        * @param matrizA es un parámetro de tipo Matriz del cual se comparan sus columnas con las filas de otra matriz
+        * @param matrizB es un parámetro de tipo Matriz del cual se comparan sus filas con las columnas de otra matriz
+        * 
+        * 
+        */
         void validarMultiplicacion(Matriz<T>&matrizA, Matriz<T>&matrizB){ 
             
             /*Se verifica si las columnas de la primera matriz son iguales
@@ -372,6 +521,17 @@ class OperacionesBasicas{
 
 
         /*Se declara el método sumar que suma dos matrices recibidas*/
+
+        /**
+        * @brief El método sumar de la clase OperacionesBasicas es el método que gestiona la lógica de las sumas
+        * de matrices, esto mediante la creación de una matriz resultado y la utilización de ciclos for para recorrer
+        * y sumar las entradas de las matrices recibidas para introducirlas a un vector e introducir este vector a la 
+        * matriz resultado, posteriormente se imprime el resultado.
+        * 
+        * @param matrizA es un parámetro de tipo Matriz de sumar que se utiliza para sumar sus entradas a las de otra matriz
+        * @param matrizB es un parámetro de tipo Matriz de sumar que se utiliza para sumar sus entradas a las de otra matriz
+        * 
+        */
         void sumar(Matriz<T>& matrizA, Matriz<T>& matrizB) {
     
             /*Se incluye el método validarSumaResta para no realizar sumas
@@ -419,6 +579,18 @@ class OperacionesBasicas{
 
 
         /*Se declara el método restar que resta dos matrices recibidas*/
+
+
+        /**
+        * @brief El método restar de la clase OperacionesBasicas es el método que gestiona la lógica de las restas
+        * de matrices, esto mediante la creación de una matriz resultado y la utilización de ciclos for para recorrer
+        * y restar las entradas de las matrices recibidas para introducirlas a un vector e introducir este vector a la 
+        * matriz resultado, posteriormente se imprime el resultado.
+        * 
+        * @param matrizA es un parámetro de tipo Matriz del método restar que se utiliza para que se le resten las entradas de otra matriz
+        * @param matrizB es un parámetro de tipo Matriz del método restar que se utiliza para que sus entradas sean restadas a las de otra matriz
+        * 
+        */
         void restar(Matriz<T>& matrizA, Matriz<T>& matrizB) {
     
             /*Se incluye el método validarSumaResta para no realizar sumas
@@ -466,64 +638,73 @@ class OperacionesBasicas{
 
 
 
+        /**
+        * @brief El método multiplicar de la clase OperacionesBasicas es el método que gestiona la lógica de las multiplicaciones
+        * de matrices, esto mediante la creación de una matriz resultado y la utilización de ciclos for para recorrer
+        * y multiplicar las filas y columnas de las matrices recibidas para introducirlas a un vector e introducir este vector a la 
+        * matriz resultado, posteriormente se imprime el resultado.
+        * 
+        * @param matrizA es un parámetro de tipo Matriz del método multiplicar que se utiliza para que se multipliquen sus filas con las columnas de otra matriz
+        * @param matrizB es un parámetro de tipo Matriz del método multiplicar que se utiliza para que se multipliquen sus columnas con las filas de otra matriz
+        * 
+        */
+        void multiplicar(Matriz<T>& matrizA, Matriz<T>& matrizB) {
+            validarMultiplicacion(matrizA, matrizB);
 
-     void multiplicar(Matriz<T>& matrizA, Matriz<T>& matrizB) {
-    validarMultiplicacion(matrizA, matrizB);
+            /*Se declara una instancia de Matriz llamada resultado con el 
+                constructor básico de Matriz*/
+                Matriz<T> resultado;
 
-    /*Se declara una instancia de Matriz llamada resultado con el 
-            constructor básico de Matriz*/
-            Matriz<T> resultado;
+                /*Se le asigna de manera manual a resultado los atributos de la 
+                matriz a para que tenga dimensiones iguales*/
+                resultado.filasMatriz = matrizA.filasMatriz;
+                resultado.columnasMatriz = matrizA.columnasMatriz;
+                resultado.tipo = matrizA.tipo;
 
-            /*Se le asigna de manera manual a resultado los atributos de la 
-            matriz a para que tenga dimensiones iguales*/
-            resultado.filasMatriz = matrizA.filasMatriz;
-            resultado.columnasMatriz = matrizA.columnasMatriz;
-            resultado.tipo = matrizA.tipo;
-
-    
-    /*Se itera desde cero y se aumenta mientras se tenga un número menor que
-    la cantidad de filas de la matrizA*/
-    for (size_t i = 0; i < matrizA.filasMatriz; ++i) {
         
-        /*Se crea una instancia de vector llamado filaResultado que guardará las 
-        entradas de una fila*/
-        std::vector<T> filaResultado;
-
-        /*Se itera mediante un ciclo for anidado sobre desde cero hasta la cantidad de 
-        columnas de la matrizB*/
-        for (size_t j = 0; j < matrizB.columnasMatriz; ++j) {
+            /*Se itera desde cero y se aumenta mientras se tenga un número menor que
+            la cantidad de filas de la matrizA*/
+            for (size_t i = 0; i < matrizA.filasMatriz; ++i) {
             
-            /*Se declara una variable de tipo T llamada suma que contendrá el valor
-            de la entrada actual y se le sumará progresivamente los resultados
-            de las multiplicaciones de las filas por las columnas*/
-            T suma = 0;
+                /*Se crea una instancia de vector llamado filaResultado que guardará las 
+                entradas de una fila*/
+                std::vector<T> filaResultado;
 
-            /*Se itera desde cero hasta el número de columnas de la matrizA para poder
-            realizar las multiplicaciones de las filas de A con las columnas de B*/
-            for (size_t k = 0; k < matrizA.columnasMatriz; ++k) {
-                suma += matrizA.matrizGenerada[i][k] * matrizB.matrizGenerada[k][j];
-            }
-            
-            /*Se introduce suma al vector filaResultado, es equivalente
-            a meter su valor en la fila actual de la matriz resultado*/
-            filaResultado.push_back(suma);
-        }
-        /*Se mete el vector filaResultado dentro de matrizGenerada, esto para
-        meter las filas de la matriz resultado dentro de ella.*/
-        resultado.matrizGenerada.push_back(filaResultado); 
-    }
+                /*Se itera mediante un ciclo for anidado sobre desde cero hasta la cantidad de 
+                columnas de la matrizB*/
+                for (size_t j = 0; j < matrizB.columnasMatriz; ++j) {
+                
+                    /*Se declara una variable de tipo T llamada suma que contendrá el valor
+                    de la entrada actual y se le sumará progresivamente los resultados
+                    de las multiplicaciones de las filas por las columnas*/
+                    T suma = 0;
 
-    /*Se imprime la matriz generada con un procedimiento similar a 
-    los anteriores*/
-    for (const auto& filaResultado : resultado.matrizGenerada) {
-                for (const auto& entrada : filaResultado) {
-                    std::cout << entrada << " ";
+                    /*Se itera desde cero hasta el número de columnas de la matrizA para poder
+                    realizar las multiplicaciones de las filas de A con las columnas de B*/
+                    for (size_t k = 0; k < matrizA.columnasMatriz; ++k) {
+                        suma += matrizA.matrizGenerada[i][k] * matrizB.matrizGenerada[k][j];
+                    }
+                
+                    /*Se introduce suma al vector filaResultado, es equivalente
+                    a meter su valor en la fila actual de la matriz resultado*/
+                    filaResultado.push_back(suma);
                 }
-                std::cout << std::endl;
+                /*Se mete el vector filaResultado dentro de matrizGenerada, esto para
+                meter las filas de la matriz resultado dentro de ella.*/
+                resultado.matrizGenerada.push_back(filaResultado); 
             }
-}
 
-}; 
+            /*Se imprime la matriz generada con un procedimiento similar a 
+            los anteriores*/
+            for (const auto& filaResultado : resultado.matrizGenerada) {
+                for (const auto& entrada : filaResultado) {
+                        std::cout << entrada << " ";
+                }
+                    std::cout << std::endl;
+            }
+        }
+
+    }; 
 
 
 #endif // CLASES_HPP

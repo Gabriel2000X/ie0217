@@ -1,6 +1,24 @@
+/**
+ * @file  funciones.cpp
+ * @brief Se definen las funciones declaradas en funciones.hpp
+ *
+ * @author Gabriel González Rivera B93432
+ * @date 6/5/2024
+ * 
+ * Licencia: MIT
+ */
+
+
 #include "funciones.hpp"
 
 /*Se realiza la definición de elegirOperación*/
+
+/**
+* @brief elegirOperacion es una función tipo string que sirve para preguntarle al usuario que tipo de operación desea, se
+* le pide al usuario un operador dependiendo de lo que quiere hacer con las matrices, si se introduce un operador válido 
+* este se retorna, si no se cumple la condición se lanza la excepción.
+* 
+*/
 std::string elegirOperacion(){ 
 
     /*Se define un arreglo tipo string con los valores de los 
