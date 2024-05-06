@@ -263,8 +263,26 @@ int main(){
         
         case DATOS_ALEATORIOS:
 
+            /*Se utiliza la función llenarMatrizAleatoriamente
+            para generar números aleatorios y llenar las
+            diferentes matrices dependiendo del tipo de dato que 
+            se esté utilizando.*/
             cout << "Asignando datos aleatorios \n" << endl;
-            
+            if (datoValidado == "int"){
+                    
+                    matrizUnoInt.llenarMatrizAleatoriamente();    
+                    matrizDosInt.llenarMatrizAleatoriamente();
+                }    
+
+                else if  (datoValidado == "float"){
+                    matrizUnoFloat.llenarMatrizAleatoriamente();    
+                    matrizDosComplex.llenarMatrizAleatoriamente();
+                }    
+
+                else if  (datoValidado ==  "std::complex"){
+                   matrizUnoComplex.llenarMatrizAleatoriamente();
+                   matrizDosComplex.llenarMatrizAleatoriamente();    
+                }  
 
             break;
 
@@ -371,7 +389,7 @@ int main(){
 
                 /*Se utilizan condicionales if y else if para ejecutar alguno 
                 de los bloques siguuientes que utilizan la sobrecarga del 
-                operador - para sumar matrices, si se dispara alguna excepción
+                operador - para restar matrices, si se dispara alguna excepción
                 del tipo invalid_argument es atrapada por el bloque catch,
                 este comportamiento se repite en los siguientes condicionales
                 pero para diferentes tipos de datos*/
@@ -420,6 +438,60 @@ int main(){
             
             }
             
+
+            /*Se sigue un comportamiento similar para la multiplicación si operadorValidado es * */
+            if (operadorValidado == "*"){  
+
+                /*Se utilizan condicionales if y else if para ejecutar alguno 
+                de los bloques siguuientes que utilizan la sobrecarga del 
+                operador * para multiplicar matrices, si se dispara alguna excepción
+                del tipo invalid_argument es atrapada por el bloque catch,
+                este comportamiento se repite en los siguientes condicionales
+                pero para diferentes tipos de datos*/
+                if (datoValidado == "int"){ 
+
+                    try{
+                        
+                        matrizUnoInt * matrizDosInt;
+                    }
+                   catch(const std::invalid_argument& e) {
+                        std::cerr << "Error: " << e.what() << '\n';
+                        break;
+                    }
+                    
+                } 
+                
+                
+
+                else if (datoValidado == "float"){ 
+
+                    try{
+                        
+                        matrizUnoFloat * matrizDosFloat;
+                    }
+                        
+                    catch(const std::invalid_argument& e) {
+                        std::cerr << "Error: " << e.what() << '\n';
+                        break;
+                    }
+                    
+                } 
+
+                else if (datoValidado == "std::complex"){ 
+
+                    try{
+                        
+                        matrizUnoComplex * matrizDosComplex;
+                    }
+                   catch(const std::invalid_argument& e) {
+                        std::cerr << "Error: " << e.what() << '\n';
+                        break;
+                    }
+                    
+                } 
+            
+            
+            }
 
 
 

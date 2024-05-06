@@ -8,6 +8,7 @@
 #include <complex>
 #include <vector>
 #include <algorithm>
+#include <random>
 class ValidadorDeEntrada { 
 
 public:
@@ -20,7 +21,9 @@ void validarDimensiones(int tamano);
 };
 
 
-
+/*Se declara un prototipo de clase para OperacionesBasicas
+esto para que se pueda sobrecargar los operadores +, -  y *
+usando los métodos de OperacionesBasicas en Matriz.*/
 template <typename T>
 class OperacionesBasicas;
 
@@ -238,13 +241,88 @@ public:
         operaciones.sumar(*this, segundaMatriz);
     }
 
-     /*Se declara la sobrecarga del operador -*/
+    /*Se declara la sobrecarga del operador -*/
     void operator-(Matriz<T>& segundaMatriz) {
         operaciones.restar(*this, segundaMatriz);
     }
 
-
+    /*Se declara la sobrecarga del operador -*/
+    void operator*(Matriz<T>& segundaMatriz) {
+        operaciones.multiplicar(*this, segundaMatriz);
+    }
     
+
+
+    void llenarMatrizAleatoriamente() {
+        /*Con random_device se genera la semilla random para números aleatorios
+        y con mt19937 se define generador, dandole la random como argumento para
+        generar números aleatorios */
+        std::random_device random;
+        std::mt19937 generador(random());
+
+        /*Si tipo es igual a int o a float entonces se procede de la siguiente manera*/
+        if (tipo == "int" || tipo == "float") {
+            
+            /*utilizando uniform_int_distribution y uniform_real_distribution se declaran los límites de los 
+            números enteros y flotantes que pueden ser generados.*/
+            std::uniform_int_distribution<int> distribucionEntera(0, 100); 
+            std::uniform_real_distribution<float> distribucionFlotante(0.0, 100.0); 
+
+            /*Se usan dos ciclos for anidados para recorrer las matrices, el primero
+            empieza en cero e incrementa mientras i sea menor que el número de filas de la
+            matriz, el segundo empieza en cero y aumenta mientras j sea menor que las columnas
+            de la matriz.*/
+            for (int i = 0; i < filasMatriz; ++i) {
+                for (int j = 0; j < columnasMatriz; ++j) {
+                    
+                    
+                    T valorAleatorio;
+                    /*Se utiliza constexpr para que is_same evalúe en tiempo de compilación si
+                    T es entero, si se cumple entonces se le asigna un valor aleatorio entero
+                    a valorAleatorio.*/
+                    if constexpr (std::is_same_v<T, int>) {
+                        valorAleatorio = distribucionEntera(generador);
+                    } 
+                    
+                    /*Se utiliza constexpr para que is_same evalúe en tiempo de compilación si
+                    T es flotante, si se cumple entonces se le asigna un valor aleatorio flotante
+                    a valorAleatorio.*/
+                    else if constexpr (std::is_same_v<T, float>) {
+                        valorAleatorio = distribucionFlotante(generador);
+                    }
+                    
+                    /*Se le asigna valor generado a la entrada actual*/
+                    matrizGenerada[i][j] = valorAleatorio;
+                }
+            }
+        } 
+
+        /*Si en cambio valor es complejo entonces se tiene que T debe ser complejo, si esto se cumple entonces
+        se procede de la siguiente manera.*/
+        else if constexpr (std::is_same_v<T, std::complex<float>>) {
+            /*Se procede de manera similar al bloque anterior, se declaran límites para la parte real 
+            y para la parte imaginaria*/
+            std::uniform_real_distribution<float> distribucionReal(0.0, 100.0); 
+            std::uniform_real_distribution<float> distribucionImaginaria(0.0, 100.0); 
+
+            /*Se procede de manera similar al bloque anterior utilizando 
+            ciclos for anidados para generar los valores que se introducen a la matriz*/
+            for (int i = 0; i < filasMatriz; ++i) {
+                for (int j = 0; j < columnasMatriz; ++j) {
+                    
+                    /*Se generan los números para la parte real e imaginaria*/
+                    float real = distribucionReal(generador);
+                    float imaginaria = distribucionImaginaria(generador);
+                    
+                    /*Se crea el número complejo y se introduce en la matriz*/
+                    matrizGenerada[i][j] = std::complex<float>(real, imaginaria);
+                }
+            }
+        }
+    }
+
+
+
 };
 
 /*Se declara la clase validación de operaciones, como debe contener
@@ -386,6 +464,64 @@ class OperacionesBasicas{
             }
         }
 
+
+
+
+     void multiplicar(Matriz<T>& matrizA, Matriz<T>& matrizB) {
+    validarMultiplicacion(matrizA, matrizB);
+
+    /*Se declara una instancia de Matriz llamada resultado con el 
+            constructor básico de Matriz*/
+            Matriz<T> resultado;
+
+            /*Se le asigna de manera manual a resultado los atributos de la 
+            matriz a para que tenga dimensiones iguales*/
+            resultado.filasMatriz = matrizA.filasMatriz;
+            resultado.columnasMatriz = matrizA.columnasMatriz;
+            resultado.tipo = matrizA.tipo;
+
+    
+    /*Se itera desde cero y se aumenta mientras se tenga un número menor que
+    la cantidad de filas de la matrizA*/
+    for (size_t i = 0; i < matrizA.filasMatriz; ++i) {
+        
+        /*Se crea una instancia de vector llamado filaResultado que guardará las 
+        entradas de una fila*/
+        std::vector<T> filaResultado;
+
+        /*Se itera mediante un ciclo for anidado sobre desde cero hasta la cantidad de 
+        columnas de la matrizB*/
+        for (size_t j = 0; j < matrizB.columnasMatriz; ++j) {
+            
+            /*Se declara una variable de tipo T llamada suma que contendrá el valor
+            de la entrada actual y se le sumará progresivamente los resultados
+            de las multiplicaciones de las filas por las columnas*/
+            T suma = 0;
+
+            /*Se itera desde cero hasta el número de columnas de la matrizA para poder
+            realizar las multiplicaciones de las filas de A con las columnas de B*/
+            for (size_t k = 0; k < matrizA.columnasMatriz; ++k) {
+                suma += matrizA.matrizGenerada[i][k] * matrizB.matrizGenerada[k][j];
+            }
+            
+            /*Se introduce suma al vector filaResultado, es equivalente
+            a meter su valor en la fila actual de la matriz resultado*/
+            filaResultado.push_back(suma);
+        }
+        /*Se mete el vector filaResultado dentro de matrizGenerada, esto para
+        meter las filas de la matriz resultado dentro de ella.*/
+        resultado.matrizGenerada.push_back(filaResultado); 
+    }
+
+    /*Se imprime la matriz generada con un procedimiento similar a 
+    los anteriores*/
+    for (const auto& filaResultado : resultado.matrizGenerada) {
+                for (const auto& entrada : filaResultado) {
+                    std::cout << entrada << " ";
+                }
+                std::cout << std::endl;
+            }
+}
 
 }; 
 
