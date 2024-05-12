@@ -10,7 +10,7 @@
  * Licencia: MIT
  */
 
-
+#include "claseEmail.hpp"
 #include <iostream>
 
 using namespace std;
@@ -47,7 +47,7 @@ int main(){
         switch (opcion)
         {
         case INGRESAR_CORREO:
-        
+
 
 
             break;
