@@ -56,3 +56,20 @@ std::string ValidadorEmail::getDominioCorreo(const std::string& mail) {
     return dominio;
 }
 
+/*Se define el método validacionNombreCorreo*/
+void ValidadorEmail::validacionNombreCorreo(const std::string& mail) {
+    
+    /*se define una expresión tipo regex que define los caracteres permitidos en 
+    el nombre, ^(?!.*([._-])\\1) esta es una expresión que utiliza un lookahead negativo
+    para que no se puedan usar caracteres especiales seguidos, además se declara que se aceptan 
+    caractetres desde la a la z tanto mayúsculas como minúscula, se especifica que se quieren
+    15 caracteres y que no inicia ni termine con . o - */
+    std::regex caracteresNombre("^(?!.*([._-])\\1)[a-zA-Z0-9](?:[a-zA-Z0-9._-]{0,15}[^.-_])?$");
+    
+    /*se compara la cadena recibida en mail con caracteresNombre y si mail no coincide con el 
+    patrón caracteresNombre se lanza una excepción tipo invalid_argument*/
+
+    if (!std::regex_match(getNombreCorreo(mail), caracteresNombre)) {
+        throw std::invalid_argument("El nombre introducido en la dirección de correo es inválido.");
+    }
+}

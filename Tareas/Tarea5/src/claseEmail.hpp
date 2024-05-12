@@ -10,7 +10,7 @@ class ValidadorEmail {
 
     public:
 
-    
+        void validacionNombreCorreo(const std::string& correo);
     
     private:
 
