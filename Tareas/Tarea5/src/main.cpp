@@ -32,8 +32,14 @@ int main(){
 
     /*Se utiliza int opcion para guardar el número escogido en el menú*/
     int opcion;
+
+    /*Se crea una instancia de validadorEmail*/
+    ValidadorEmail validadorMail;
+
+    /*Se crea una variable llamada mail donde se almacenará el correo digitado*/
     
-    
+    string mail;
+
     /*Se usa un do while para que siempre se ejecute una vez el ciclo*/
     do{ 
 
@@ -48,7 +54,23 @@ int main(){
         {
         case INGRESAR_CORREO:
 
+            cout << "Ingrese el correo electrónico: " << endl;
+            cin >> mail;
+            
+            if (validadorMail.validarCorreo(mail) == true){ 
 
+                
+                cout << "La dirección de correo tiene un formato correcto" << endl;
+
+
+            }
+
+            else { 
+
+                 cout << "La dirección de correo tiene un formato incorrecto" << endl;
+
+
+            }
 
             break;
         

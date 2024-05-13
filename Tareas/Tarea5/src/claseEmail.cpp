@@ -47,7 +47,7 @@ std::string ValidadorEmail::getDominioCorreo(const std::string& mail) {
 
     /*Se define el limite final que es la diferencia entre la posición del primer punto
     y la posición antes de la arroba*/
-    size_t limiteFinal = mail.find('.') - arrobaPosicion- 1;
+    size_t limiteFinal = mail.find_last_of('.') - arrobaPosicion- 1;
 
     /*Se guarda el dominio en la variable dominio con substr utilizando los límites del dominio*/
     std::string dominio =  mail.substr(limiteInicial, limiteFinal);
@@ -102,15 +102,14 @@ void ValidadorEmail::validacionExtensionCorreo(const std::string& mail) {
     
     /*Se definen los caracteres permitidos para la extensión usando una variable tipo regex
     llamada caracteresExtension */
-    std::regex caracteresExtension("^[a-zA-Z]{2,6}(\\.[a-zA-Z]{2,6})*$");
-    
-    
-    std::smatch coincidencia;
+    std::regex caracteresExtension("^([a-zA-Z]{2,6}|\\.[a-zA-Z]{2,6})(\\.[a-zA-Z]{2,6}){0,2}$");
 
-
+    
     /*Se verifica que la extension este dentro de los limites permitidos*/
+    
     if (extension.length() > 6 || extension.length() < 2) {
         throw std::invalid_argument("La extensión no puede tener más de 6 letras ni menos de dos.");
+ 
     }
 
     /*comparando extension con caracteresExtension, si se encuentra algo que no sea permitido aparte de las excepciones anteriores entonces 
@@ -118,13 +117,17 @@ void ValidadorEmail::validacionExtensionCorreo(const std::string& mail) {
     if (!std::regex_match(extension, caracteresExtension)) {
         throw std::invalid_argument("La extension introducida en el correo es inválida (contiene números o caracteres especiales).");
     }
+
+
 }
+
+
 
 
 void ValidadorEmail::validacionDominioCorreo(const std::string& mail) {
     
     std::string dominio = getDominioCorreo(mail);
-    std::regex caracteresDominio("^(?!.*\\.\\.)[a-zA-Z]+(?:\\.[a-zA-Z]+)*\\.(?!.*\\.\\.)(?=.*[a-zA-Z]).{1,28}[a-zA-Z]$");
+    std::regex caracteresDominio("^([a-zA-Z]+\\.[a-zA-Z]+)(\\.[a-zA-Z]+)*$");
     
     /*Se declara una variable llamada longitudDominio que cuenta todos los char
     que no son puntos dentro de dominio utilizando un ciclo for*/
@@ -139,7 +142,7 @@ void ValidadorEmail::validacionDominioCorreo(const std::string& mail) {
     para comparar esta variable con los limites deseados y si se sale de los límites se lanza una excepción */
     if (longitudDominio > 30 || longitudDominio < 3) {
         
-        throw std::invalid_argument("El dominio no puede tener más de 30 caracteres (excluyendo los puntos).");
+        throw std::invalid_argument("El dominio no puede tener más de 30 caracteres ni menos de 3 (excluyendo los puntos).");
     }
 
     /*Si se tiene un punto en el principio o final del dominio entonces se lanza una excepción*/
@@ -155,8 +158,25 @@ void ValidadorEmail::validacionDominioCorreo(const std::string& mail) {
     /*comparando dominio con caracteresDominio, si se encuentra algo que no sea permitido aparte de las excepciones anteriores entonces 
     se lanza la siguiente excepción. */
     if (!std::regex_match(dominio, caracteresDominio)) {
-        throw std::invalid_argument("La extension introducida en el correo es inválida (contiene números o caracteres especiales).");
+        throw std::invalid_argument("El dominio introducido en el correo es inválido.");
     }
 
     
+}
+
+bool ValidadorEmail::validarCorreo(const std::string& mail) {
+    try {
+        
+
+        validacionNombreCorreo(mail);
+        validacionExtensionCorreo(mail);
+        validacionDominioCorreo(mail);
+        return true;
+        
+    } 
+    
+    catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+        return false;
+    }
 }
