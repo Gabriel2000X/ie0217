@@ -10,13 +10,17 @@ class ValidadorEmail {
 
     public:
 
-        void validacionNombreCorreo(const std::string& correo);
+        void validacionNombreCorreo(const std::string& mail);
+        void validacionExtensionCorreo(const std::string& mail); 
+   
+
+
     
     private:
 
-        std::string getNombreCorreo(const std::string& correo);
-        std::string getExtensionCorreo(const std::string& correo);
-        std::string getDominioCorreo(const std::string& correo);
+        std::string getNombreCorreo(const std::string& mail);
+        std::string getExtensionCorreo(const std::string& mail);
+        std::string getDominioCorreo(const std::string& mail);
 
 
 

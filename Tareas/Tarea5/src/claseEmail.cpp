@@ -59,6 +59,8 @@ std::string ValidadorEmail::getDominioCorreo(const std::string& mail) {
 /*Se define el método validacionNombreCorreo*/
 void ValidadorEmail::validacionNombreCorreo(const std::string& mail) {
     
+    std::string nombre = getNombreCorreo(mail);
+    
     /*se define una expresión tipo regex que define los caracteres permitidos en 
     el nombre, ^(?!.*([._-])\\1) esta es una expresión que utiliza un lookahead negativo
     para que no se puedan usar caracteres especiales seguidos, además se declara que se aceptan 
@@ -69,7 +71,51 @@ void ValidadorEmail::validacionNombreCorreo(const std::string& mail) {
     /*se compara la cadena recibida en mail con caracteresNombre y si mail no coincide con el 
     patrón caracteresNombre se lanza una excepción tipo invalid_argument*/
 
-    if (!std::regex_match(getNombreCorreo(mail), caracteresNombre)) {
+    /*Se verifica si el nombre introducido tiene más de 15 caracteres y si los tiene se lanza una excepción tipo invalid 
+    argument*/
+    if (nombre.length() > 15) {
+        throw std::invalid_argument("El nombre en el correo electrónico no puede tener más de 15 caracteres.");
+    }
+
+    /*Se verifica si el nombre empieza o termina con punto, guión o guión bajo y si esto sucede se lanza una excepción*/
+    if (nombre.front() == '.' || nombre.back() == '.'|| nombre.front() == '-'|| nombre.back() == '-'|| nombre.front() == '_'|| nombre.back() == '_') {
+        throw std::invalid_argument("El nombre en el correo electrónico no puede empezar o terminar con un punto, guión o guión bajo.");
+    }
+
+    /*Si hay dos caracteres especiales en el nombre entonces se lanza una excepción*/
+    if (std::regex_search(nombre, std::regex("[._-]{2}"))) {
+        throw std::invalid_argument("El nombre en el correo electrónico no puede tener dos caracteres especiales consecutivos. (._-)");
+    }
+
+    /*comparando nombre con caracteresNombre, si se encuentra algo que no sea permitido aparte de las excepciones anteriores entonces 
+    se lanza la siguiente excepción. */
+    if (!std::regex_match(nombre, caracteresNombre)) {
         throw std::invalid_argument("El nombre introducido en la dirección de correo es inválido.");
+    }
+}
+
+/*Se define el método ValidadorEmail*/
+void ValidadorEmail::validacionExtensionCorreo(const std::string& mail) {
+    
+    /*Se define extensión como el resultado de gerExtensionCorreo al recibir mail */
+    std::string extension = getExtensionCorreo(mail); 
+    
+    /*Se definen los caracteres permitidos para la extensión usando una variable tipo regex
+    llamada caracteresExtension */
+    std::regex caracteresExtension("^[a-zA-Z]{2,6}(\\.[a-zA-Z]{2,6})*$");
+    
+    
+    std::smatch coincidencia;
+
+
+    /*Se verifica que la extension este dentro de los limites permitidos*/
+    if (extension.length() > 6 || extension.length() < 2) {
+        throw std::invalid_argument("La extensión no puede tener más de 6 letras ni menos de dos.");
+    }
+
+    /*comparando extension con caracteresExtension, si se encuentra algo que no sea permitido aparte de las excepciones anteriores entonces 
+    se lanza la siguiente excepción. */
+    if (!std::regex_match(extension, caracteresExtension)) {
+        throw std::invalid_argument("La extension introducida en el correo es inválida (contiene números o caracteres especiales).");
     }
 }
