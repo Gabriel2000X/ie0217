@@ -12,7 +12,7 @@ class ValidadorEmail {
 
         void validacionNombreCorreo(const std::string& mail);
         void validacionExtensionCorreo(const std::string& mail); 
-   
+        void validacionDominioCorreo(const std::string& mail);
 
 
     

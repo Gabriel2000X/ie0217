@@ -119,3 +119,44 @@ void ValidadorEmail::validacionExtensionCorreo(const std::string& mail) {
         throw std::invalid_argument("La extension introducida en el correo es inválida (contiene números o caracteres especiales).");
     }
 }
+
+
+void ValidadorEmail::validacionDominioCorreo(const std::string& mail) {
+    
+    std::string dominio = getDominioCorreo(mail);
+    std::regex caracteresDominio("^(?!.*\\.\\.)[a-zA-Z]+(?:\\.[a-zA-Z]+)*\\.(?!.*\\.\\.)(?=.*[a-zA-Z]).{1,28}[a-zA-Z]$");
+    
+    /*Se declara una variable llamada longitudDominio que cuenta todos los char
+    que no son puntos dentro de dominio utilizando un ciclo for*/
+    size_t longitudDominio = 0;
+    for (char c : dominio) {
+        if (c != '.') {
+            longitudDominio++;
+        }
+    }
+
+    /*Si se utiliza la variable longitudDominio para tener la longitud sin los puntos y se utiliza un if 
+    para comparar esta variable con los limites deseados y si se sale de los límites se lanza una excepción */
+    if (longitudDominio > 30 || longitudDominio < 3) {
+        
+        throw std::invalid_argument("El dominio no puede tener más de 30 caracteres (excluyendo los puntos).");
+    }
+
+    /*Si se tiene un punto en el principio o final del dominio entonces se lanza una excepción*/
+    if (dominio.front() == '.' || dominio.back() == '.') {
+        throw std::invalid_argument("El dominio no puede comenzar o terminar con un punto.");
+
+    }
+
+    /*Si se tiene dos segmentos separados por un punto entonces se lanza una excepción*/
+    if (dominio.find("..") != std::string::npos) {
+        throw std::invalid_argument("El dominio no puede contener segmentos consecutivos separados por un único punto.");
+    }
+    /*comparando dominio con caracteresDominio, si se encuentra algo que no sea permitido aparte de las excepciones anteriores entonces 
+    se lanza la siguiente excepción. */
+    if (!std::regex_match(dominio, caracteresDominio)) {
+        throw std::invalid_argument("La extension introducida en el correo es inválida (contiene números o caracteres especiales).");
+    }
+
+    
+}
