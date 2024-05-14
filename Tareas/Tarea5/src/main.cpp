@@ -2,10 +2,10 @@
  * @file  main.cpp
  * @brief Se utilizan los métodos y funciones declarados 
  * en los demás archivos para lograr generar un menú 
- * funcional de acciones destinadas a matrices
+ * funcional de acciones destinadas a declarar el correo electrónico
  *
  * @author Gabriel González Rivera B93432
- * @date 6/5/2024
+ * @date 14/5/2024
  * 
  * Licencia: MIT
  */

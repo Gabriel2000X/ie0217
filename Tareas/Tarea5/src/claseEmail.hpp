@@ -1,3 +1,15 @@
+/**
+ * @file  claseEmail.hpp
+ * @brief En este archivo se declara la clase ValidadorEmail junto con sus 
+ * métodos tanto públicos como privados
+ *
+ * @author Gabriel González Rivera B93432
+ * @date 14/5/2024
+ * 
+ * Licencia: MIT
+ */
+
+
 #ifndef CLASEEMAIL_HPP
 #define CLASEEMAIL_HPP
 
@@ -14,8 +26,8 @@ class ValidadorEmail {
         void validacionNombreCorreo(const std::string& mail);
         void validacionExtensionCorreo(const std::string& mail); 
         void validacionDominioCorreo(const std::string& mail);
-        bool validarCorreo(const std::string& correo);
-        
+        bool validarCorreo(const std::string& mail);
+        void validarArroba(const std::string& mail);
 
     
     private:

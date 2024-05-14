@@ -1,7 +1,30 @@
+/**
+ * @file  claseEmail.cpp
+ * @brief En este archivo se define la clase ValidadorEmail junto con sus 
+ * métodos tanto públicos como privados
+ *
+ * @author Gabriel González Rivera B93432
+ * @date 14/5/2024
+ * 
+ * Licencia: MIT
+ */
+
+
 #include "claseEmail.hpp"
+
 
 /*Se define el método getNombreCorreo que obtiene el nombre contenido en 
 el correo que debe introducir el usuario. */
+
+/**
+* @brief Se define el método getNombreCorreo que extrae el nombre de la cadena de texto de correo 
+* que el usuario introduce.   
+* 
+* @param mail es un parámetro tipo string que corresponde a la cadena de texto introducida por el usuario
+* la cual es el correo electrónico
+*    
+* 
+*/
 std::string ValidadorEmail::getNombreCorreo(const std::string& mail) {
     
     /*se utiliza size_t para guardar la posición de arroba que encuentra
@@ -20,6 +43,18 @@ std::string ValidadorEmail::getNombreCorreo(const std::string& mail) {
 
 /*Se define el método getExtensionCorreo que obtiene la extensión contenida en 
 el correo que debe introducir el usuario. */
+
+
+/**
+* @brief Se define el método getExtensionCorreo que extrae la extensión de la cadena de texto de correo 
+* que el usuario introduce.   
+* 
+* @param mail es un parámetro tipo string que corresponde a la cadena de texto introducida por el usuario
+* la cual es el correo electrónico
+*    
+* 
+*/
+
 std::string ValidadorEmail::getExtensionCorreo(const std::string& mail) {
 
     /*Se utiliza size_t para guardar la posición del último punto que tiene 
@@ -36,6 +71,17 @@ std::string ValidadorEmail::getExtensionCorreo(const std::string& mail) {
 
 /*Se define el método getExtensionCorreo que obtiene la extensión contenida en 
 el correo que debe introducir el usuario. */
+
+
+/**
+* @brief Se define el método getExtensionCorreo que extrae el dominio de la cadena de texto de correo 
+* que el usuario introduce.   
+* 
+* @param mail es un parámetro tipo string que corresponde a la cadena de texto introducida por el usuario
+* la cual es el correo electrónico
+*    
+* 
+*/
 std::string ValidadorEmail::getDominioCorreo(const std::string& mail) {
 
     /*se utiliza size_t para guardar la posición de arroba que encuentra
@@ -57,6 +103,19 @@ std::string ValidadorEmail::getDominioCorreo(const std::string& mail) {
 }
 
 /*Se define el método validacionNombreCorreo*/
+
+
+
+/**
+* @brief Se define el método validacionNombreCorreo que se encarga de utilizar una expresión regex para 
+* validar el contenido del nombre que se introdujo como parte del correo y lanzar diferentes excepciones
+* dependiendo de los posibles incumplimientos de la expresión regex.
+* 
+* @param mail es un parámetro tipo string que corresponde a la cadena de texto introducida por el usuario
+* la cual es el correo electrónico
+*    
+* 
+*/
 void ValidadorEmail::validacionNombreCorreo(const std::string& mail) {
     
     std::string nombre = getNombreCorreo(mail);
@@ -94,7 +153,18 @@ void ValidadorEmail::validacionNombreCorreo(const std::string& mail) {
     }
 }
 
-/*Se define el método ValidadorEmail*/
+/*Se define el método validacionExtensionCorreo*/
+
+/**
+* @brief Se define el método validacionExtensiónCorreo que se encarga de utilizar una expresión regex para 
+* validar el contenido de la extensión que se introdujo como parte del correo y lanzar diferentes excepciones
+* dependiendo de los posibles incumplimientos de la expresión regex.
+* 
+* @param mail es un parámetro tipo string que corresponde a la cadena de texto introducida por el usuario
+* la cual es el correo electrónico
+*    
+* 
+*/
 void ValidadorEmail::validacionExtensionCorreo(const std::string& mail) {
     
     /*Se define extensión como el resultado de gerExtensionCorreo al recibir mail */
@@ -124,6 +194,16 @@ void ValidadorEmail::validacionExtensionCorreo(const std::string& mail) {
 
 
 
+/**
+* @brief Se define el método validacionDominioCorreo que se encarga de utilizar una expresión regex para 
+* validar el contenido del Dominio que se introdujo como parte del correo y lanzar diferentes excepciones
+* dependiendo de los posibles incumplimientos de la expresión regex.
+* 
+* @param mail es un parámetro tipo string que corresponde a la cadena de texto introducida por el usuario
+* la cual es el correo electrónico
+*    
+* 
+*/
 void ValidadorEmail::validacionDominioCorreo(const std::string& mail) {
     
     std::string dominio = getDominioCorreo(mail);
@@ -164,15 +244,42 @@ void ValidadorEmail::validacionDominioCorreo(const std::string& mail) {
     
 }
 
+void ValidadorEmail::validarArroba(const std::string& mail) {
+    
+    size_t arrobaPosicion = mail.find('@');
+    
+    if (arrobaPosicion == std::string::npos){ 
+        throw std::invalid_argument("El correo debe tener una arroba.");
+    } 
+    
+    
+}
+
+
+
+/**
+* @brief Se define el método validarCorreo que es el método encargado de verificar toda la expresión del correo
+* completa utilizando los métodos anteriormente definidos para la validación de las diferentes partes de la 
+* expresión principal, retornando un valor true si la expresión es correcta y un valor false si se dispara una excepción.
+* 
+* @param mail es un parámetro tipo string que corresponde a la cadena de texto introducida por el usuario
+* la cual es el correo electrónico
+*    
+* 
+*/
 /*Se define el método validarCorreo*/
 bool ValidadorEmail::validarCorreo(const std::string& mail) {
+   
+    
     try {
         
         /*Se utilizan los métodos de validación anteriormente definidos y si 
         no se lanzan excepciones entonces se retorna true*/
+        validarArroba(mail);
         validacionNombreCorreo(mail);
         validacionExtensionCorreo(mail);
         validacionDominioCorreo(mail);
+        
         return true;
         
     } 
@@ -183,3 +290,4 @@ bool ValidadorEmail::validarCorreo(const std::string& mail) {
         return false;
     }
 }
+
