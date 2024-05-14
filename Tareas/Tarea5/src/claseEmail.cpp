@@ -244,10 +244,28 @@ void ValidadorEmail::validacionDominioCorreo(const std::string& mail) {
     
 }
 
+/*Se define validarArroba que es el método que devuelve una excepción si el correo no 
+contiene las arrobas*/
+
+
+/**
+* @brief Se define el método validarArroba que verifica si existe una arroba en el correo
+* y si esta existe no realiza ninguna acción pero si no existe entonces se devuelve una 
+* excepción 
+*
+*
+* @param mail es un parámetro tipo string que corresponde a la cadena de texto introducida por el usuario
+* la cual es el correo electrónico
+*    
+* 
+*/
 void ValidadorEmail::validarArroba(const std::string& mail) {
     
+    /*Se busca la posición de la arroba en mail*/
     size_t arrobaPosicion = mail.find('@');
     
+    /*Se tiene que si la posición de la arroba es npos que es nula, 
+    entonces se lanza una excepción */
     if (arrobaPosicion == std::string::npos){ 
         throw std::invalid_argument("El correo debe tener una arroba.");
     } 
