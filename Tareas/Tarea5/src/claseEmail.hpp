@@ -17,6 +17,12 @@
 #include <iostream>
 #include <string>
 
+/**
+* @brief Se declara la clase ValidadorEmail que contiene todos los métodos 
+* encargados de conseguir y validar las diferentes partes del correo.
+*    
+* 
+*/
 class ValidadorEmail { 
 
 
