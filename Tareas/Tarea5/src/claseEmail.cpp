@@ -164,10 +164,12 @@ void ValidadorEmail::validacionDominioCorreo(const std::string& mail) {
     
 }
 
+/*Se define el método validarCorreo*/
 bool ValidadorEmail::validarCorreo(const std::string& mail) {
     try {
         
-
+        /*Se utilizan los métodos de validación anteriormente definidos y si 
+        no se lanzan excepciones entonces se retorna true*/
         validacionNombreCorreo(mail);
         validacionExtensionCorreo(mail);
         validacionDominioCorreo(mail);
@@ -175,6 +177,7 @@ bool ValidadorEmail::validarCorreo(const std::string& mail) {
         
     } 
     
+    /*Si el bloque catch sucede entonces se retorna un valor de false*/
     catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return false;

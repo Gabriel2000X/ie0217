@@ -10,6 +10,7 @@ class ValidadorEmail {
 
     public:
 
+        /*Se declaran los métodos públicos de la clase ValidadorEmail*/
         void validacionNombreCorreo(const std::string& mail);
         void validacionExtensionCorreo(const std::string& mail); 
         void validacionDominioCorreo(const std::string& mail);
@@ -19,6 +20,7 @@ class ValidadorEmail {
     
     private:
 
+        /*Se declaran los métodos privados de la clase ValidadorEmail*/
         std::string getNombreCorreo(const std::string& mail);
         std::string getExtensionCorreo(const std::string& mail);
         std::string getDominioCorreo(const std::string& mail);
