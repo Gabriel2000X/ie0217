@@ -1,0 +1,11 @@
+digraph "claseEmail.hpp"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="claseEmail.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="En este archivo se declara la clase ValidadorEmail junto con sus métodos tanto públicos como privados..."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="claseEmail.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$claseEmail_8cpp.html",tooltip="En este archivo se define la clase ValidadorEmail junto con sus métodos tanto públicos como privados."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="main.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8cpp.html",tooltip="Se utilizan los métodos y funciones declarados en los demás archivos para lograr generar un menú func..."];
+}
