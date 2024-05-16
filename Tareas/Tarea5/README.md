@@ -15,6 +15,7 @@ Las instrucciones para compilación de la tarea son las siguientes:
 
 # Respuestas a la parte teórica:
 
+
 ```
 Primera parte teórica   
 
