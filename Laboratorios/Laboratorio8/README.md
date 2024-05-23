@@ -18,6 +18,8 @@
 
  **Pregunta:** Write a query to find the first_name, last name and birth date of patients who has height greater than 160 and weight greater than 70
 
+**Respuesta:**
+
 ```sql
 /*Write a query to find the first_name, last name and birth date of
 patients who has height greater than 160 and weight greater than 70*/
@@ -52,6 +54,9 @@ columnas company_name, contact_name y fax que no estén vacíos
 - **Gabriel**
 
 **Pregunta:** Show unique birth years from patients and order them by ascending.
+
+**Respuesta:**
+
 ```sql
 /*Como se piden años de nacimiento únicos entonces
 se debe utilizar SELECT DISTINCT, esto para no repetir
@@ -76,20 +81,22 @@ ORDER BY birth_year;
 
 - **Antony**
 ```sql
-// Comandos SQL para obtner de resultado una lista de nombres que NO se repiten
+-- Comandos SQL para obtner de resultado una lista de nombres que NO se repiten
 SELECT first_name
 FROM patients
-// Obtiene el nombre
-// De la lista de pacientes
-// En el grupo de nombres
+-- Obtiene el nombre
+-- De la lista de pacientes
+-- En el grupo de nombres
 GROUP BY first_name
 HAVING COUNT (first_name)= 1;
-// Escoge los nombres que se repiten solo una vez
+-- Escoge los nombres que se repiten solo una vez
 ```
 
 
 - **Kevin**
 **Pregunta:** Show patient_id and first_name from patients
+
+**Respuesta:**
 
 ```sql
 where their first_name start and ends with 's' and is at least 6 characters long.
@@ -97,8 +104,8 @@ SELECT patient_id, first_name
 FROM patients
 WHERE first_name LIKE 'S%' AND first_name LIKE '%s' AND LEN(first_name) >= 6;
 
-En este caso, se utiliza like para hacer match cuando el nombre empieza con s y tambien cuando termina con s.
-Por ultimo, se usa LEN() para obtener los nombres cuya cantidad de caracteres es al menos 6.
+/*En este caso, se utiliza like para hacer match cuando el nombre empieza con s y tambien cuando termina con s.
+Por ultimo, se usa LEN() para obtener los nombres cuya cantidad de caracteres es al menos 6. */
 ```
 
 - **Oscar**
@@ -123,6 +130,8 @@ Show the total amount of patients in each weight group.
 Order the list by the weight group decending.
 
 For example, if they weight 100 to 109 they are placed in the 100 weight group, 110-119 = 110 weight group, etc.
+
+**Respuesta:**
 
 ```sql
 SELECT
@@ -151,28 +160,59 @@ ORDER BY group_of_weight DESC;
 
 - **Antony**
 
-
-// Selecciona las columnas deseadas
+```sql
+-- Selecciona las columnas deseadas
 SELECT
 patient_id,
 weight,
 height,
-// Calcula BMI
+-- Calcula BMI
 CASE
 WHEN weight ((height / 100.0) * (height / 100.0)) >= 30 THEN 1
-// Si el BMI es menor a 30 el paciente NO es obeso
+-- Si el BMI es menor a 30 el paciente NO es obeso
 ELSE 0
 END AS isObese
-Selecciona la lista de paciente
+--Selecciona la lista de paciente
 FROM patients;
-
+```
 
 
 ### northwind.db
 
 #### Fáciles
 - **Antony**
+
+```sql
+
+SELECT company_name, contact_name, fax
+FROM customers
+WHERE fax IS NOT NULL;
+/* Selecciona la lista de costumers las
+columnas company_name, contact_name y fax que no estén vacíos
+```
+
 - **Kevin**
+
+
+**Pregunta:** Show the first_name, last_name. hire date of the
+most recently hired employee.
+
+
+**Respuesta:**
+
+```sql
+SELECT first_name, last_name, hire_date
+FROM employees
+WHERE hire_date = (SELECT MAX(hire_date) FROM employees);
+/*
+En este caso, se utiliza el comando WHERE combinado con SELECT MAX() para obtener el nombre, el apellido y
+la fecha de vinculacion de la persona que se vinculo mas recientemente a la empresa.
+*/
+
+```
+
+**Pregunta:** Show the average unit price rounded to 2 decimal places, the total units in stock, total discontinued products from the products table.
+
 
 - **Oscar**
 
@@ -217,6 +257,18 @@ JOIN categories On categories.category_id = products.Category_id;
 
 - **Kevin**
 
+**Pregunta:** Show the category_name and the average product unit price for each category rounded to 2 decimal places.
+ 
+ 
+**Respuesta:**
+
+```sql
+SELECT c.category_name, ROUND (AVG(p.unit_price), 2) AS average_unit_price FROM products p
+JOIN categories c ON c.category_id = p.Category_id
+GROUP BY c.category_name
+/*Para realizar este ejercicio, primero es necesario obtener el category_name y despues se crea una columna
+nueva que corresponde al redondeo del precio unitario a dos decimales, con el nombre de average_unit_price. Despues, se realiza un join utilizando los category_id de cada tabla y se agrupan todos por los category_name. */
+```
 - **Oscar**
 
     **Pregunta:** Show the city, company_name, contact_name from the customers and suppliers table merged together. Create a column which contains 'customers' or 'suppliers' depending on the table it came from.
@@ -237,6 +289,33 @@ JOIN categories On categories.category_id = products.Category_id;
 
 #### Difíciles
 - **Kevin**
+
+**Pregunta:** Show the employee's first_name and last_name, a "num_orders" column with a count of the orders taken, and a column called "Shipped" that displays"On Time" if the order shipped_date is less or equal to the required_date, "Late" if the order shipped late.
+Order by employee last_name, then by first_name, and then descending by number of orders.
+
+ **Respuesta:**
+
+```sql
+SELECT
+e.first_name,
+e.last_name,
+COUNT (o.order_id) AS num_orders,
+(CASE WHEN o.shipped_date <= o.required_date THEN 'On Time' ELSE 'Late' END) AS shipped 
+FROM orders o
+    JOIN employees e ON e.employee_id = o.employee_id
+
+GROUP BY
+e.first_name,
+e.last_name,
+shipped
+ORDER BY
+e.last_name, 
+e.first_name,
+num_orders DESC
+
+
+/*Para este ejercicio, se obtuvieron las columnas de first_name y last_name de la tabla employees de forma comun. Para la tercera columna se utilizo un contador de ordenes utilizando el primary key de orders y para la cuarta se utilizo un case en donde se analizaba si la orden estuvo a tiempo o no. Despues, se utilizo el JOIN para unir las tablas, se utilizo GROUP BY para agrupar nombre y apellido con la columna "shipped" y por ultimo, se ordena priorizando el orden por apellido, despues por nombre y por ultimo por el numero de ordenes de forma descendente.*/
+```
 
 - **Oscar**
 
