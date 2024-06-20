@@ -92,7 +92,18 @@ Posteriormente se genera la tabla Cursos:
 
 ![Generación de la tabla cursos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura2.PNG)
 
-Posteriormente se procede a crear la tabla Requisitos y la tabla Descripciones 
+Posteriormente se procede a crear la tabla Requisitos y la tabla Descripciones:
 
-![Generación de la tabla cursos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura3.PNG)
-![Generación de la tabla cursos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura4.PNG)
+![Generación de la tabla Requisitos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura3.PNG)
+![Generación de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura4.PNG)
+
+Se añaden tanto los cursos del plan a la tabla de cursos, como los requisitos de cada curso:
+
+![Inserción de los cursos a su tabla](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura5.PNG)
+![Inserción de los cursos requisito a la tabla cursos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura6.PNG)
+
+Se añaden los requisitos a la tabla de requisitos y las descripciones en la respectiva tabla Descripciones:
+
+
+![Inserción de requisitos a la tabla requisitos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura7.PNG)
+![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura8.PNG)
