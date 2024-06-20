@@ -135,3 +135,17 @@ Seguidamente se visualiza la tabla del listado de cursos no optativos:
 Por último se visualiza la tabla que contiene los cursos que pertenecen al semestre 10 
 
 ![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura4_Cons.PNG)
+
+A continuación se visualizan los resultados de actualizar los cursos optativos utilizando tablas para confirmar el cambio:
+
+La tabla de cursos antes de actualizar la primera optativa es la siguiente:
+
+![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura11.PNG)
+
+Luego de actualizar la optativa 1 se puede visualizar el cambio en la tabla actualizada:
+
+![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura12.PNG)
+
+Posteriormente se actualiza la optativa 2, por lo que se utiliza una tabla de cursos actualizada para verificar su resultado:
+
+![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura13.PNG)
