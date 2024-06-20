@@ -92,4 +92,7 @@ Posteriormente se genera la tabla Cursos:
 
 ![Generación de la tabla cursos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura2.PNG)
 
+Posteriormente se procede a crear la tabla Requisitos y la tabla Descripciones 
 
+![Generación de la tabla cursos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura3.PNG)
+![Generación de la tabla cursos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura4.PNG)
