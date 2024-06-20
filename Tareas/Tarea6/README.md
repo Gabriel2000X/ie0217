@@ -2,7 +2,6 @@
 
 
 ```
-Primera parte teórica   
 
 1.	Una base de datos relacional es un sistema organizado de almacenamiento de datos que permite almacenar y recuperar   
     información de manera eficiente utilizando tablas las cuales contienen filas y columnas, las filas son registros y   
@@ -81,4 +80,17 @@ Primera parte teórica
     10.3 Muchos a Muchos: Se utiliza una tabla de unión entre dos tablas,  esta tabla que contiene las claves foraneas que marcan la referencia de las claves primarias en las tablas que se quieren comunicar, se debe gestionar correctamente la tabla intermedia para evitar redundancias.
 
 
+```
+# Evidencia de trabajo
 
+```
+Se procede a generar la base de datos, se adjunta captura del código utilizado: 
+
+![Creación de la base de datos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura1.PNG)
+
+Posteriormente se genera la tabla Cursos:
+
+![Generación de la tabla cursos]https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura2.PNG
+
+
+```
