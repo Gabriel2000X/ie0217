@@ -174,3 +174,36 @@ Se actualiza la descripción del tercer curso optativo y se muestra su resultado
 
 ![Descripción de la tercera opt](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura17.PNG)
 
+Se procede con la sección de eliminación de los cursos y requisitos:
+
+Se tiene la siguiente tabla de cursos antes de la eliminación del primer curso (017):
+
+![Elim primer curso](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura18.PNG)
+
+Se tiene la siguiente tabla de cursos después de la eliminación del primer curso:
+
+![Elim primer curso](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura19.PNG)
+
+Se tiene la siguiente tabla antes de la eliminación de la descripción del primer curso (017):
+
+![Elim primer curso](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura20.PNG)
+
+Se tiene la siguiente tabla después de la eliminación de la descripción del primer curso (017):
+
+![Elim primer curso](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura21.PNG)
+
+
+Ahora se tiene la siguiente tabla de cursos luego de la eliminación del segundo curso (003):
+![Elim primer curso](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura22.PNG)
+
+Se tiene la siguiente tabla de cursos después de la eliminación del primer curso:
+
+![Elim primer curso](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura23.PNG)
+
+Ahora se tiene la siguiente tabla de cursos luego de la eliminación del tercer curso (004):
+
+![Elim primer curso](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura24.PNG)
+
+Se tiene la siguiente tabla después de la eliminación de la descripción del primer curso (004):
+
+![Elim primer curso](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura25.PNG)
