@@ -110,42 +110,67 @@ Se añaden los requisitos a la tabla de requisitos y las descripciones en la res
 
 Se añaden los cursos que se desearía que se impartieran en la carrera y sus respectivos requisitos y descripciones:
 
-![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura9.PNG)
+![Se aladen los cursos deseados](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura9.PNG)
 
 
 Se añaden las multiples consultas que utilizan SELECT para consultar datos específicos de la base de datos:
 
-![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura10.PNG)
+![Código de las consultas](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura10.PNG)
 
 
 Se añaden las tablas resultantes de las consultas anteriormente añadidas:
 
 Primeramente se visualiza la tabla con todos los cursos y su información realizada por la primera consulta:
 
-![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura1_Cons.PNG)
+![Tabla visualizada de cursos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura1_Cons.PNG)
 
 A continuación se visualiza la tabla de requisitos del curso de ciencia de datos:
  
- ![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura2_Cons.PNG)
+ ![Tabla visualizada de requisitos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura2_Cons.PNG)
 
 Seguidamente se visualiza la tabla del listado de cursos no optativos:
 
-![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura3_Cons.PNG)
+![Tabla visulizada de cursos no optativos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura3_Cons.PNG)
 
 Por último se visualiza la tabla que contiene los cursos que pertenecen al semestre 10 
 
-![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura4_Cons.PNG)
+![Tabla visualizada de cursos de semestre 10](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura4_Cons.PNG)
 
 A continuación se visualizan los resultados de actualizar los cursos optativos utilizando tablas para confirmar el cambio:
 
+
+El código utlizado para cambiar los nombres, siglas y descripciones de las optativas es:
+
+![Código optativas](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura_Código.PNG)
+
+
 La tabla de cursos antes de actualizar la primera optativa es la siguiente:
 
-![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura11.PNG)
+![Tabla antes del cambio en primer optativa](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura11.PNG)
 
 Luego de actualizar la optativa 1 se puede visualizar el cambio en la tabla actualizada:
 
-![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura12.PNG)
+![Tabla luego del cambio de la primera optativa](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura12.PNG)
 
 Posteriormente se actualiza la optativa 2, por lo que se utiliza una tabla de cursos actualizada para verificar su resultado:
 
-![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura13.PNG)
+![Tabla luego del cambio de la segunda optativa](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura13.PNG)
+
+Para visualizar el último cambio en los nombres de los cursos optativos se actualiza la optativa 3 y muestra la tabla actualizada:
+
+![Tabla luego del cambio de la optativa 3](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura14.PNG)
+
+A continuación se visualizan los resultados de los cambios en las descripciones de los cursos optativos:
+
+Para el primer curso optativo se cambia su descripción y se actualiza la tabla:
+
+![Descripcion de la primera opt](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura15.PNG)
+
+Se actualiza la descripción del segundo curso optativo y se muestra su resultado en la siguiente tabla actualizada:
+
+![Descripción de la segunda opt](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura16.PNG)
+
+Se actualiza la descripción del tercer curso optativo y se muestra su resultado en la siguiente tabla actualizada:
+
+![Descripción de la tercera opt](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura17.PNG)
+
