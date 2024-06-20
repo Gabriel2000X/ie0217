@@ -204,6 +204,243 @@ Ahora se tiene la siguiente tabla de cursos luego de la eliminación del tercer 
 
 ![Elim primer curso](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura24.PNG)
 
-Se tiene la siguiente tabla después de la eliminación de la descripción del primer curso (004):
+Se tiene la siguiente tabla después de la eliminación de la descripción del primer curso (004)
 
 ![Elim primer curso](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura25.PNG)
+
+
+Se procede a la sección de eliminación de requisitos de los cursos:
+
+La siguiente tabla es la visualización de la tabla de requisitos antes de eliminar los requisitos
+
+![Elim primer curso](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura26.PNG)
+
+La tabla queda de la siguiente manera al eliminar el primer requisito:
+
+![Elim primer curso](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura27.PNG)
+
+Se obtiene la siguiente tabla al eliminar el segundo requisito:
+
+![Elim primer curso](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura29.PNG)
+
+
+
+
+# Código utilizado en SQL Workbench para obtener estos resultados
+
+```
+-- crear una base de datos
+CREATE DATABASE IF NOT EXISTS Plan_electrica_db;
+
+-- Se crea la tabla Cursos
+
+USE Plan_electrica_db;
+
+CREATE TABLE IF NOT EXISTS Cursos (
+    CursoID INT AUTO_INCREMENT,
+    Sigla VARCHAR(20) NOT NULL,
+    Nombre VARCHAR(90) NOT NULL,
+    Semestre INT NOT NULL,
+    Creditos INT NOT NULL,
+    PRIMARY KEY (CursoID),
+    UNIQUE (Nombre),
+    UNIQUE (Sigla)
+);
+
+-- Se crea la tabla Requisitos
+
+CREATE TABLE IF NOT EXISTS Requisitos (
+
+	RequisitoID INT AUTO_INCREMENT,
+    CursoID INT NOT NULL,
+    RequisitoCursoID INT NOT NULL,
+    PRIMARY KEY (RequisitoID),
+    FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID),
+    FOREIGN KEY (RequisitoCursoID) REFERENCES Cursos(CursoID)
+
+);
+
+-- Se crea la tabla descripciones
+
+CREATE TABLE IF NOT EXISTS Descripciones (
+    DescripcionID INT AUTO_INCREMENT,
+    CursoID INT NOT NULL,
+    Descripcion TEXT NOT NULL,
+    Dificultad ENUM('Facil', 'Media', 'Dificil') NOT NULL,
+    PRIMARY KEY (DescripcionID),
+    FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID)
+);
+
+
+-- Se añaden los cursos del plan de estudio
+INSERT INTO Cursos (CursoID, Sigla, Nombre, Semestre, Creditos) VALUES
+(001, 'IE-0579', 'Administración de sistemas', 9, 4),
+(002, 'IE-0613', 'Electrónica industrial', 9, 4),
+(003, 'IE-0001', 'Optativa 1', 9, 3),
+(004, 'IE-0002', 'Optativa 2', 9, 3),
+(005, 'IE-0679', 'Ciencia de datos para la est. y pron. de eventos', 10, 3),
+(006, 'IE-0541', 'Seguridad ocupacional', 10, 3),
+(007, 'IE-0003', 'Optativa 3', 10, 3),
+(008, 'IE-0004', 'Optativa 4', 10, 3),
+(009, 'IE-TFG', 'Trabajo final de graduación', 10, 0);
+
+
+-- Se añaden los cursos requisito de cada curso
+INSERT INTO Cursos (CursoID, Sigla, Nombre, Semestre, Creditos) VALUES
+(010, 'IE-0479', 'Ingenirería económica', 8, 3),
+(011, 'IE-0413', 'Electrónica 2', 5, 3),
+(012, 'IE-0315', 'Máquinas eléctricas 1', 6, 3),
+(013, 'IE-0499', 'Proyecto eléctrico', 8, 3),
+(014, 'IE-0405', 'Modelos probabilísticos de señales y sistemas', 6, 3),
+(015, 'IE-0501', 'Responsabilidad en el ejercicio profesional de la ingeniería eléctrica', 6, 1);
+
+-- Se añade el curso anteproyecto de TFG que se dejó por fuera anteriormente
+INSERT INTO Cursos (CursoID, Sigla, Nombre, Semestre, Creditos) VALUES
+(016, 'IE-0599', 'Anteproyecto de TFG', 9, 4);
+
+-- Se añaden los requisitos de los diferentes cursos del plan
+INSERT INTO Requisitos (RequisitoID, CursoID, RequisitoCursoID) VALUES
+(001, 001, 010 ),
+(002, 002, 011 ),
+(003, 002, 012 ),
+(004, 005, 014 ),
+(005, 005, 001 ),
+(006, 006, 015 ),
+(007, 016, 013 );
+
+-- Se añaden las descripciones de los cursos y sus respectivos ID
+INSERT INTO Descripciones (DescripcionID, CursoID, Descripcion, Dificultad) VALUES
+(001, 001, 'Curso basado en el aprendizaje de técnicas de administración de sistemas', 'Difícil'),
+(002, 002, 'Curso basado en la sección industrial de la eléctronica.', 'Difícil'),
+(003, 003, 'Curso optativo.', 'Facil'),
+(004, 004, 'Curso optativo. ', 'Facil'),
+(005, 005, 'Curso enfocado en la estimación y pronóstico de eventos mediante ciencia de datos.', 'Media'),
+(006, 006, 'Curso basado en la salud ocupacional en el área de trabajo.', 'Fácil'),
+(007, 007, 'Curso optativo.', 'Facil'),
+(008, 008, 'Curso optativo.', 'Facil'),
+(009, 009, 'Curso que consiste en la elaboración del trabajo final de graduación.', 'Difícil'),
+(010, 010, 'Curso basado en conocimientos del área económica.', 'Media'),
+(011, 011, 'Curso basado en materia de electrónica.', 'Dificil'),
+(012, 012, 'Curso basado en el aprendizaje del manejo y funcionamiento de máquinas eléctricas.', 'Difícil'),
+(013, 013, 'Curso que consiste en elaborar un proyecto de graduación para bachillerato.', 'Dificil'),
+(014, 014, 'Curso basado en el aprendizaje de modelos probabilistícos con aplicación en señales y sistemas.', 'Fácil'),
+(015, 015, 'Curso basado en ética y responsabilidad en el ambiente laboral.', 'Facil'),
+(016, 016, 'Curso basado en la construcción del anteproyecto de graduación de la licenciatura.', 'Difícil');
+
+-- Se añaden los dos cursos nuevos 
+
+-- Primero se añaden a la tabla Cursos
+INSERT INTO Cursos (CursoID, Sigla, Nombre, Semestre, Creditos) VALUES
+(017, 'IE-998', 'Introducción a la ingeniería aeroespacial', 6, 3),
+(018, 'IE-999', 'Modelos probabilísticos de señales y sistemas 2 ', 7, 4);
+
+-- Posteriormente se añade el requisito de el curso IE-999, el IE-998 no requiere requisitos debido a que es introductorio
+
+INSERT INTO Requisitos (RequisitoID, CursoID, RequisitoCursoID) VALUES
+(008, 018, 014 );
+
+INSERT INTO Descripciones (DescripcionID, CursoID, Descripcion, Dificultad) VALUES
+(017, 017, 'Curso en el que se aprenden los fundamentos y la base de la ingeniería aeroespacial', 'Media'),
+(018, 018, 'Curso en el que se profundiza en el análisis de los modelos probabilistícos aplicados a señales y sistemas.', 'Difícil');
+
+
+
+-- Se añade la consulta para visualizar los cursos con sus respectivos atributos
+
+SELECT e.Sigla, e.Nombre, e.Semestre, e.Creditos, d.Descripcion, d.Dificultad
+FROM Cursos e
+JOIN Descripciones d ON e.CursoID = d.CursoID;
+
+-- Se añade la consulta para visualizar los requisitos de un curso en específico mediante su 
+-- sigla
+SELECT r.RequisitoID, e1.Sigla AS Curso, e2.Sigla AS Requisito
+FROM Requisitos r
+JOIN Cursos e1 ON r.CursoID = e1.CursoID
+JOIN Cursos e2 ON r.RequisitoCursoID = e2.CursoID
+WHERE e1.Sigla = 'IE-0679';
+
+-- Se añade la consulta para los cursos que no son optativos
+SELECT Sigla, Nombre, Semestre, Creditos
+FROM Cursos
+WHERE Nombre NOT LIKE 'Optativa%';
+
+-- Se añade la consulta para visualizar los cursos que pertenecen al décimo semestre 
+
+
+SELECT Sigla, Nombre, Semestre, Creditos
+FROM Cursos
+WHERE Semestre = 10;
+
+
+
+-- Se añade el código para actualizar los valores de las optativas
+-- código para actualizar los valores de la optativa 1
+UPDATE Cursos
+SET Nombre = 'Temas especiales 2 en control', Creditos = 4
+WHERE Sigla = 'IE-0001';
+
+-- código para actualizar los valores de la optativa 2
+UPDATE Cursos
+SET Nombre = 'Procesamiento dígital de señales', Creditos = 4
+WHERE Sigla = 'IE-0002';
+
+-- código para actualizar los valores de la optativa 3
+UPDATE Cursos
+SET Nombre = 'Automatización industrial', Creditos = 4
+WHERE Sigla = 'IE-0003';
+
+-- Se añade el código para actualizar la descripción y dificultad de tres cursos
+
+UPDATE Descripciones
+SET Descripcion = 'Curso avanzado que estudia áreas emergentes del control automático', Dificultad = 'Dificil'
+WHERE CursoID = 003;
+
+UPDATE Descripciones
+SET Descripcion = 'Curso que se enfoca en técnicas de procesamiento de señales mediante métodos dígitales', Dificultad = 'Difícil'
+WHERE CursoID = 004;
+
+
+UPDATE Descripciones
+SET Descripcion = 'Curso avanzado que se enfoca en métodos de automatización para procesos industriales', Dificultad = 'Difícil'
+WHERE CursoID = 007;
+
+
+-- Se añade el código para eliminar un curso inventado 
+
+-- Primero se desactiva el modo seguro para poder eliminar valores de las tablas 
+SET SQL_SAFE_UPDATES = 0;
+
+-- Se elimina el curso inventado (introducción a la ingenirería aeroespacial)
+DELETE FROM Descripciones
+WHERE CursoID = 017;
+DELETE FROM Cursos
+WHERE CursoID = 017;
+
+-- Se elimina el primer curso del plan optativa 1
+
+DELETE FROM Descripciones
+WHERE CursoID = 003;
+DELETE FROM Cursos
+WHERE CursoID = 003;
+
+-- Se elimina el segundo curso del plan optativa 2
+DELETE FROM Descripciones
+WHERE CursoID = 004;
+DELETE FROM Cursos
+WHERE CursoID = 004;
+
+-- Se eliminan los requisitos de dos cursos
+
+-- Se elimina el requisito de Ciencia de datos para la est. y pron. de eventos 
+DELETE FROM Requisitos
+WHERE CursoID = 005 AND RequisitoCursoID = 014;
+
+-- Se elimina el requisito de seguridad ocupacional
+DELETE FROM Requisitos
+WHERE CursoID = 006 AND RequisitoCursoID = 015;
+
+SET SQL_SAFE_UPDATES = 1;
+
+```
+
+Si se necesitara probar el código se insta a hacerlo por partes debido a que ciertas operaciones y consultas necesitan de la existencia previa de ciertos datos.
