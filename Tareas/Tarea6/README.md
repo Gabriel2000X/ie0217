@@ -107,3 +107,31 @@ Se añaden los requisitos a la tabla de requisitos y las descripciones en la res
 
 ![Inserción de requisitos a la tabla requisitos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura7.PNG)
 ![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura8.PNG)
+
+Se añaden los cursos que se desearía que se impartieran en la carrera y sus respectivos requisitos y descripciones:
+
+![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura9.PNG)
+
+
+Se añaden las multiples consultas que utilizan SELECT para consultar datos específicos de la base de datos:
+
+![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura10.PNG)
+
+
+Se añaden las tablas resultantes de las consultas anteriormente añadidas:
+
+Primeramente se visualiza la tabla con todos los cursos y su información realizada por la primera consulta:
+
+![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura1_Cons.PNG)
+
+A continuación se visualiza la tabla de requisitos del curso de ciencia de datos:
+ 
+ ![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura2_Cons.PNG)
+
+Seguidamente se visualiza la tabla del listado de cursos no optativos:
+
+![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura3_Cons.PNG)
+
+Por último se visualiza la tabla que contiene los cursos que pertenecen al semestre 10 
+
+![Inserción de los elementos de la tabla Descripciones](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura4_Cons.PNG)
