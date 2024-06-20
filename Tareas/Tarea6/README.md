@@ -86,7 +86,7 @@
 ```
 Se procede a generar la base de datos, se adjunta captura del código utilizado: 
 
-![Creación de la base de datos](https://github.com/Gabriel2000X/ie0217/blob/main/Tareas/Tarea6/Captura1.png)
+![Creación de la base de datos](D:\UCR\repositorios\ie0217\Tareas\Tarea6\Captura1.PNG)
 
 Posteriormente se genera la tabla Cursos:
 
